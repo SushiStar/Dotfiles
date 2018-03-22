@@ -1,2 +1,6 @@
 # weed
-NOTHING
+
+
+shortcuts && configs for vim &&git
+
+
