@@ -1,0 +1,5 @@
+using valgrind to find memory leaks and invalid memory use
+
+command: valgrind --tool=memcheck --leak-check=yes ./executable_name
+
+compile with -g opiton so as to build into debug mode
