@@ -19,15 +19,10 @@ Plug 'scrooloose/nerdcommenter'
 
 Plug 'miyakogi/conoline.vim'
 
+Plug 'bling/vim-airline'
+
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
-
-
-" YOUCOMPLETEME #####################
-let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
-let g:ycm_always_populate_location_list = 1
-let g:ycm_python_binary_path = '/usr/bin/python3'
-let g:ycm_autoclose_preview_window_after_insertion = 1
 
 
 " NERDTREE ###########################
@@ -38,7 +33,6 @@ autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
 
 "open a NERDTree automatically when vim starts up if no files were specified
-
 "close vim if the only window left open is a NERDTree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 map <F2> :NERDTreeToggle<CR>
@@ -53,8 +47,24 @@ let g:conoline_color_normal_dark = 'guibg=#333333 guifg=#dddddd gui=None '
                            \. 'ctermbg=237'
 let g:conoline_color_insert_dark = 'guibg=black guifg=white gui=bold '
                            \. 'ctermbg=237'
-
 let g:conoline_auto_enable = 1
+
+
+" youcompleteme ##########################
+let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
+let g:ycm_always_populate_location_list = 1
+"let g:ycm_python_binary_path = '/usr/bin/python3'
+let g:ycm_autoclose_preview_window_after_insertion = 1
+
+let g:ycm_complete_in_comments=1
+
+let g:ycm_collect_identifiers_from_tag_files=1
+"set completeopt-=preview 
+let g:ycm_seed_identifiers_with_syntax=1
+
+
+map <F9> :YcmCompleter FixIt<CR>
+
 
 
 "#### terminal configuration ##########
@@ -81,6 +91,7 @@ set ignorecase
 let g:codedark_conservative = 1
 colorscheme codedark
 
+set autoread
 
 
 "###### GUI configuration #################
