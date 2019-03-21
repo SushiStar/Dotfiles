@@ -1,11 +1,10 @@
-"##### plugins ############## 
+"##### plugins ##############
 " Plugins will be downloaded under the specified directory.
 call plug#begin('~/.vim/plugged')
 
 " Decclare the list of plugins.
-Plug 'tpope/vim-sensible'
 
-Plug 'somini/vim-autoclose'
+Plug 'jiangmiao/auto-pairs'
 
 Plug 'majutsushi/tagbar'
 
@@ -17,9 +16,15 @@ Plug 'vim-scripts/cmake.vim-syntax'
 
 Plug 'scrooloose/nerdcommenter'
 
-Plug 'miyakogi/conoline.vim'
+Plug 'vim-airline/vim-airline'
 
-Plug 'bling/vim-airline'
+Plug 'lervag/vimtex'
+
+Plug 'rhysd/vim-clang-format'
+
+Plug 'haya14busa/incsearch.vim'
+
+Plug 'plasticboy/vim-markdown'
 
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
@@ -35,37 +40,34 @@ autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in
 "open a NERDTree automatically when vim starts up if no files were specified
 "close vim if the only window left open is a NERDTree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-map <F2> :NERDTreeToggle<CR>
+nnoremap <silent> tt :NERDTreeToggle<CR>
 
 
-" TagBar###############################
+" incserach ###############################
+map /  <Plug>(incsearch-forward)
+map ?  <Plug>(incsearch-backward)
+map g/ <Plug>(incsearch-stay)
+
+" TagBar ##################################
 let g:tagbar_width = 30
 
+" MarkDown ################################ 
+let g:vim_markdown_folding_disabled = 1
+let g:vim_markdown_conceal = 0
 
-" Conoline ############################
-let g:conoline_color_normal_dark = 'guibg=#333333 guifg=#dddddd gui=None '
-                           \. 'ctermbg=237'
-let g:conoline_color_insert_dark = 'guibg=black guifg=white gui=bold '
-                           \. 'ctermbg=237'
-let g:conoline_auto_enable = 1
-
-
-" youcompleteme ##########################
+" youcompleteme ###########################
 let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
 let g:ycm_always_populate_location_list = 1
-"let g:ycm_python_binary_path = '/usr/bin/python3'
+let g:ycm_python_binary_path = '/usr/bin/python3'
 let g:ycm_autoclose_preview_window_after_insertion = 1
 
 let g:ycm_complete_in_comments=1
-
 let g:ycm_collect_identifiers_from_tag_files=1
-"set completeopt-=preview 
 let g:ycm_seed_identifiers_with_syntax=1
 
-
-map <F9> :YcmCompleter FixIt<CR>
-
-
+let g:ycm_show_diagnostics_ui = 0
+let g:ycm_enable_diagnostic_signs = 0
+let g:ycm_enable_diagnostic_highlighting = 0
 
 "#### terminal configuration ##########
 filetype plugin on
@@ -74,6 +76,7 @@ syntax on
 
 set backspace=2
 set number
+"set cursorline
 
 " show existing tab with 4 sapces width
 set tabstop=4
@@ -82,42 +85,40 @@ set shiftwidth=4
 " On pressing tab, insert 4 sapces
 set expandtab
 
-nmap <F8> :TagbarToggle<CR>
+set whichwrap+=h,l
+
 " ctags refresh
 map <F7> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
 
+nnoremap <silent> <C-n> :tabnew<Enter>
+nnoremap <silent> <C-p> :vsp<Enter>
+nnoremap <silent> <C-z> :x<Enter>
+nnoremap <silent> <C-H> gT
+nnoremap <silent> <C-L> gt
+nnoremap <silent> fl :winc l<Enter>
+nnoremap <silent> fh :winc h<Enter>
+nnoremap <silent> fk :winc k<Enter>
+nnoremap <silent> fj :winc j<Enter>
 
 set ignorecase
+set autoread
+set cursorline
+set timeoutlen=1000 ttimeoutlen=10
+
 let g:codedark_conservative = 1
 colorscheme codedark
 
-set autoread
+" clang-format
+let g:clang_format#style_options = {
+            \ "AccessModifierOffset" : -4,
+            \ "AllowShortIfStatementsOnASingleLine" : "true",
+            \ "AlwaysBreakTemplateDeclarations" : "true",
+            \ "Standard" : "C++11"}
 
-
-"###### GUI configuration #################
-
-" Set extra options when running in GUI mode
-if has("gui_running")
-
-    map <silent> <F11>
-                \    :call system("wmctrl -ir " . v:windowid . " -b toggle,fullscreen")<CR>
-
-    " remove toolbar
-    set guioptions-=M
-    "remove menubar
-    set guioptions-=T
-    set guioptions-=L
-    set guioptions-=r
-
-    set guitablabel=%M\ %t
-
-    set guifont=Monospace\ 10
-
-
-    let g:codedark_conservative = 1
-    colorscheme codedark
-
-
-endif
+"vimtex
+let g:vimtex_compiler_latexmk = {'callback' : 0}
+nnoremap <silent> \lc :VimtexCompile<Enter>
+"nnoremap \ls :VimtexStop<Enter>
+nnoremap <silent> \ll :VimtexView<Enter>
 
 
