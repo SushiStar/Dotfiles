@@ -23,8 +23,6 @@ bind '"\e[B": history-search-forward'
 bind '"\e[A": history-search-backward'
 
 # run from waynedu directory
-
-
 export PS1="\W > "
 
 #export PATH=$PATH:~/.nexustools

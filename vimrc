@@ -26,6 +26,8 @@ Plug 'haya14busa/incsearch.vim'
 
 Plug 'plasticboy/vim-markdown'
 
+Plug 'tomasiser/vim-code-dark'
+
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
 
@@ -107,6 +109,7 @@ set timeoutlen=1000 ttimeoutlen=10
 
 let g:codedark_conservative = 1
 colorscheme codedark
+let g:airline_theme = 'codedark'
 
 " clang-format
 let g:clang_format#style_options = {
