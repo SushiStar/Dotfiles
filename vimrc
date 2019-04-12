@@ -3,6 +3,7 @@
 call plug#begin('~/.vim/plugged')
 
 " Decclare the list of plugins.
+Plug 'yggdroot/indentline'
 
 Plug 'jiangmiao/auto-pairs'
 
@@ -26,7 +27,11 @@ Plug 'haya14busa/incsearch.vim'
 
 Plug 'plasticboy/vim-markdown'
 
+" color scheme
 Plug 'tomasiser/vim-code-dark'
+
+"Plug 'junegunn/seoul256.vim'
+Plug 'morhetz/gruvbox'
 
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
@@ -49,6 +54,11 @@ nnoremap <silent> tt :NERDTreeToggle<CR>
 map /  <Plug>(incsearch-forward)
 map ?  <Plug>(incsearch-backward)
 map g/ <Plug>(incsearch-stay)
+set nohlsearch
+
+"  Indent ###############################
+set list lcs=tab:\|\ 
+"let g:indentLine_setColors = 0
 
 " TagBar ##################################
 let g:tagbar_width = 30
@@ -94,6 +104,7 @@ map <F7> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
 
 nnoremap <silent> <C-n> :tabnew<Enter>
 nnoremap <silent> <C-p> :vsp<Enter>
+nnoremap <silent> <C-s> :sp<Enter>
 nnoremap <silent> <C-z> :x<Enter>
 nnoremap <silent> <C-H> gT
 nnoremap <silent> <C-L> gt
@@ -107,11 +118,12 @@ set autoread
 set cursorline
 set timeoutlen=1000 ttimeoutlen=10
 
-let g:codedark_conservative = 1
-colorscheme codedark
-let g:airline_theme = 'codedark'
+" code_dark ##############################################
+"let g:codedark_conservative = 1
+"colorscheme codedark
+"let g:airline_theme = 'codedark'
 
-" clang-format
+" clang-format ########################################## 
 let g:clang_format#style_options = {
             \ "AccessModifierOffset" : -4,
             \ "AllowShortIfStatementsOnASingleLine" : "true",
@@ -124,4 +136,18 @@ nnoremap <silent> \lc :VimtexCompile<Enter>
 "nnoremap \ls :VimtexStop<Enter>
 nnoremap <silent> \ll :VimtexView<Enter>
 
+" Seoul256 ###############################################
+" Light color scheme
+"colo seoul256-light
+" Switch
+"set background=dark
+" seoul256 (dark):
+"   Range:   233 (darkest) ~ 239 (lightest)
+"   Default: 237
+"let g:seoul256_background = 234
+"colo seoul256
 
+" gruvbox ################################################ 
+colorscheme gruvbox
+set background=dark
+let g:gruvbox_contrast_dark="soft"
