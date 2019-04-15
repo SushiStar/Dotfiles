@@ -88,7 +88,6 @@ syntax on
 
 set backspace=2
 set number
-"set cursorline
 
 " show existing tab with 4 sapces width
 set tabstop=4
@@ -150,4 +149,5 @@ nnoremap <silent> \ll :VimtexView<Enter>
 " gruvbox ################################################ 
 colorscheme gruvbox
 set background=dark
-let g:gruvbox_contrast_dark="soft"
+let g:gruvbox_contrast_dark='soft'
+let g:NVIM_TUI_ENABLE_CURSOR_SHAPE=0
