@@ -152,7 +152,4 @@ set background=dark
 let g:gruvbox_contrast_dark='dark'
 let g:NVIM_TUI_ENABLE_CURSOR_SHAPE=0
 
-
-
-
 set viminfo="NONE"
