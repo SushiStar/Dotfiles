@@ -25,12 +25,11 @@ Plug 'rhysd/vim-clang-format'
 
 Plug 'haya14busa/incsearch.vim'
 
-Plug 'plasticboy/vim-markdown'
+"Plug 'plasticboy/vim-markdown'
 
 " color scheme
 Plug 'tomasiser/vim-code-dark'
-
-"Plug 'junegunn/seoul256.vim'
+Plug 'junegunn/seoul256.vim'
 Plug 'morhetz/gruvbox'
 
 " List ends here. Plugins become visible to Vim after this call.
@@ -59,6 +58,7 @@ set nohlsearch
 "  Indent ###############################
 set list lcs=tab:\|\ 
 "let g:indentLine_setColors = 0
+let g:indentLine_char_list = ['|', '¦', '┆', '┊']
 
 " TagBar ##################################
 let g:tagbar_width = 30
@@ -138,13 +138,13 @@ nnoremap <silent> \ll :VimtexView<Enter>
 " Seoul256 ###############################################
 " Light color scheme
 "colo seoul256-light
+"colo seoul256
 " Switch
 "set background=dark
 " seoul256 (dark):
 "   Range:   233 (darkest) ~ 239 (lightest)
 "   Default: 237
-"let g:seoul256_background = 234
-"colo seoul256
+"let g:seoul256_background = 235
 
 " gruvbox ################################################ 
 colorscheme gruvbox
