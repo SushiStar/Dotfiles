@@ -25,11 +25,13 @@ Plug 'rhysd/vim-clang-format'
 
 Plug 'haya14busa/incsearch.vim'
 
+Plug 'mileszs/ack.vim'
+
 "Plug 'plasticboy/vim-markdown'
 
 " color scheme
-Plug 'tomasiser/vim-code-dark'
-Plug 'junegunn/seoul256.vim'
+" Plug 'tomasiser/vim-code-dark'
+" Plug 'junegunn/seoul256.vim'
 Plug 'morhetz/gruvbox'
 
 " List ends here. Plugins become visible to Vim after this call.
@@ -64,8 +66,6 @@ let g:indentLine_char_list = ['|', '¦', '┆', '┊']
 let g:tagbar_width = 30
 
 " MarkDown ################################ 
-let g:vim_markdown_folding_disabled = 1
-let g:vim_markdown_conceal = 0
 
 " youcompleteme ###########################
 let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
@@ -151,5 +151,9 @@ colorscheme gruvbox
 set background=dark
 let g:gruvbox_contrast_dark='dark'
 let g:NVIM_TUI_ENABLE_CURSOR_SHAPE=0
+
+" ack ####################################################
+let g:ackprg = 'ag --nogroup --nocolor --column'
+
 
 set viminfo="NONE"
