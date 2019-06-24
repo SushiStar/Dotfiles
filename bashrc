@@ -115,6 +115,7 @@ fi
 
 # Customize
 alias g++='g++ --std=c++11'
+alias vim='nvim'
 
 function cd {
     builtin cd "$@" && ls 
