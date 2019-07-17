@@ -7,8 +7,6 @@ Plug 'yggdroot/indentline'
 
 Plug 'jiangmiao/auto-pairs'
 
-Plug 'majutsushi/tagbar'
-
 Plug 'valloric/youcompleteme'
 
 Plug 'scrooloose/nerdtree'
@@ -18,8 +16,6 @@ Plug 'vim-scripts/cmake.vim-syntax'
 Plug 'scrooloose/nerdcommenter'
 
 Plug 'vim-airline/vim-airline'
-
-Plug 'lervag/vimtex'
 
 Plug 'rhysd/vim-clang-format'
 
@@ -62,13 +58,13 @@ set list lcs=tab:\|\
 "let g:indentLine_setColors = 0
 let g:indentLine_char_list = ['|', '¦', '┆', '┊']
 
-" TagBar ##################################
-let g:tagbar_width = 30
 
-" MarkDown ################################ 
+" NerdCommenter ################################ 
+map 'ci <plug>NERDCommenterToggle
+map 'cs <plug>NERDCommenterSexy
 
 " youcompleteme ###########################
-let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
+"let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
 let g:ycm_always_populate_location_list = 1
 let g:ycm_python_binary_path = '/usr/bin/python3'
 let g:ycm_autoclose_preview_window_after_insertion = 1
@@ -104,7 +100,7 @@ map <F7> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
 nnoremap <silent> <C-n> :tabnew<Enter>
 nnoremap <silent> <C-p> :vsp<Enter>
 nnoremap <silent> <C-s> :sp<Enter>
-nnoremap <silent> <C-z> :x<Enter>
+"nnoremap <silent> <C-a> :x<Enter>
 nnoremap <silent> <C-H> gT
 nnoremap <silent> <C-L> gt
 nnoremap <silent> fl :winc l<Enter>

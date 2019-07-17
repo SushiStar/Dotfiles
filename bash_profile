@@ -1,14 +1,10 @@
-
-# Setting PATH for Python 3.6
 # The original version is saved in .bash_profile.pysave
 export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
 #export PATH="/usr/local/bin"
-export PATH="$PATH:/Library/TeX/texbin"
+#export PATH="$PATH:/Library/TeX/texbin"
+export PATH="/usr/local/opt/llvm/bin:$PATH"
 
-export KEVALA_API_EMAIL="wdu2@andrew.cmu.edu"
-export KEVALA_API_PASSWORD="Duwei1025"
-
-PATH="/Library/Frameworks/Python.framework/Versions/3.6/bin:${PATH}"
+#PATH="/Library/Frameworks/Python.framework/Versions/3.6/bin:${PATH}"
 #export PYTHONPATH=/usr/local/lib/python2.7/site-packages:$PYTHONPATH
 
 # Some more ls aliases
@@ -36,7 +32,7 @@ export CLICOLOR=1
 export LSCOLORS=CxFxCxDxBxegedabagaced
 
 # Setup julia
-alias julia="/Applications/Julia-1.0.app/Contents/Resources/julia/bin/julia"
+alias julia="/Applications/Julia-1.1.app/Contents/Resources/julia/bin/julia"
 
 # Ignore duplicate lines
 export HISTCONTROL=ignoredups:erasedups
@@ -62,5 +58,7 @@ update_terminal_cwd() {
     printf '\e]7;%s\a' "$PWD_URL"
 }
 
+export LDFLAGS="-L/usr/local/opt/llvm/lib"
+export CPPFLAGS="-I/usr/local/opt/llvm/include"
 
 source "$HOME/.vim/plugged/gruvbox/gruvbox_256palette.sh"
