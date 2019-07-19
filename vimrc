@@ -15,7 +15,7 @@ Plug 'vim-scripts/cmake.vim-syntax'
 
 Plug 'scrooloose/nerdcommenter'
 
-Plug 'vim-airline/vim-airline'
+Plug 'itchyny/lightline.vim'
 
 Plug 'rhysd/vim-clang-format'
 
@@ -64,7 +64,7 @@ map 'ci <plug>NERDCommenterToggle
 map 'cs <plug>NERDCommenterSexy
 
 " youcompleteme ###########################
-"let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
+let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
 let g:ycm_always_populate_location_list = 1
 let g:ycm_python_binary_path = '/usr/bin/python3'
 let g:ycm_autoclose_preview_window_after_insertion = 1
@@ -117,6 +117,12 @@ set timeoutlen=1000 ttimeoutlen=10
 "let g:codedark_conservative = 1
 "colorscheme codedark
 "let g:airline_theme = 'codedark'
+
+" lightline #############################################
+set noshowmode
+let g:lightline = {
+      \ 'colorscheme': 'wombat',
+      \ }
 
 " clang-format ########################################## 
 let g:clang_format#style_options = {
