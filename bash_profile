@@ -22,9 +22,6 @@ function cd {
 bind '"\e[B": history-search-forward'
 bind '"\e[A": history-search-backward'
 
-# run from waynedu directory
-
-
 
 #export TERM=xterm-color
 export PS1="\[\033[0;94m\]\W > \[\033[0;97m\]"
@@ -36,6 +33,8 @@ alias julia="/Applications/Julia-1.1.app/Contents/Resources/julia/bin/julia"
 
 # Ignore duplicate lines
 export HISTCONTROL=ignoredups:erasedups
+export HISTFILESIZE=1000000
+export HISTSIZE=1000000
 # When the shell exits, append to the history file 
 #  instead of overwriting it
 shopt -s histappend
