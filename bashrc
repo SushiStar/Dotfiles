@@ -136,4 +136,5 @@ export LSCOLORS=CxFxCxDxBxegedabagacedexport PS1="\W > "
 shopt -s histappend
 
 #source /opt/ros/indigo/setup.bash
-source ~/ws/devel/setup.bash
+#source ~/ws/devel/setup.bash
+source ~/mra_ws/devel/setup.bash
