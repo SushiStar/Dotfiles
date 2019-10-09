@@ -9,8 +9,6 @@ Plug 'jiangmiao/auto-pairs'
 
 Plug 'valloric/youcompleteme'
 
-Plug 'scrooloose/nerdtree'
-
 Plug 'vim-scripts/cmake.vim-syntax'
 
 Plug 'scrooloose/nerdcommenter'
@@ -23,7 +21,9 @@ Plug 'haya14busa/incsearch.vim'
 
 Plug 'mileszs/ack.vim'
 
-"Plug 'plasticboy/vim-markdown'
+Plug 'plasticboy/vim-markdown'
+
+Plug 'scrooloose/nerdtree'
 
 " color scheme
 " Plug 'tomasiser/vim-code-dark'
@@ -36,7 +36,7 @@ call plug#end()
 
 " NERDTREE ###########################
 " OPEN NERDTree automatically when vim starts*****
-"autocmd vimenter * NERDTree
+" autocmd vimenter * NERDTree
 " OPEN NERDTree automatically when vim starts a directory
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
@@ -45,7 +45,7 @@ autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in
 "close vim if the only window left open is a NERDTree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 nnoremap <silent> tt :NERDTreeToggle<CR>
-
+let g:NERDTreeWinSize=35
 
 " incserach ###############################
 map /  <Plug>(incsearch-forward)
@@ -98,9 +98,10 @@ set whichwrap+=h,l
 map <F7> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
 
 nnoremap <silent> <C-n> :tabnew<Enter>
-nnoremap <silent> <C-p> :vsp<Enter>
-nnoremap <silent> <C-s> :sp<Enter>
+nnoremap <silent> <C-p> :vnew<Enter>
+nnoremap <silent> <C-s> :new<Enter>
 "nnoremap <silent> <C-a> :x<Enter>
+
 nnoremap <silent> <C-H> gT
 nnoremap <silent> <C-L> gt
 nnoremap <silent> fl :winc l<Enter>
@@ -137,25 +138,19 @@ nnoremap <silent> \lc :VimtexCompile<Enter>
 "nnoremap \ls :VimtexStop<Enter>
 nnoremap <silent> \ll :VimtexView<Enter>
 
-" Seoul256 ###############################################
-" Light color scheme
-"colo seoul256-light
-"colo seoul256
-" Switch
-"set background=dark
-" seoul256 (dark):
-"   Range:   233 (darkest) ~ 239 (lightest)
-"   Default: 237
-"let g:seoul256_background = 235
-
 " gruvbox ################################################ 
 colorscheme gruvbox
 set background=dark
 let g:gruvbox_contrast_dark='dark'
 let g:NVIM_TUI_ENABLE_CURSOR_SHAPE=0
 
+" markdown ###############################################
+let g:vim_markdown_folding_disabled = 1
+
 " ack ####################################################
 let g:ackprg = 'ag --nogroup --nocolor --column'
+
+" vimroom ####################################################
 
 
 set viminfo="NONE"

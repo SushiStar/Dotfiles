@@ -4,9 +4,6 @@ export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
 #export PATH="$PATH:/Library/TeX/texbin"
 export PATH="/usr/local/opt/llvm/bin:$PATH"
 
-#PATH="/Library/Frameworks/Python.framework/Versions/3.6/bin:${PATH}"
-#export PYTHONPATH=/usr/local/lib/python2.7/site-packages:$PYTHONPATH
-
 # Some more ls aliases
 alias ll='ls -alF'
 alias la='ls -A'
