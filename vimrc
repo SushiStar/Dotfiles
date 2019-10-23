@@ -130,7 +130,7 @@ nnoremap <silent> \ll :VimtexView<Enter>
 set termguicolors  
 set background=dark
 colorscheme gruvbox-material
-let g:gruvbox_contrast_dark='medium'
+let g:gruvbox_contrast_dark='dark'
 let g:NVIM_TUI_ENABLE_CURSOR_SHAPE=0
 
 " ack ####################################################
