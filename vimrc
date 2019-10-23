@@ -21,14 +21,9 @@ Plug 'haya14busa/incsearch.vim'
 
 Plug 'mileszs/ack.vim'
 
-Plug 'plasticboy/vim-markdown'
-
 Plug 'scrooloose/nerdtree'
 
-" color scheme
-" Plug 'tomasiser/vim-code-dark'
-" Plug 'junegunn/seoul256.vim'
-Plug 'morhetz/gruvbox'
+Plug 'sainnhe/gruvbox-material'
 
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
@@ -114,16 +109,9 @@ set autoread
 set cursorline
 set timeoutlen=1000 ttimeoutlen=10
 
-" code_dark ##############################################
-"let g:codedark_conservative = 1
-"colorscheme codedark
-"let g:airline_theme = 'codedark'
-
 " lightline #############################################
-set noshowmode
-let g:lightline = {
-      \ 'colorscheme': 'wombat',
-      \ }
+"set noshowmode
+let g:lightline = {'colorscheme' : 'gruvbox_material'}
 
 " clang-format ########################################## 
 let g:clang_format#style_options = {
@@ -138,19 +126,14 @@ nnoremap <silent> \lc :VimtexCompile<Enter>
 "nnoremap \ls :VimtexStop<Enter>
 nnoremap <silent> \ll :VimtexView<Enter>
 
-" gruvbox ################################################ 
-colorscheme gruvbox
+" color ################################################ 
+set termguicolors  
 set background=dark
-let g:gruvbox_contrast_dark='dark'
+colorscheme gruvbox-material
+let g:gruvbox_contrast_dark='medium'
 let g:NVIM_TUI_ENABLE_CURSOR_SHAPE=0
-
-" markdown ###############################################
-let g:vim_markdown_folding_disabled = 1
 
 " ack ####################################################
 let g:ackprg = 'ag --nogroup --nocolor --column'
-
-" vimroom ####################################################
-
 
 set viminfo="NONE"
