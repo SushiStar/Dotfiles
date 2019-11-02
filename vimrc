@@ -114,6 +114,7 @@ set timeoutlen=1000 ttimeoutlen=10
 let g:lightline = {'colorscheme' : 'gruvbox_material'}
 
 " clang-format ########################################## 
+let g:clang_format#code_style='llvm'
 let g:clang_format#style_options = {
             \ "AccessModifierOffset" : -4,
             \ "AllowShortIfStatementsOnASingleLine" : "true",
