@@ -11,6 +11,7 @@ export ZSH="/Users/waynedu/.oh-my-zsh"
 #ZSH_THEME="robbyrussell"
 ZSH_THEME="agnoster"
 
+export HISTSIZE=10000
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
 # a theme from this variable instead of looking in ~/.oh-my-zsh/themes/
@@ -108,6 +109,7 @@ export DEFAULT_USER=$USER
 # from bash
 export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
 export PATH="/usr/local/opt/llvm/bin:$PATH"
+export PATH="/Library/TeX/texbin/:$PATH"
 export LDFLAGS="-L/usr/local/opt/llvm/lib"
 export CPPFLAGS="-I/usr/local/opt/llvm/include"
 
@@ -117,6 +119,7 @@ alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
 alias llt='ls -lt'
+alias lc='ls -l | wc -l'
 alias g++='g++ --std=c++11'
 
 function cd {
