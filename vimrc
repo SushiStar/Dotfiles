@@ -121,12 +121,6 @@ let g:clang_format#style_options = {
             \ "AlwaysBreakTemplateDeclarations" : "true",
             \ "Standard" : "C++11"}
 
-"vimtex
-let g:vimtex_compiler_latexmk = {'callback' : 0}
-nnoremap <silent> \lc :VimtexCompile<Enter>
-"nnoremap \ls :VimtexStop<Enter>
-nnoremap <silent> \ll :VimtexView<Enter>
-
 " color ################################################ 
 set termguicolors  
 set background=dark
