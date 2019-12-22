@@ -3,8 +3,6 @@
 call plug#begin('~/.vim/plugged')
 
 " Decclare the list of plugins.
-Plug 'yggdroot/indentline'
-
 Plug 'jiangmiao/auto-pairs'
 
 Plug 'valloric/youcompleteme'
@@ -47,11 +45,6 @@ map /  <Plug>(incsearch-forward)
 map ?  <Plug>(incsearch-backward)
 map g/ <Plug>(incsearch-stay)
 set nohlsearch
-
-"  Indent ###############################
-set list lcs=tab:\|\ 
-"let g:indentLine_setColors = 0
-let g:indentLine_char_list = ['|', '¦', '┆', '┊']
 
 
 " NerdCommenter ################################ 
@@ -107,6 +100,9 @@ nnoremap <silent> fj :winc j<Enter>
 set ignorecase
 set autoread
 set cursorline
+autocmd InsertEnter * highlight CursorLine guibg=none guifg=none
+autocmd InsertLeave * highlight CursorLine guibg=#171717 guifg=none
+autocmd VimEnter * highlight CursorLine guibg=#171717 guifg=none
 set timeoutlen=1000 ttimeoutlen=10
 
 " lightline #############################################
@@ -120,12 +116,6 @@ let g:clang_format#style_options = {
             \ "AllowShortIfStatementsOnASingleLine" : "true",
             \ "AlwaysBreakTemplateDeclarations" : "true",
             \ "Standard" : "C++11"}
-
-"vimtex
-let g:vimtex_compiler_latexmk = {'callback' : 0}
-nnoremap <silent> \lc :VimtexCompile<Enter>
-"nnoremap \ls :VimtexStop<Enter>
-nnoremap <silent> \ll :VimtexView<Enter>
 
 " color ################################################ 
 set termguicolors  
