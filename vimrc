@@ -26,6 +26,8 @@ Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'miyakogi/conoline.vim'
 
 Plug 'yggdroot/indentline'
+
+Plug 'myusuf3/numbers.vim'
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
 
@@ -99,6 +101,7 @@ nnoremap <silent> fl :winc l<Enter>
 nnoremap <silent> fh :winc h<Enter>
 nnoremap <silent> fk :winc k<Enter>
 nnoremap <silent> fj :winc j<Enter>
+nnoremap <silent> <C-a> :NumbersToggle <Enter>
 
 set ignorecase
 set autoread
@@ -125,16 +128,16 @@ set background=dark
 "set background=light
 colorscheme gruvbox-material
 "colorscheme codedark
-"colorscheme solarized8_flat
 let g:gruvbox_contrast_dark='soft'
 let g:NVIM_TUI_ENABLE_CURSOR_SHAPE=1
-
-" ack ####################################################
-let g:ackprg = 'ag --nogroup --nocolor --column'
 
 " enhanced cpp highlight #################################
 let g:cpp_class_scope_highlight = 1
 let g:cpp_class_decl_highlight = 1
 let g:cpp_concepts_highlight = 1
+
+" Numbers.vim ############################################
+let g:numbers_exclude = ['nerdtree']
+nnoremap <silent> <F2> :NumbersToggle<CR>
 
 set viminfo="NONE"
