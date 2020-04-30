@@ -1,5 +1,6 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
+export TERM="xterm-256color"
 
 # Path to your oh-my-zsh installation.
 export ZSH="/Users/waynedu/.oh-my-zsh"
@@ -9,7 +10,11 @@ export ZSH="/Users/waynedu/.oh-my-zsh"
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 #ZSH_THEME="robbyrussell"
-ZSH_THEME="agnoster"
+#ZSH_THEME="cobalt2"
+#ZSH_THEME="avit"
+ZSH_THEME="gitster"
+#ZSH_THEME="pi"
+#ZSH_THEME="cloud"
 
 export HISTSIZE=10000
 # Set list of themes to pick from when loading at random
@@ -121,6 +126,7 @@ alias l='ls -CF'
 alias llt='ls -lt'
 alias lc='ls -l | wc -l'
 alias g++='g++ --std=c++11'
+alias grep='grep --color=auto'
 
 function cd {
     builtin cd "$@" && ls 

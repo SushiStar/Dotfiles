@@ -32,7 +32,6 @@ call plug#end()
 " conoline ##########################
 let g:conoline_auto_enable = 1
 
-
 " NERDTREE ###########################
 " OPEN NERDTree automatically when vim starts*****
 " autocmd vimenter * NERDTree
@@ -51,7 +50,6 @@ map /  <Plug>(incsearch-forward)
 map ?  <Plug>(incsearch-backward)
 map g/ <Plug>(incsearch-stay)
 set nohlsearch
-
 
 " NerdCommenter ################################ 
 map 'ci <plug>NERDCommenterToggle
