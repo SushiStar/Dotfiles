@@ -17,14 +17,20 @@ Plug 'rhysd/vim-clang-format'
 
 Plug 'haya14busa/incsearch.vim'
 
-Plug 'mileszs/ack.vim'
-
 Plug 'scrooloose/nerdtree'
 
 Plug 'sainnhe/gruvbox-material'
 
+Plug 'octol/vim-cpp-enhanced-highlight'
+
+Plug 'miyakogi/conoline.vim'
+
+Plug 'yggdroot/indentline'
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
+
+" conoline ##########################
+let g:conoline_auto_enable = 1
 
 
 " NERDTREE ###########################
@@ -61,14 +67,13 @@ let g:ycm_complete_in_comments=1
 let g:ycm_collect_identifiers_from_tag_files=1
 let g:ycm_seed_identifiers_with_syntax=1
 
-let g:ycm_show_diagnostics_ui = 0
-let g:ycm_enable_diagnostic_signs = 0
+let g:ycm_show_diagnostics_ui = 1
+let g:ycm_enable_diagnostic_signs = 1
 let g:ycm_enable_diagnostic_highlighting = 0
 
 "#### terminal configuration ##########
 filetype plugin on
 syntax enable
-syntax on
 
 set backspace=2
 set number
@@ -100,14 +105,13 @@ nnoremap <silent> fj :winc j<Enter>
 set ignorecase
 set autoread
 set cursorline
-autocmd InsertEnter * highlight CursorLine guibg=none guifg=none
-autocmd InsertLeave * highlight CursorLine guibg=#171717 guifg=none
-autocmd VimEnter * highlight CursorLine guibg=#171717 guifg=none
 set timeoutlen=1000 ttimeoutlen=10
 
 " lightline #############################################
 "set noshowmode
+"let g:lightline = {'colorscheme' : 'codedark'}
 let g:lightline = {'colorscheme' : 'gruvbox_material'}
+"let g:lightline = {'colorscheme' : 'solarized'}
 
 " clang-format ########################################## 
 let g:clang_format#code_style='llvm'
@@ -120,11 +124,19 @@ let g:clang_format#style_options = {
 " color ################################################ 
 set termguicolors  
 set background=dark
+"set background=light
 colorscheme gruvbox-material
-let g:gruvbox_contrast_dark='dark'
-let g:NVIM_TUI_ENABLE_CURSOR_SHAPE=0
+"colorscheme codedark
+"colorscheme solarized8_flat
+let g:gruvbox_contrast_dark='soft'
+let g:NVIM_TUI_ENABLE_CURSOR_SHAPE=1
 
 " ack ####################################################
 let g:ackprg = 'ag --nogroup --nocolor --column'
+
+" enhanced cpp highlight #################################
+let g:cpp_class_scope_highlight = 1
+let g:cpp_class_decl_highlight = 1
+let g:cpp_concepts_highlight = 1
 
 set viminfo="NONE"
