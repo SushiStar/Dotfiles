@@ -7,7 +7,7 @@ import re
 
 BASE_FLAGS = [
         '-Wall',
-        '-Wunused-value'
+        '-Wunused-value',
         '-fexceptions',
         '-ferror-limit=10000',
         '-DNDEBUG',
