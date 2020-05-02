@@ -7,16 +7,15 @@ import re
 
 BASE_FLAGS = [
         '-Wall',
-        '-Wextra',
-        '-Werror',
-        '-Wno-long-long',
-        '-Wno-variadic-macros',
+        '-Wunused-value',
         '-fexceptions',
         '-ferror-limit=10000',
         '-DNDEBUG',
         '-std=c++11',
         '-xc++',
         '-isystem','/usr/lib/',
+        '-isystem','/usr/local/lib'
+        '-isystem','/usr/local/include'
         '-I/usr/include/c++/4.2.1'
         '-I','/usr/local/lib/',
         '-I','/usr/local/include'
