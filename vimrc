@@ -17,8 +17,6 @@ Plug 'rhysd/vim-clang-format'
 
 Plug 'haya14busa/incsearch.vim'
 
-Plug 'scrooloose/nerdtree'
-
 Plug 'sainnhe/gruvbox-material'
 
 Plug 'octol/vim-cpp-enhanced-highlight'
@@ -28,24 +26,20 @@ Plug 'miyakogi/conoline.vim'
 Plug 'yggdroot/indentline'
 
 Plug 'myusuf3/numbers.vim'
+
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
 
 " conoline ##########################
 let g:conoline_auto_enable = 1
 
-" NERDTREE ###########################
-" OPEN NERDTree automatically when vim starts*****
-" autocmd vimenter * NERDTree
-" OPEN NERDTree automatically when vim starts a directory
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
-
-"open a NERDTree automatically when vim starts up if no files were specified
-"close vim if the only window left open is a NERDTree
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-nnoremap <silent> tt :NERDTreeToggle<CR>
-let g:NERDTreeWinSize=35
+" center pane ####################### 
+function CenterPane()
+   lefta vnew
+   wincmd w
+   exec 'vertical resize '. string(&columns*0.75)
+endfunction
+nnoremap <leader>c :call CenterPane()<cr>
 
 " incserach ###############################
 map /  <Plug>(incsearch-forward)
@@ -101,18 +95,15 @@ nnoremap <silent> fl :winc l<Enter>
 nnoremap <silent> fh :winc h<Enter>
 nnoremap <silent> fk :winc k<Enter>
 nnoremap <silent> fj :winc j<Enter>
-nnoremap <silent> <C-a> :NumbersToggle <Enter>
 
 set ignorecase
 set autoread
 set cursorline
 set timeoutlen=1000 ttimeoutlen=10
+set linebreak
 
 " lightline #############################################
-"set noshowmode
-"let g:lightline = {'colorscheme' : 'codedark'}
 let g:lightline = {'colorscheme' : 'gruvbox_material'}
-"let g:lightline = {'colorscheme' : 'solarized'}
 
 " clang-format ########################################## 
 let g:clang_format#code_style='llvm'
@@ -137,7 +128,14 @@ let g:cpp_class_decl_highlight = 1
 let g:cpp_concepts_highlight = 1
 
 " Numbers.vim ############################################
-let g:numbers_exclude = ['nerdtree']
-nnoremap <silent> <F2> :NumbersToggle<CR>
+nnoremap <silent> <C-a> :NumbersToggle <Enter>
+
+" Direcotry func ##########################################
+let g:netrw_bufsettings = 'nu'
+function Dir()
+    Tex
+    set number
+endfunction
+nnoremap <silent> tt : call Dir()<CR>
 
 set viminfo="NONE"

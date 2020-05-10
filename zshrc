@@ -12,7 +12,9 @@ export ZSH="/Users/waynedu/.oh-my-zsh"
 #ZSH_THEME="robbyrussell"
 #ZSH_THEME="cobalt2"
 #ZSH_THEME="avit"
+#ZSH_THEME="nuts"
 ZSH_THEME="gitster"
+#ZSH_THEME="Elessar"
 #ZSH_THEME="pi"
 #ZSH_THEME="cloud"
 
@@ -89,11 +91,11 @@ source $ZSH/oh-my-zsh.sh
 # export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
+if [[ -n $SSH_CONNECTION ]]; then
+  export EDITOR='vim'
+else
+  export EDITOR='nvim'
+fi
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
@@ -110,6 +112,7 @@ source $ZSH/oh-my-zsh.sh
 
 # remove user@hostname
 export DEFAULT_USER=$USER
+export RANGER_LOAD_DEFAULT_RC=false
 
 # from bash
 export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
@@ -118,6 +121,7 @@ export PATH="/Library/TeX/texbin/:$PATH"
 export LDFLAGS="-L/usr/local/opt/llvm/lib"
 export CPPFLAGS="-I/usr/local/opt/llvm/include"
 
+alias r='ranger'
 alias vi=/usr/local/bin/vim
 alias vim=/usr/local/bin/nvim
 alias ll='ls -alF'
@@ -130,7 +134,14 @@ alias grep='grep --color=auto'
 
 function cd {
     builtin cd "$@" && ls 
-    }
+}
+
+function acp() {
+  git add -A
+  git commit -m "$1"
+  git push
+}
+
 
 #bindkey '"\e[B": history-search-forward'
 #bindkey '"\e[A": history-search-backward'
