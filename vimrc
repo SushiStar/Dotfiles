@@ -7,15 +7,11 @@ Plug 'jiangmiao/auto-pairs'
 
 Plug 'valloric/youcompleteme'
 
-Plug 'vim-scripts/cmake.vim-syntax'
-
 Plug 'scrooloose/nerdcommenter'
 
 Plug 'itchyny/lightline.vim'
 
 Plug 'rhysd/vim-clang-format'
-
-Plug 'haya14busa/incsearch.vim'
 
 Plug 'sainnhe/gruvbox-material'
 
@@ -23,23 +19,15 @@ Plug 'octol/vim-cpp-enhanced-highlight'
 
 Plug 'miyakogi/conoline.vim'
 
-Plug 'yggdroot/indentline'
-
 Plug 'myusuf3/numbers.vim'
+
+Plug 'haya14busa/incsearch.vim'
 
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
 
 " conoline ##########################
 let g:conoline_auto_enable = 1
-
-" center pane ####################### 
-function CenterPane()
-   lefta vnew
-   wincmd w
-   exec 'vertical resize '. string(&columns*0.75)
-endfunction
-nnoremap <leader>c :call CenterPane()<cr>
 
 " incserach ###############################
 map /  <Plug>(incsearch-forward)
