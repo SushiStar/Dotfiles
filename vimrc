@@ -23,6 +23,8 @@ Plug 'myusuf3/numbers.vim'
 
 Plug 'haya14busa/incsearch.vim'
 
+Plug 'tpope/vim-vinegar'
+
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
 
@@ -118,12 +120,7 @@ let g:cpp_concepts_highlight = 1
 " Numbers.vim ############################################
 nnoremap <silent> <C-a> :NumbersToggle <Enter>
 
-" Direcotry func ##########################################
+" vinegar func ##########################################
 let g:netrw_bufsettings = 'nu'
-function Dir()
-    Tex
-    set number
-endfunction
-nnoremap <silent> tt : call Dir()<CR>
 
 set viminfo="NONE"
