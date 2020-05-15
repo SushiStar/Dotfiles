@@ -2,10 +2,7 @@
 " Plugins will be downloaded under the specified directory.
 call plug#begin('~/.vim/plugged')
 
-" Decclare the list of plugins.
 Plug 'jiangmiao/auto-pairs'
-
-Plug 'valloric/youcompleteme'
 
 Plug 'scrooloose/nerdcommenter'
 
@@ -25,7 +22,8 @@ Plug 'haya14busa/incsearch.vim'
 
 Plug 'tpope/vim-vinegar'
 
-" List ends here. Plugins become visible to Vim after this call.
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
 call plug#end()
 
 " conoline ##########################
@@ -40,20 +38,6 @@ set nohlsearch
 " NerdCommenter ################################ 
 map 'ci <plug>NERDCommenterToggle
 map 'cs <plug>NERDCommenterSexy
-
-" youcompleteme ###########################
-let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
-let g:ycm_always_populate_location_list = 1
-let g:ycm_python_binary_path = '/usr/bin/python3'
-let g:ycm_autoclose_preview_window_after_insertion = 1
-
-let g:ycm_complete_in_comments=1
-let g:ycm_collect_identifiers_from_tag_files=1
-let g:ycm_seed_identifiers_with_syntax=1
-
-let g:ycm_show_diagnostics_ui = 1
-let g:ycm_enable_diagnostic_signs = 1
-let g:ycm_enable_diagnostic_highlighting = 0
 
 "#### terminal configuration ##########
 filetype plugin on
@@ -120,7 +104,11 @@ let g:cpp_concepts_highlight = 1
 " Numbers.vim ############################################
 nnoremap <silent> <C-a> :NumbersToggle <Enter>
 
-" vinegar func ##########################################
+" vinegar show number ####################################
 let g:netrw_bufsettings = 'nu'
+
+" coc vim ################################################
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
 set viminfo="NONE"
