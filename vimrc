@@ -54,12 +54,11 @@ nnoremap <silent> <C-t> :tabnew<Enter>
 nnoremap <silent> <C-p> :vnew<Enter>
 nnoremap <silent> <C-s> :new<Enter>
 
-nnoremap <silent> <C-H> gT
-nnoremap <silent> <C-L> gt
-nnoremap <silent> fl :winc l<Enter>
-nnoremap <silent> fh :winc h<Enter>
-nnoremap <silent> fk :winc k<Enter>
-nnoremap <silent> fj :winc j<Enter>
+nnoremap <silent> <Tab> gT
+nnoremap <silent> <C-l> :winc l<Enter>
+nnoremap <silent> <C-h> :winc h<Enter>
+nnoremap <silent> <C-k> :winc k<Enter>
+nnoremap <silent> <C-j> :winc j<Enter>
 
 set ignorecase
 set autoread
@@ -74,7 +73,7 @@ let g:lightline = {'colorscheme' : 'gruvbox_material'}
 
 " clang-format ########################################## 
 let g:clang_format#code_style='llvm'
-let g:clang_format#auto_format_on_insert_leave=1
+"let g:clang_format#auto_format_on_insert_leave=1
 let g:clang_format#style_options = {
             \ "AccessModifierOffset" : -4,
             \ "AllowShortIfStatementsOnASingleLine" : "true",
