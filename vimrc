@@ -14,15 +14,11 @@ Plug 'sainnhe/gruvbox-material'
 
 Plug 'octol/vim-cpp-enhanced-highlight'
 
-Plug 'miyakogi/conoline.vim'
-
-Plug 'myusuf3/numbers.vim'
-
 Plug 'haya14busa/incsearch.vim'
 
-Plug 'tpope/vim-vinegar'
+Plug 'valloric/youcompleteme'
 
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'scrooloose/nerdtree'
 
 call plug#end()
 
@@ -44,24 +40,19 @@ filetype plugin on
 syntax enable
 
 set backspace=2
-set number
-
-" show existing tab with 4 sapces width
 set tabstop=4
-" when indenting with '>', use 4 spaces width
 set shiftwidth=4
-" On pressing tab, insert 4 sapces
 set expandtab
-
 set whichwrap+=h,l
 
-" ctags refresh
-map <F7> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
+"numbers
+set number
+set relativenumber
+nnoremap <silent> <C-a> :set invnumber invrelativenumber <CR>
 
-nnoremap <silent> <C-n> :tabnew<Enter>
+nnoremap <silent> <C-t> :tabnew<Enter>
 nnoremap <silent> <C-p> :vnew<Enter>
 nnoremap <silent> <C-s> :new<Enter>
-"nnoremap <silent> <C-a> :x<Enter>
 
 nnoremap <silent> <C-H> gT
 nnoremap <silent> <C-L> gt
@@ -72,15 +63,18 @@ nnoremap <silent> fj :winc j<Enter>
 
 set ignorecase
 set autoread
-set cursorline
 set timeoutlen=1000 ttimeoutlen=10
 set linebreak
+
+" trailing spaces
+autocmd BufWritePre * :%s/\s+$//e
 
 " lightline #############################################
 let g:lightline = {'colorscheme' : 'gruvbox_material'}
 
 " clang-format ########################################## 
 let g:clang_format#code_style='llvm'
+let g:clang_format#auto_format_on_insert_leave=1
 let g:clang_format#style_options = {
             \ "AccessModifierOffset" : -4,
             \ "AllowShortIfStatementsOnASingleLine" : "true",
@@ -101,14 +95,28 @@ let g:cpp_class_scope_highlight = 1
 let g:cpp_class_decl_highlight = 1
 let g:cpp_concepts_highlight = 1
 
-" Numbers.vim ############################################
-nnoremap <silent> <C-a> :NumbersToggle <Enter>
+" youcompleteme ###########################
+let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
+let g:ycm_always_populate_location_list = 1
+let g:ycm_python_binary_path = '/usr/bin/python3'
+let g:ycm_autoclose_preview_window_after_insertion = 1
 
-" vinegar show number ####################################
-let g:netrw_bufsettings = 'nu'
+let g:ycm_complete_in_comments=1
+let g:ycm_collect_identifiers_from_tag_files=1
+let g:ycm_seed_identifiers_with_syntax=1
 
-" coc vim ################################################
-inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+let g:ycm_show_diagnostics_ui = 1
+let g:ycm_enable_diagnostic_signs = 1
+let g:ycm_enable_diagnostic_highlighting = 0
+
+" NERDTREE ###########################
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+nnoremap <silent> <C-n> :NERDTreeToggle<CR>
+let g:NERDTreeWinSize=35
+let g:NERDTreeMinimalUI=1
+let g:NERDTreeShowLineNumbers=1
+autocmd BufEnter NERD_* setlocal nu rnu 
 
 set viminfo="NONE"
