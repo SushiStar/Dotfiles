@@ -1,4 +1,4 @@
-"##### plugins ##############
+"########################### plugins ################################
 " Plugins will be downloaded under the specified directory.
 call plug#begin('~/.vim/plugged')
 
@@ -18,25 +18,24 @@ Plug 'haya14busa/incsearch.vim'
 
 Plug 'valloric/youcompleteme'
 
-Plug 'scrooloose/nerdtree'
-
 call plug#end()
 
-" conoline ##########################
+" conoline ##########################################################
 let g:conoline_auto_enable = 1
 
-" incserach ###############################
+" incserach #########################################################
 map /  <Plug>(incsearch-forward)
 map ?  <Plug>(incsearch-backward)
 map g/ <Plug>(incsearch-stay)
 set nohlsearch
 
-" NerdCommenter ################################ 
+" NerdCommenter #####################################################
 map 'ci <plug>NERDCommenterToggle
 map 'cs <plug>NERDCommenterSexy
 
-"#### terminal configuration ##########
+"terminal configuration #############################################
 filetype plugin on
+set omnifunc=syntaxcomplete#Complete
 syntax enable
 
 set backspace=2
@@ -49,10 +48,11 @@ set whichwrap+=h,l
 set number
 set relativenumber
 nnoremap <silent> <C-a> :set invnumber invrelativenumber <CR>
+autocmd ColorScheme * highlight CursorLineNr cterm=bold term=bold gui=bold ctermfg=red guifg=#eb8f34
 
-nnoremap <silent> <C-t> :tabnew<Enter>
-nnoremap <silent> <C-p> :vnew<Enter>
-nnoremap <silent> <C-s> :new<Enter>
+nnoremap <silent> <C-t> :Tex<Enter>
+nnoremap <silent> <C-p> :Vex<Enter>
+nnoremap <silent> <C-s> :Sex<Enter>
 
 nnoremap <silent> <Tab> gT
 nnoremap <silent> <C-l> :winc l<Enter>
@@ -65,22 +65,25 @@ set autoread
 set timeoutlen=1000 ttimeoutlen=10
 set linebreak
 
+let g:netrw_bufsettings = 'noma nomod nu rnu nobl nowrap ro'
+let ghregex='\(^\|\s\s\)\zs\.\S\+'
+let g:netrw_list_hide=ghregex
+
 " trailing spaces
 autocmd BufWritePre * :%s/\s+$//e
 
-" lightline #############################################
+" lightline #####################################################
 let g:lightline = {'colorscheme' : 'gruvbox_material'}
 
-" clang-format ########################################## 
+" clang-format ##################################################
 let g:clang_format#code_style='llvm'
-"let g:clang_format#auto_format_on_insert_leave=1
 let g:clang_format#style_options = {
             \ "AccessModifierOffset" : -4,
             \ "AllowShortIfStatementsOnASingleLine" : "true",
             \ "AlwaysBreakTemplateDeclarations" : "true",
             \ "Standard" : "C++11"}
 
-" color ################################################ 
+" color #########################################################
 set termguicolors  
 set background=dark
 "set background=light
@@ -89,12 +92,12 @@ colorscheme gruvbox-material
 let g:gruvbox_contrast_dark='soft'
 let g:NVIM_TUI_ENABLE_CURSOR_SHAPE=1
 
-" enhanced cpp highlight #################################
+" enhanced cpp highlight ########################################
 let g:cpp_class_scope_highlight = 1
 let g:cpp_class_decl_highlight = 1
 let g:cpp_concepts_highlight = 1
 
-" youcompleteme ###########################
+" youcompleteme #################################################
 let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
 let g:ycm_always_populate_location_list = 1
 let g:ycm_python_binary_path = '/usr/bin/python3'
@@ -108,14 +111,4 @@ let g:ycm_show_diagnostics_ui = 1
 let g:ycm_enable_diagnostic_signs = 1
 let g:ycm_enable_diagnostic_highlighting = 0
 
-" NERDTREE ###########################
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-nnoremap <silent> <C-n> :NERDTreeToggle<CR>
-let g:NERDTreeWinSize=35
-let g:NERDTreeMinimalUI=1
-let g:NERDTreeShowLineNumbers=1
-autocmd BufEnter NERD_* setlocal nu rnu 
-
-set viminfo="NONE"
+"set viminfo="NONE"

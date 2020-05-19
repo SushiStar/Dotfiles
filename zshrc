@@ -121,7 +121,6 @@ export PATH="/Library/TeX/texbin/:$PATH"
 export LDFLAGS="-L/usr/local/opt/llvm/lib"
 export CPPFLAGS="-I/usr/local/opt/llvm/include"
 
-alias r='ranger'
 alias vi=/usr/local/bin/vim
 alias vim=/usr/local/bin/nvim
 alias ll='ls -alF'
@@ -147,3 +146,17 @@ function acp() {
 #bindkey '"\e[A": history-search-backward'
 bindkey "^[[A" history-beginning-search-backward
 bindkey "^[[B" history-beginning-search-forward
+
+# for fzf
+export FZF_DEFAULT_OPTS='--preview "head -100 {}"'
+# Modified version where you can press
+#   - CTRL-O to open with `open` command,
+#   - CTRL-E or Enter key to open with the $EDITOR
+fo() (
+  IFS=$'\n' out=("$(fzf-tmux --query="$1" --exit-0 --expect=ctrl-o,ctrl-e)")
+  key=$(head -1 <<< "$out")
+  file=$(head -2 <<< "$out" | tail -1)
+  if [ -n "$file" ]; then
+    [ "$key" = ctrl-o ] && open "$file" || ${EDITOR:-vim} "$file"
+  fi
+  )
