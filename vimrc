@@ -50,7 +50,7 @@ set relativenumber
 set cursorline
 nnoremap <silent> <C-a> :set invnumber invrelativenumber <CR>
 autocmd ColorScheme * highlight CursorLineNr cterm=bold term=bold gui=bold ctermfg=red guifg=#eb8f34
-autocmd ColorScheme * highlight MatchParen ctermbg=LightGray ctermfg=Black guibg=LightGray guifg=Black
+autocmd ColorScheme * highlight MatchParen ctermbg=LightGray ctermfg=Black guibg=black guifg=red
 autocmd ColorScheme * highlight CursorLine ctermbg=Black guibg=Black
 
 nnoremap <silent> <C-t> :Tex<Enter>
