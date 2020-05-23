@@ -14,20 +14,11 @@ Plug 'sainnhe/gruvbox-material'
 
 Plug 'octol/vim-cpp-enhanced-highlight'
 
-Plug 'haya14busa/incsearch.vim'
-
 Plug 'valloric/youcompleteme'
 
+Plug 'Yggdroot/LeaderF'
+Plug 'ryanoasis/vim-devicons'
 call plug#end()
-
-" conoline ##########################################################
-let g:conoline_auto_enable = 1
-
-" incserach #########################################################
-map /  <Plug>(incsearch-forward)
-map ?  <Plug>(incsearch-backward)
-map g/ <Plug>(incsearch-stay)
-set nohlsearch
 
 " NerdCommenter #####################################################
 map 'ci <plug>NERDCommenterToggle
@@ -44,6 +35,9 @@ set shiftwidth=4
 set expandtab
 set whichwrap+=h,l
 
+set incsearch
+set nohlsearch
+
 "numbers
 set number
 set relativenumber
@@ -53,7 +47,7 @@ autocmd ColorScheme * highlight CursorLineNr cterm=bold term=bold gui=bold cterm
 autocmd ColorScheme * highlight MatchParen ctermbg=LightGray ctermfg=Black guibg=black guifg=red
 autocmd ColorScheme * highlight CursorLine ctermbg=Black guibg=Black
 
-nnoremap <silent> <C-t> :Tex<Enter>
+"nnoremap <silent> <C-t> :Tex<Enter>
 nnoremap <silent> <C-p> :Vex<Enter>
 nnoremap <silent> <C-s> :Sex<Enter>
 
@@ -68,6 +62,9 @@ set autoread
 set timeoutlen=1000 ttimeoutlen=10
 set linebreak
 
+let g:python_host_prog = '/usr/local/bin/python2'
+let g:python3_host_prog = '/usr/local/Cellar/python3'
+
 let g:netrw_bufsettings = 'noma nomod nu rnu nobl nowrap ro'
 let ghregex='\(^\|\s\s\)\zs\.\S\+'
 let g:netrw_list_hide=ghregex
@@ -76,7 +73,22 @@ let g:netrw_list_hide=ghregex
 autocmd BufWritePre * :%s/\s+$//e
 
 " lightline #####################################################
-let g:lightline = {'colorscheme' : 'gruvbox_material'}
+"let g:lightline = {'colorscheme' : 'gruvbox_material'}
+let g:lightline = {
+            \ 'colorscheme' : 'gruvbox_material',
+            \ 'component_function': {
+            \   'filetype': 'MyFiletype',
+            \   'fileformat': 'MyFileformat',
+            \ }
+            \ }
+
+function! MyFiletype()
+    return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype . ' ' . WebDevIconsGetFileTypeSymbol() : 'no ft') : ''
+endfunction
+
+function! MyFileformat()
+    return winwidth(0) > 70 ? (&fileformat . ' ' . WebDevIconsGetFileFormatSymbol()) : ''
+endfunction
 
 " clang-format ##################################################
 let g:clang_format#code_style='llvm'
@@ -103,8 +115,8 @@ let g:cpp_concepts_highlight = 1
 " youcompleteme #################################################
 let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
 let g:ycm_always_populate_location_list = 1
-let g:ycm_python_binary_path = '/usr/bin/python3'
-let g:ycm_autoclose_preview_window_after_insertion = 1
+let g:ycm_python_binary_path = '/usr/local/Cellar/python3'
+let g:ycm_autoclose_preview_window_after_completion = 1
 
 let g:ycm_complete_in_comments=1
 let g:ycm_collect_identifiers_from_tag_files=1
@@ -114,4 +126,18 @@ let g:ycm_show_diagnostics_ui = 1
 let g:ycm_enable_diagnostic_signs = 1
 let g:ycm_enable_diagnostic_highlighting = 0
 
-"set viminfo="NONE"
+let g:ycm_auto_trigger = 1
+let g:ycm_language_server =
+  \ [{
+  \   'name': 'ccls',
+  \   'cmdline': [ 'ccls' ],
+  \   'filetypes': [ 'c', 'cpp', 'cuda', 'objc', 'objcpp' ],
+  \   'project_root_files': [ '.ccls-root', 'compile_commands.json' ]
+  \ }]
+
+
+" leader F #######################################################
+let g:Lf_WindowPosition = 'popup'
+let g:Lf_PreviewInPopup = 1
+let g:webdevicons_enable = 1
+set encoding=UTF-8
