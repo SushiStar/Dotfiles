@@ -16,8 +16,9 @@ Plug 'octol/vim-cpp-enhanced-highlight'
 
 Plug 'valloric/youcompleteme'
 
+Plug 'gauteh/vim-cppman'
+
 Plug 'Yggdroot/LeaderF'
-Plug 'ryanoasis/vim-devicons'
 call plug#end()
 
 " NerdCommenter #####################################################
@@ -73,22 +74,7 @@ let g:netrw_list_hide=ghregex
 autocmd BufWritePre * :%s/\s+$//e
 
 " lightline #####################################################
-"let g:lightline = {'colorscheme' : 'gruvbox_material'}
-let g:lightline = {
-            \ 'colorscheme' : 'gruvbox_material',
-            \ 'component_function': {
-            \   'filetype': 'MyFiletype',
-            \   'fileformat': 'MyFileformat',
-            \ }
-            \ }
-
-function! MyFiletype()
-    return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype . ' ' . WebDevIconsGetFileTypeSymbol() : 'no ft') : ''
-endfunction
-
-function! MyFileformat()
-    return winwidth(0) > 70 ? (&fileformat . ' ' . WebDevIconsGetFileFormatSymbol()) : ''
-endfunction
+let g:lightline = {'colorscheme' : 'gruvbox_material'}
 
 " clang-format ##################################################
 let g:clang_format#code_style='llvm'
@@ -125,19 +111,15 @@ let g:ycm_seed_identifiers_with_syntax=1
 let g:ycm_show_diagnostics_ui = 1
 let g:ycm_enable_diagnostic_signs = 1
 let g:ycm_enable_diagnostic_highlighting = 0
+let g:ycm_max_diagnostics_to_display = 0
 
-let g:ycm_auto_trigger = 1
-let g:ycm_language_server =
-  \ [{
-  \   'name': 'ccls',
-  \   'cmdline': [ 'ccls' ],
-  \   'filetypes': [ 'c', 'cpp', 'cuda', 'objc', 'objcpp' ],
-  \   'project_root_files': [ '.ccls-root', 'compile_commands.json' ]
-  \ }]
+let g:ycm_seed_identifiers_with_syntax = 1
 
 
 " leader F #######################################################
 let g:Lf_WindowPosition = 'popup'
 let g:Lf_PreviewInPopup = 1
 let g:webdevicons_enable = 1
-set encoding=UTF-8
+
+
+set noshowmode
