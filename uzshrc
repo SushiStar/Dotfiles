@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/home/wd/.oh-my-zsh"
+export ZSH="/home/ddwwzzyy/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -127,6 +127,12 @@ function cd {
     builtin cd "$@" && ls 
     }
 
+function acp() {
+  git add -A
+  git commit -m "$1"
+  git push
+}
+
 #bindkey '"\e[B": history-search-forward'
 #bindkey '"\e[A": history-search-backward'
 bindkey "^[[A" history-beginning-search-backward
@@ -134,5 +140,5 @@ bindkey "^[[B" history-beginning-search-forward
 
 #source /opt/ros/indigo/setup.zsh
 #source ~/ws/devel/setup.zsh
-source ~/mra_ws/devel/setup.zsh
+#source ~/mra_ws/devel/setup.zsh
 
