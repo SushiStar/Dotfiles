@@ -6,7 +6,7 @@ Plug 'jiangmiao/auto-pairs'
 
 Plug 'scrooloose/nerdcommenter'
 
-Plug 'itchyny/lightline.vim'
+Plug 'vim-airline/vim-airline'
 
 Plug 'rhysd/vim-clang-format'
 
@@ -18,7 +18,8 @@ Plug 'valloric/youcompleteme'
 
 Plug 'gauteh/vim-cppman'
 
-Plug 'Yggdroot/LeaderF'
+Plug 'voldikss/vim-floaterm'
+
 call plug#end()
 
 " NerdCommenter #####################################################
@@ -27,8 +28,6 @@ map 'cs <plug>NERDCommenterSexy
 
 "terminal configuration #############################################
 filetype plugin on
-set omnifunc=syntaxcomplete#Complete
-syntax enable
 
 set backspace=2
 set tabstop=4
@@ -37,6 +36,7 @@ set expandtab
 set whichwrap+=h,l
 
 set incsearch
+set noshowmode
 set nohlsearch
 
 "numbers
@@ -47,12 +47,14 @@ nnoremap <silent> <C-a> :set invnumber invrelativenumber <CR>
 autocmd ColorScheme * highlight CursorLineNr cterm=bold term=bold gui=bold ctermfg=red guifg=#eb8f34
 autocmd ColorScheme * highlight MatchParen ctermbg=LightGray ctermfg=Black guibg=black guifg=red
 autocmd ColorScheme * highlight CursorLine ctermbg=Black guibg=Black
+autocmd FileType c,cpp setlocal comments-=:// comments+=f://
 
-"nnoremap <silent> <C-t> :Tex<Enter>
+nnoremap <silent> <C-T> :Tex<Enter>
 nnoremap <silent> <C-p> :Vex<Enter>
 nnoremap <silent> <C-s> :Sex<Enter>
 
-nnoremap <silent> <Tab> gT
+nnoremap <silent> <Tab> gt
+nnoremap <silent> <S-Tab> gT
 nnoremap <silent> <C-l> :winc l<Enter>
 nnoremap <silent> <C-h> :winc h<Enter>
 nnoremap <silent> <C-k> :winc k<Enter>
@@ -69,12 +71,19 @@ let g:python3_host_prog = '/usr/local/Cellar/python3'
 let g:netrw_bufsettings = 'noma nomod nu rnu nobl nowrap ro'
 let ghregex='\(^\|\s\s\)\zs\.\S\+'
 let g:netrw_list_hide=ghregex
-
 " trailing spaces
 autocmd BufWritePre * :%s/\s+$//e
 
-" lightline #####################################################
-let g:lightline = {'colorscheme' : 'gruvbox_material'}
+" airline ########################################################
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#show_tab_type = 0
+let g:airline#extensions#tabline#show_buffers = 0
+let g:airline#extensions#tabline#show_splits = 0
+let g:airline#extensions#tabline#show_tab_nr = 0
+let g:airline#extensions#tabline#formatter = 'unique_tail'
+let g:airline#extensions#tabline#show_close_button = 0
+let g:airline#extensions#cursormode#enabled = 0
 
 " clang-format ##################################################
 let g:clang_format#code_style='llvm'
@@ -89,7 +98,6 @@ set termguicolors
 set background=dark
 "set background=light
 colorscheme gruvbox-material
-"colorscheme codedark
 let g:gruvbox_contrast_dark='soft'
 let g:NVIM_TUI_ENABLE_CURSOR_SHAPE=1
 
@@ -103,23 +111,13 @@ let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
 let g:ycm_always_populate_location_list = 1
 let g:ycm_python_binary_path = '/usr/local/Cellar/python3'
 let g:ycm_autoclose_preview_window_after_completion = 1
-
 let g:ycm_complete_in_comments=1
-let g:ycm_collect_identifiers_from_tag_files=1
-let g:ycm_seed_identifiers_with_syntax=1
 
 let g:ycm_show_diagnostics_ui = 1
 let g:ycm_enable_diagnostic_signs = 1
 let g:ycm_enable_diagnostic_highlighting = 0
-let g:ycm_max_diagnostics_to_display = 0
+let g:ycm_max_diagnostics_to_display = 100
 
-let g:ycm_seed_identifiers_with_syntax = 1
-
-
-" leader F #######################################################
-let g:Lf_WindowPosition = 'popup'
-let g:Lf_PreviewInPopup = 1
-let g:webdevicons_enable = 1
-
-
-set noshowmode
+" floaterm ######################################################
+let g:floaterm_keymap_toggle = '<Leader>f'
+let g:floaterm_autoclose=1

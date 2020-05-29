@@ -119,7 +119,8 @@ export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
 export PATH="/usr/local/opt/llvm/bin:$PATH"
 export PATH="/Library/TeX/texbin/:$PATH"
 export LDFLAGS="-L/usr/local/opt/llvm/lib"
-export CPPFLAGS="-I/usr/local/opt/llvm/include"
+export CXXFLAGS="-I/usr/local/opt/llvm/include"
+
 
 alias vi=/usr/local/bin/vim
 alias vim=/usr/local/bin/nvim
