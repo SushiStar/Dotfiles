@@ -9,14 +9,7 @@ export ZSH="/Users/waynedu/.oh-my-zsh"
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-#ZSH_THEME="robbyrussell"
-#ZSH_THEME="cobalt2"
-#ZSH_THEME="avit"
-#ZSH_THEME="nuts"
 ZSH_THEME="gitster"
-#ZSH_THEME="Elessar"
-#ZSH_THEME="pi"
-#ZSH_THEME="cloud"
 
 export HISTSIZE=10000
 # Set list of themes to pick from when loading at random
@@ -33,7 +26,7 @@ export HISTSIZE=10000
 # HYPHEN_INSENSITIVE="true"
 
 # Uncomment the following line to disable bi-weekly auto-update checks.
-# DISABLE_AUTO_UPDATE="true"
+ DISABLE_AUTO_UPDATE="true"
 
 # Uncomment the following line to automatically update without prompting.
 # DISABLE_UPDATE_PROMPT="true"
@@ -78,7 +71,8 @@ export HISTSIZE=10000
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git
-         history-substring-search
+         zsh-autosuggestions
+         thefuck
          vi-mode)
 
 source $ZSH/oh-my-zsh.sh
@@ -96,6 +90,7 @@ if [[ -n $SSH_CONNECTION ]]; then
 else
   export EDITOR='nvim'
 fi
+
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
@@ -121,7 +116,6 @@ export PATH="/Library/TeX/texbin/:$PATH"
 export LDFLAGS="-L/usr/local/opt/llvm/lib"
 export CXXFLAGS="-I/usr/local/opt/llvm/include"
 
-
 alias vi=/usr/local/bin/vim
 alias vim=/usr/local/bin/nvim
 alias ll='ls -alF'
@@ -131,6 +125,7 @@ alias llt='ls -lt'
 alias lc='ls -l | wc -l'
 alias g++='g++ --std=c++11'
 alias grep='grep --color=auto'
+alias textedit='open -a TextEdit'
 
 function cd {
     builtin cd "$@" && ls 
@@ -147,6 +142,7 @@ function acp() {
 #bindkey '"\e[A": history-search-backward'
 bindkey "^[[A" history-beginning-search-backward
 bindkey "^[[B" history-beginning-search-forward
+bindkey '^ ' autosuggest-accept
 
 # for fzf
 export FZF_DEFAULT_OPTS='--preview "head -100 {}"'

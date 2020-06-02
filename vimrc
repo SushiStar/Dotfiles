@@ -1,5 +1,4 @@
 "########################### plugins ################################
-" Plugins will be downloaded under the specified directory.
 call plug#begin('~/.vim/plugged')
 
 Plug 'jiangmiao/auto-pairs'
@@ -16,11 +15,13 @@ Plug 'octol/vim-cpp-enhanced-highlight'
 
 Plug 'valloric/youcompleteme'
 
-Plug 'gauteh/vim-cppman'
-
-Plug 'voldikss/vim-floaterm'
-
+Plug 'ryanoasis/vim-devicons'
 call plug#end()
+
+" center text
+source ~/shellConfig/centerText.vim
+nmap <silent> <Esc>c :call CentreText()<CR>
+nmap <silent> <Esc>t :call GetTerm()<CR>
 
 " NerdCommenter #####################################################
 map 'ci <plug>NERDCommenterToggle
@@ -34,6 +35,7 @@ set tabstop=4
 set shiftwidth=4
 set expandtab
 set whichwrap+=h,l
+set splitbelow
 
 set incsearch
 set noshowmode
@@ -51,7 +53,6 @@ autocmd FileType c,cpp setlocal comments-=:// comments+=f://
 
 nnoremap <silent> <C-T> :Tex<Enter>
 nnoremap <silent> <C-p> :Vex<Enter>
-nnoremap <silent> <C-s> :Sex<Enter>
 
 nnoremap <silent> <Tab> gt
 nnoremap <silent> <S-Tab> gT
@@ -71,6 +72,7 @@ let g:python3_host_prog = '/usr/local/Cellar/python3'
 let g:netrw_bufsettings = 'noma nomod nu rnu nobl nowrap ro'
 let ghregex='\(^\|\s\s\)\zs\.\S\+'
 let g:netrw_list_hide=ghregex
+
 " trailing spaces
 autocmd BufWritePre * :%s/\s+$//e
 
@@ -96,7 +98,6 @@ let g:clang_format#style_options = {
 " color #########################################################
 set termguicolors  
 set background=dark
-"set background=light
 colorscheme gruvbox-material
 let g:gruvbox_contrast_dark='soft'
 let g:NVIM_TUI_ENABLE_CURSOR_SHAPE=1
@@ -117,7 +118,3 @@ let g:ycm_show_diagnostics_ui = 1
 let g:ycm_enable_diagnostic_signs = 1
 let g:ycm_enable_diagnostic_highlighting = 0
 let g:ycm_max_diagnostics_to_display = 100
-
-" floaterm ######################################################
-let g:floaterm_keymap_toggle = '<Leader>f'
-let g:floaterm_autoclose=1
