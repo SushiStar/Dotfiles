@@ -109,3 +109,6 @@ inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 " fzf ###########################################################
 set rtp+=/usr/local/opt/fzf
 nmap <silent> <Esc>f :FZF! <CR>
+
+let g:python_host_prog = '/usr/local/bin/python2'
+let g:python3_host_prog = '/usr/local/Cellar/python3'
