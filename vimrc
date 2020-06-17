@@ -11,6 +11,8 @@ Plug 'rhysd/vim-clang-format'
 
 Plug 'sainnhe/gruvbox-material'
 
+Plug 'majutsushi/tagbar'
+
 Plug 'octol/vim-cpp-enhanced-highlight'
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -47,8 +49,7 @@ autocmd ColorScheme * highlight CursorLineNr cterm=bold term=bold guibg=None gui
 autocmd ColorScheme * highlight CursorLine ctermbg=Black guibg=Black
 autocmd ColorScheme * highlight MatchParen ctermbg=LightGray ctermfg=Black guibg=black guifg=red
 autocmd ColorScheme * highlight TabLine guifg=#595756 guibg=None
-"autocmd ColorScheme * highlight TabLineSel  gui=bold guifg=#eb8f34 guibg=None
-autocmd ColorScheme * highlight TabLineSel  gui=bold guifg=#d6c69e guibg=Black
+autocmd ColorScheme * highlight TabLineSel  gui=bold guifg=#eb8f34 guibg=None
 autocmd FileType c,cpp setlocal comments-=:// comments+=f://
 
 nmap <silent> <Esc>c :call CentreText()<CR>
@@ -109,6 +110,3 @@ inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 " fzf ###########################################################
 set rtp+=/usr/local/opt/fzf
 nmap <silent> <Esc>f :FZF! <CR>
-
-let g:python_host_prog = '/usr/local/bin/python2'
-let g:python3_host_prog = '/usr/local/Cellar/python3'

@@ -2,29 +2,38 @@
 au VimEnter * if eval("@%") == "" | e . | endif
 
 " Setting status line
- let g:currentmode={
-       \ 'n'  : ' NORMAL ',
-       \ 'v'  : ' VISUAL ',
-       \ 'V'  : ' V·Line ',
-       \ ''   : 'V·Block ',
-       \ 'i'  : ' INSERT ',
-       \ 'R'  : 'R ',
-       \ 'Rv' : 'V·Replace',
-       \ 'c'  : 'COMMAND ',
-	   \ 't'  : 'Terminal',
-       \}
+" let g:currentmode={
+			\ 'n'  		: ' NORMAL ',
+			\ 'no'     	: 'N·Operator Pending ',
+			\ 'r' 		: ' REPLACE ',
+			\ 'v'  		: ' VISUAL ',
+			\ 'V'      	: 'V·Line ',
+			\ '\<C-V>' 	: 'V·Block ',
+			\ 's'      	: 'Select ',
+			\ 'S'      	: 'S·Line ',
+			\ '\<C-S>' 	: 'S·Block ',
+			\ 'i'  		: ' INSERT ',
+			\ 'R'      : 'R ',
+			\ 'Rv'     : 'V·Replace ',
+			\ 'c'      : 'Command ',
+			\ 'cv'     : 'Vim Ex ',
+			\ 'ce'     : 'Ex ',
+			\ 'r'      : 'Prompt ',
+			\ 'rm'     : 'More ',
+			\ 'r?'     : 'Confirm ',
+			\ '!'      : 'Shell ',
+			\ 't'      : 'Terminal '
+			\}
 
-let separator = ' || '
 set statusline=									" clear the statusline for when vimrc is reloaded
-set statusline+=\ %{currentmode[mode()]}		"mode
-set statusline+=%{separator}
-set statusline+=%t\%m							" file name & modification indicate
+set statusline+=\ %{currentmode[mode()]}\|\|	"mode
+set statusline+=\ \%t\%m							" file name & modification indicate
+set statusline+=\ %{tagbar#currenttag('\-\>\ %s','')}   "Function name
 set statusline+=%=                         		" right align
-set statusline+=%{separator}
-set statusline+=LINE:\ %l/%L,\ COL:\ %c
-set statusline+=%{separator}
-set statusline+=%p%%							" percentage of file
-set statusline+=%{separator}
+set statusline+=line:\ %l/%L,\ col:\ %c\ 		"asdfljk
+"set statusline+=\ %p%%\ \ 						"percentage of file
+set statusline+=\|\|\ %{strftime('%H:%M')}\ \ 	" time
+
 
 function CentreText()
     40vnew
