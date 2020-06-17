@@ -5,6 +5,8 @@ Plug 'jiangmiao/auto-pairs'
 
 Plug 'junegunn/fzf.vim'
 
+Plug 'rking/ag.vim'
+
 Plug 'scrooloose/nerdcommenter'
 
 Plug 'rhysd/vim-clang-format'
@@ -110,3 +112,9 @@ inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 " fzf ###########################################################
 set rtp+=/usr/local/opt/fzf
 nmap <silent> <Esc>f :FZF! <CR>
+
+" ack ###########################################################
+nnoremap <Leader>a :Ack!<Space>
+if executable('ag')
+  let g:ackprg = 'ag --vimgrep'
+endif

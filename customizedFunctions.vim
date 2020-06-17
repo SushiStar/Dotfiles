@@ -2,7 +2,7 @@
 au VimEnter * if eval("@%") == "" | e . | endif
 
 " Setting status line
-" let g:currentmode={
+ let g:currentmode={
 			\ 'n'  		: ' NORMAL ',
 			\ 'no'     	: 'N·Operator Pending ',
 			\ 'r' 		: ' REPLACE ',
@@ -18,7 +18,6 @@ au VimEnter * if eval("@%") == "" | e . | endif
 			\ 'c'      : 'Command ',
 			\ 'cv'     : 'Vim Ex ',
 			\ 'ce'     : 'Ex ',
-			\ 'r'      : 'Prompt ',
 			\ 'rm'     : 'More ',
 			\ 'r?'     : 'Confirm ',
 			\ '!'      : 'Shell ',
