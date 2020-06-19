@@ -3,6 +3,8 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'jiangmiao/auto-pairs'
 
+Plug 'tpope/vim-surround'
+
 Plug 'junegunn/fzf.vim'
 
 Plug 'rking/ag.vim'
@@ -112,9 +114,3 @@ inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 " fzf ###########################################################
 set rtp+=/usr/local/opt/fzf
 nmap <silent> <Esc>f :FZF! <CR>
-
-" ack ###########################################################
-nnoremap <Leader>a :Ack!<Space>
-if executable('ag')
-  let g:ackprg = 'ag --vimgrep'
-endif
