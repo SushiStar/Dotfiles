@@ -9,8 +9,8 @@ export ZSH="/Users/waynedu/.oh-my-zsh"
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-#ZSH_THEME="simple"
-PROMPT='%{$FG[208]%B%}%%%{$reset_color%} '
+ZSH_THEME="gitster"
+#PROMPT='%{$FG[208]%B%}%%%{$reset_color%} '
 
 export HISTSIZE=10000
 # Set list of themes to pick from when loading at random

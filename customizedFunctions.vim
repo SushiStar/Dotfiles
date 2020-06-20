@@ -1,7 +1,6 @@
 " Config start on netrew if no file or dir specified
 au VimEnter * if eval("@%") == "" | e . | endif
 
-" Setting status line
  let g:currentmode={
 			\ 'n'  		: ' NORMAL ',
 			\ 'no'     	: 'N·Operator Pending ',
@@ -23,15 +22,13 @@ au VimEnter * if eval("@%") == "" | e . | endif
 			\ '!'       : ' Shell ',
 			\ 't'       : ' Terminal '
 			\}
-
-
-set statusline=									" clear the statusline for when vimrc is reloaded
-set statusline+=\ %{currentmode[mode()]}\|\|	"mode
-set statusline+=\ \%t\%m							" file name & modification indicate
+set statusline=											" clear the statusline for when vimrc is reloaded
+set statusline+=\ %{currentmode[mode()]}\|\|			"mode
+set statusline+=\ \%t\%m								"file name & modification indicate
 set statusline+=\ %{tagbar#currenttag('\-\>\ %s','')}   "Function name
-set statusline+=%=                         		" right align
-set statusline+=line:\ %l/%L,\ col:\ %c\ 		"asdfljk
-set statusline+=\|\|\ %{strftime('%H:%M')}\ \ 	" time
+set statusline+=%=                         				"right align
+set statusline+=line:\ %l/%L,\ col:\ %c\ 				"line and col
+set statusline+=\|\|\ %{strftime('%H:%M')}\ \ 			"time
 
 
 function CentreText()

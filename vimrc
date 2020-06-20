@@ -114,3 +114,4 @@ inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 " fzf ###########################################################
 set rtp+=/usr/local/opt/fzf
 nmap <silent> <Esc>f :FZF! <CR>
+set showtabline=0
