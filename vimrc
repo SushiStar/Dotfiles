@@ -25,7 +25,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 call plug#end()
 
 " Customized functions ##############################################
-source ./customizedFunctions.vim
+source ~/Dotfiles/customizedFunctions.vim
 
 " NerdCommenter #####################################################
 map 'ci <plug>NERDCommenterToggle
