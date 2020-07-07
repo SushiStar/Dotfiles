@@ -12,7 +12,7 @@ alias llt='ls -lt'
 alias g++='g++ --std=c++11'
 
 function cd {
-    builtin cd "$@" && ls 
+    builtin cd "$@" && ls
     }
 
 #customize
@@ -32,10 +32,10 @@ alias julia="/Applications/Julia-1.1.app/Contents/Resources/julia/bin/julia"
 export HISTCONTROL=ignoredups:erasedups
 export HISTFILESIZE=1000000
 export HISTSIZE=1000000
-# When the shell exits, append to the history file 
+# When the shell exits, append to the history file
 #  instead of overwriting it
 shopt -s histappend
-# After each command, append to the history file 
+# After each command, append to the history file
 #  and reread it
 export PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND$'\n'}history -a; history -c; history -r"
 
@@ -43,7 +43,7 @@ alias vi=/usr/local/bin/vim
 alias vim=/usr/local/bin/nvim
 
 
-# to fix update_terminal_cwd 
+# to fix update_terminal_cwd
 update_terminal_cwd() {
     # Identify the directory using a "file:" scheme URL,
     # including the host name to disambiguate local vs.
@@ -57,4 +57,4 @@ update_terminal_cwd() {
 export LDFLAGS="-L/usr/local/opt/llvm/lib"
 export CPPFLAGS="-I/usr/local/opt/llvm/include"
 
-source "$HOME/.vim/plugged/gruvbox/gruvbox_256palette.sh"
+# source "$HOME/.vim/plugged/gruvbox/gruvbox_256palette.sh"

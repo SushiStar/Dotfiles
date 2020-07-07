@@ -9,15 +9,11 @@ export ZSH="/Users/waynedu/.oh-my-zsh"
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="gitster"
-#PROMPT='%{$FG[208]%B%}%%%{$reset_color%} '
+# ZSH_THEME="gitster"
+# PROMPT='%{$FG[208]%B%}%%%{$reset_color%} '
+export PROMPT='%F{32}%c > %{$reset_color%}'
 
 export HISTSIZE=10000
-# Set list of themes to pick from when loading at random
-# Setting this variable when ZSH_THEME=random will cause zsh to load
-# a theme from this variable instead of looking in ~/.oh-my-zsh/themes/
-# If set to an empty array, this variable will have no effect.
-# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
 
 # Uncomment the following line to disable bi-weekly auto-update checks.
  DISABLE_AUTO_UPDATE="true"
@@ -47,7 +43,7 @@ export HISTSIZE=10000
 # under VCS as dirty. This makes repository status check for large repositories
 # much, much faster.
 # DISABLE_UNTRACKED_FILES_DIRTY="true"
-plugins=(git
+plugins=(
          zsh-autosuggestions
 		 history-substring-search
          vi-mode)

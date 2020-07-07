@@ -13,7 +13,8 @@ Plug 'scrooloose/nerdcommenter'
 
 Plug 'rhysd/vim-clang-format'
 
-Plug 'sainnhe/gruvbox-material'
+" Plug 'sainnhe/gruvbox-material'
+Plug 'sainnhe/forest-night'
 
 Plug 'majutsushi/tagbar'
 
@@ -29,13 +30,17 @@ source ~/shellConfig/customizedFunctions.vim
 " NerdCommenter #####################################################
 map 'ci <plug>NERDCommenterToggle
 map 'cs <plug>NERDCommenterSexy
+let g:NERDTrimTrailingWhitespace = 1
+let g:NERDCommentEmptyLines = 1
+let g:NERDSpaceDelims=1
 
 "terminal configuration #############################################
 filetype plugin on
 
 set backspace=2
-set tabstop=4
-set shiftwidth=4
+set tabstop=2
+set shiftwidth=2
+set expandtab
 set whichwrap+=h,l
 set splitbelow
 
@@ -50,7 +55,7 @@ set cursorline
 set fillchars=vert:│
 nnoremap <silent> <C-a> :set invnumber invrelativenumber <CR>
 autocmd ColorScheme * highlight CursorLineNr cterm=bold term=bold guibg=None guifg=#eb8f34
-autocmd ColorScheme * highlight CursorLine ctermbg=Black guibg=Black
+" autocmd ColorScheme * highlight CursorLine ctermbg=Black guibg=#5e5e5e
 autocmd ColorScheme * highlight MatchParen ctermbg=LightGray ctermfg=Black guibg=black guifg=red
 autocmd ColorScheme * highlight TabLine guifg=#595756 guibg=None
 autocmd ColorScheme * highlight TabLineSel  gui=bold guifg=#eb8f34 guibg=None
@@ -83,20 +88,26 @@ let g:netrw_liststyle = 3
 autocmd BufWritePre * :%s/\s\+$//e
 
 " clang-format ##################################################
-let g:clang_format#code_style='llvm'
+let g:clang_format#code_style='google'
 let g:clang_format#style_options = {
-			\ "AccessModifierOffset" : -4,
-			\ "IndentWidth" : 4,
+			\ "AccessModifierOffset" : -1,
+			\ "ConstructorInitializerIndentWidth" : 4,
+			\ "IndentWidth" : 2,
 			\ "UseTab" : "false",
+			\ "IndentCaseLabels" : "true",
+			\ "NamespaceIndentation" : "None",
 			\ "AllowShortIfStatementsOnASingleLine" : "true",
 			\ "AlwaysBreakTemplateDeclarations" : "true",
-			\ "Standard" : "C++11"}
+			\ "Standard" : "C++11"
+      \ }
 
 " color #########################################################
 set termguicolors
 set background=dark
-colorscheme gruvbox-material
-let g:gruvbox_contrast_dark='dark'
+let g:forest_night_enable_italic = 1
+colorscheme forest-night
+" colorscheme gruvbox-material
+" let g:gruvbox_contrast_dark='dark'
 let g:NVIM_TUI_ENABLE_CURSOR_SHAPE=1
 
 " enhanced cpp highlight ########################################
@@ -110,6 +121,8 @@ set nobackup
 set updatetime=300
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
 
 " fzf ###########################################################
 set rtp+=/usr/local/opt/fzf
