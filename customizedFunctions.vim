@@ -1,6 +1,4 @@
 " Config start on netrew if no file or dir specified
-au VimEnter * if eval("@%") == "" | e . | endif
-
  let g:currentmode={
 			\ 'n'  		: ' NORMAL ',
 			\ 'no'     	: 'N·Operator Pending ',
@@ -30,12 +28,6 @@ set statusline+=%=                         				"right align
 set statusline+=line:\ %l/%L,\ col:\ %c\ 				"line and col
 set statusline+=\|\|\ %{strftime('%H:%M')}\ \ 			"time
 
-
-function CentreText()
-    40vnew
-    set invnumber invrelativenumber
-    wincmd l
-endfunction
 
 tnoremap <silent> <C-[><C-[> <C-\><C-n>
 function GetTerm()

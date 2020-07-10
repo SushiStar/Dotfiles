@@ -7,13 +7,12 @@ Plug 'tpope/vim-surround'
 
 Plug 'junegunn/fzf.vim'
 
-Plug 'rking/ag.vim'
+Plug 'scrooloose/nerdtree'
 
 Plug 'scrooloose/nerdcommenter'
 
 Plug 'rhysd/vim-clang-format'
 
-" Plug 'sainnhe/gruvbox-material'
 Plug 'sainnhe/forest-night'
 
 Plug 'majutsushi/tagbar'
@@ -61,12 +60,7 @@ autocmd ColorScheme * highlight TabLine guifg=#595756 guibg=None
 autocmd ColorScheme * highlight TabLineSel  gui=bold guifg=#eb8f34 guibg=None
 autocmd FileType c,cpp setlocal comments-=:// comments+=f://
 
-nmap <silent> <Esc>c :call CentreText()<CR>
 nmap <silent> <Esc>t :call GetTerm()<CR>
-nnoremap <silent> <C-T> :Tex<Enter>
-nnoremap <silent> <C-p> :Vex<Enter>
-nnoremap <silent> <Esc>e :Explore<CR>
-
 nnoremap <silent> <Tab> gt
 nnoremap <silent> <S-Tab> gT
 nnoremap <silent> <C-l> :winc l<Enter>
@@ -79,13 +73,16 @@ set autoread
 set timeoutlen=1000 ttimeoutlen=10
 set linebreak
 
-let ghregex='\(^\|\s\s\)\zs\.\S\+'
-let g:netrw_bufsettings = 'noma nomod nu rnu nobl nowrap ro'
-let g:netrw_list_hide=ghregex
-let g:netrw_liststyle = 3
-
 " trailing spaces
 autocmd BufWritePre * :%s/\s\+$//e
+
+" NerdTree config ###############################################
+map <C-n> :NERDTreeToggle<CR>
+let g:NERDTreeWinSize=41
+autocmd FileType nerdtree setlocal relativenumber
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | exe 'cd '.argv()[0] | endif
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 " clang-format ##################################################
 let g:clang_format#code_style='google'
