@@ -96,11 +96,9 @@ function acp() {
   git push
 }
 
-bindkey "^P" history-beginning-search-backward
-bindkey "^N" history-beginning-search-forward
 bindkey '^ ' autosuggest-accept
 
 # for fzf
-export FZF_DEFAULT_OPTS='--preview "head -100 {}"'
 export FZF_DEFAULT_COMMAND='rg --files'
 export FZF_CTRL_T_COMMAND='$FZF_DEFAULT_COMMAND'
+source ~/.fzf.zsh
