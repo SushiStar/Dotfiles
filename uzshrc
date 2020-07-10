@@ -69,8 +69,9 @@ export HISTSIZE=10000
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git
-         history-substring-search
+plugins=(
+         zsh-autosuggestions
+		 history-substring-search
          vi-mode)
 
 source $ZSH/oh-my-zsh.sh
@@ -134,12 +135,17 @@ function acp() {
 
 #bindkey '"\e[B": history-search-forward'
 #bindkey '"\e[A": history-search-backward'
-bindkey "^[[A" history-beginning-search-backward
-bindkey "^[[B" history-beginning-search-forward
+# bindkey "^[[A" history-beginning-search-backward
+# bindkey "^[[B" history-beginning-search-forward
+bindkey "^P" history-beginning-search-backward
+bindkey "^N" history-beginning-search-forward
+bindkey '^ ' autosuggest-accept
+
 
 #source ~/ws/devel/setup.zsh
 #source ~/mra_ws/devel/setup.zsh
 
+<<<<<<< HEAD
 
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
@@ -148,5 +154,8 @@ if command -v pyenv 1>/dev/null 2>&1; then
 fi
 
 export FZF_DEFAULT_OPTS='--preview "head -100 {}"'
+=======
+source ~/.fzf.zsh
+# export FZF_DEFAULT_OPTS='--preview "head -40 {}"'
 export FZF_DEFAULT_COMMAND='rg --files'
 export FZF_CTRL_T_COMMAND='$FZF_DEFAULT_COMMAND'
