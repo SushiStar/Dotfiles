@@ -126,4 +126,4 @@ nmap <silent> ]g <Plug>(coc-diagnostic-next)
 
 " fzf ###########################################################
 set rtp+=/usr/local/opt/fzf
-nmap <silent> <Esc>f :FZF! <CR>
+nmap <silent> <Leader>f :FZF! <CR>
