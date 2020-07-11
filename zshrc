@@ -11,7 +11,7 @@ export ZSH="/Users/waynedu/.oh-my-zsh"
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 # ZSH_THEME="gitster"
 # PROMPT='%{$FG[208]%B%}%%%{$reset_color%} '
-export PROMPT='%F{32}%c > %{$reset_color%}'
+export PROMPT='%B%F{32}%c > %{$reset_color%}'
 
 export HISTSIZE=10000
 
