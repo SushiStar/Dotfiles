@@ -77,6 +77,7 @@ export CXXFLAGS="-I/usr/local/opt/llvm/include"
 
 alias vi=/usr/local/bin/vim
 alias vim=/usr/local/bin/nvim
+alias ctags=/usr/local/bin/ctags
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
