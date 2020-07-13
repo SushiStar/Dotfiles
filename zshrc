@@ -11,7 +11,7 @@ export ZSH="/Users/waynedu/.oh-my-zsh"
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 # ZSH_THEME="gitster"
 # PROMPT='%{$FG[208]%B%}%%%{$reset_color%} '
-export PROMPT='%F{32}%c > %{$reset_color%}'
+export PROMPT='%B%F{32}%c > %{$reset_color%}'
 
 export HISTSIZE=10000
 
@@ -77,6 +77,7 @@ export CXXFLAGS="-I/usr/local/opt/llvm/include"
 
 alias vi=/usr/local/bin/vim
 alias vim=/usr/local/bin/nvim
+alias ctags=/usr/local/bin/ctags
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'

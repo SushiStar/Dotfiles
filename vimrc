@@ -15,6 +15,8 @@ Plug 'rhysd/vim-clang-format'
 
 Plug 'sainnhe/forest-night'
 
+Plug 'itchyny/lightline.vim'
+
 Plug 'majutsushi/tagbar'
 
 Plug 'octol/vim-cpp-enhanced-highlight'
@@ -33,54 +35,13 @@ let g:NERDTrimTrailingWhitespace = 1
 let g:NERDCommentEmptyLines = 1
 let g:NERDSpaceDelims=1
 
-"terminal configuration #############################################
-filetype plugin on
-
-set backspace=2
-set tabstop=2
-set shiftwidth=2
-set expandtab
-set whichwrap+=h,l
-set splitbelow
-
-set incsearch
-set noshowmode
-set nohlsearch
-
-"numbers
-set number
-set relativenumber
-set cursorline
-set fillchars=vert:│
-nnoremap <silent> <C-a> :set invnumber invrelativenumber <CR>
-autocmd ColorScheme * highlight CursorLineNr cterm=bold term=bold guibg=None guifg=#eb8f34
-" autocmd ColorScheme * highlight CursorLine ctermbg=Black guibg=#5e5e5e
-autocmd ColorScheme * highlight MatchParen ctermbg=LightGray ctermfg=Black guibg=black guifg=red
-autocmd ColorScheme * highlight TabLine guifg=#595756 guibg=None
-autocmd ColorScheme * highlight TabLineSel  gui=bold guifg=#eb8f34 guibg=None
-autocmd FileType c,cpp setlocal comments-=:// comments+=f://
-
-nmap <silent> <Esc>t :call GetTerm()<CR>
-nnoremap <silent> <Tab> gt
-nnoremap <silent> <S-Tab> gT
-nnoremap <silent> <C-l> :winc l<Enter>
-nnoremap <silent> <C-h> :winc h<Enter>
-nnoremap <silent> <C-k> :winc k<Enter>
-nnoremap <silent> <C-j> :winc j<Enter>
-
-set ignorecase
-set autoread
-set timeoutlen=1000 ttimeoutlen=10
-set linebreak
-
-" trailing spaces
-autocmd BufWritePre * :%s/\s\+$//e
-
 " NerdTree config ###############################################
 map <C-n> :NERDTreeToggle<CR>
 let g:NERDTreeWinSize=41
+let g:NERDTreeMinimalUI=1
 autocmd FileType nerdtree setlocal relativenumber
 autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | exe 'cd '.argv()[0] | endif
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
@@ -98,14 +59,25 @@ let g:clang_format#style_options = {
 			\ "Standard" : "C++11"
       \ }
 
+" lightline #####################################################
+let g:lightline = {'colorscheme' : 'forest_night',
+                \ 'component': {'tagbar': '%{tagbar#currenttag("%s", "", "f")}'},
+                \'active': {
+                \		'right': [
+                \			['lineinfo'],
+                \			['percent'],
+                \			['filetype'],
+                \     ['tagbar'],
+                \		],
+                \	},
+                \ }
+
 " color #########################################################
 set termguicolors
 set background=dark
 let g:forest_night_enable_italic = 1
-colorscheme forest-night
-" colorscheme gruvbox-material
-" let g:gruvbox_contrast_dark='dark'
 let g:NVIM_TUI_ENABLE_CURSOR_SHAPE=1
+colorscheme forest-night
 
 " enhanced cpp highlight ########################################
 let g:cpp_class_scope_highlight = 1
