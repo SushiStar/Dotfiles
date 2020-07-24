@@ -136,12 +136,11 @@ function acp() {
 #bindkey '"\e[A": history-search-backward'
 # bindkey "^[[A" history-beginning-search-backward
 # bindkey "^[[B" history-beginning-search-forward
-# bindkey "^P" history-beginning-search-backward
-# bindkey "^N" history-beginning-search-forward
+bindkey "^P" history-beginning-search-backward
+bindkey "^N" history-beginning-search-forward
 bindkey '^ ' autosuggest-accept
 
 
-#source ~/mra_ws/devel/setup.zsh
 
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
@@ -155,4 +154,6 @@ export FZF_DEFAULT_COMMAND='rg --files'
 export FZF_CTRL_T_COMMAND='$FZF_DEFAULT_COMMAND'
 
 # ROS
-source ~/ros_ws/devel/setup.zsh
+# source ~/ros_ws/devel/setup.zsh
+source ~/adpt_core/robotwits/devel/setup.zsh
+export VTD_PATH=~/VTD.2.2
