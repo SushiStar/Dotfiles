@@ -3,15 +3,13 @@
 export TERM="xterm-256color"
 
 # Path to your oh-my-zsh installation.
-export ZSH="/Users/waynedu/.oh-my-zsh"
+export ZSH="/Users/waynedu/.oh-my-zsh/"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-# ZSH_THEME="gitster"
-# PROMPT='%{$FG[208]%B%}%%%{$reset_color%} '
-export PROMPT='%B%F{32}%c > %{$reset_color%}'
+ZSH_THEME="gitster"
 
 export HISTSIZE=10000
 
@@ -49,7 +47,6 @@ plugins=(
          vi-mode)
 
 source $ZSH/oh-my-zsh.sh
-
 # User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"
@@ -65,8 +62,11 @@ else
 fi
 
 # remove user@hostname
-export DEFAULT_USER=$USER
-export RANGER_LOAD_DEFAULT_RC=false
+# export DEFAULT_USER=$USER
+
+bindkey "^P" history-beginning-search-backward
+bindkey "^N" history-beginning-search-forward
+bindkey '^ ' autosuggest-accept
 
 # from bash
 export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
