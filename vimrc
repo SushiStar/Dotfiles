@@ -15,7 +15,7 @@ Plug 'rhysd/vim-clang-format'
 
 Plug 'sainnhe/forest-night'
 
-Plug 'itchyny/lightline.vim'
+Plug 'vim-airline/vim-airline'
 
 Plug 'majutsushi/tagbar'
 
@@ -59,18 +59,17 @@ let g:clang_format#style_options = {
 			\ "Standard" : "C++11"
       \ }
 
-" lightline #####################################################
-let g:lightline = {'colorscheme' : 'forest_night',
-                \ 'component': {'tagbar': '%{tagbar#currenttag("%s", "", "f")}'},
-                \'active': {
-                \		'right': [
-                \			['lineinfo'],
-                \			['percent'],
-                \			['filetype'],
-                \     ['tagbar'],
-                \		],
-                \	},
-                \ }
+" airline ########################################################
+let g:airline_theme = 'forest_night'
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#show_buffers = 0
+let g:airline#extensions#tabline#show_tab_nr = 0
+let g:airline#extensions#tabline#tabs_label = ''
+let g:airline#extensions#tabline#show_splits = 0
+let g:airline#extensions#nerdtree_status = 0
+let g:airline#extensions#coc#enabled = 0
+
 
 " color #########################################################
 set termguicolors
