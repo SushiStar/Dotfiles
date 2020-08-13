@@ -88,6 +88,3 @@ nmap <silent> ]g <Plug>(coc-diagnostic-next)
 " fzf ###########################################################
 set rtp+=/usr/local/opt/fzf
 nmap <silent> <Leader>f :FZF! <CR>
-
-" Indentline ####################################################
-" let g:indentLine_char_list = ['|', '¦', '┆', '┊']
