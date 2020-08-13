@@ -50,18 +50,8 @@ autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 " clang-format ##################################################
-let g:clang_format#code_style='google'
-let g:clang_format#style_options = {
-			\ "AccessModifierOffset" : -1,
-			\ "ConstructorInitializerIndentWidth" : 4,
-			\ "IndentWidth" : 2,
-			\ "UseTab" : "false",
-			\ "IndentCaseLabels" : "true",
-			\ "NamespaceIndentation" : "None",
-			\ "AllowShortIfStatementsOnASingleLine" : "true",
-			\ "AlwaysBreakTemplateDeclarations" : "true",
-			\ "Standard" : "C++11"
-      \ }
+let g:clang_format#detect_style_file = 1
+let g:clang_format#auto_format = 1
 
 " airline  ######################################################
 let g:airline_theme = 'forest_night'
