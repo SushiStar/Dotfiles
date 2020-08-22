@@ -19,12 +19,11 @@ Plug 'sainnhe/forest-night'
 
 Plug 'vim-airline/vim-airline'
 
-Plug 'majutsushi/tagbar'
-
 Plug 'octol/vim-cpp-enhanced-highlight'
-Plug 'ryanoasis/vim-devicons'
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+Plug 'voldikss/vim-floaterm'
 
 call plug#end()
 
@@ -42,8 +41,9 @@ let g:NERDSpaceDelims=1
 map <C-n> :NERDTreeToggle<CR>
 let g:NERDTreeWinSize=41
 let g:NERDTreeMinimalUI=1
-let g:webdevicons_enable_nerdtree = 0
 let g:NERDTreeShowLineNumbers=1
+let NERDTreeDirArrowExpandable=''
+let NERDTreeDirArrowCollapsible=''
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | exe 'cd '.argv()[0] | endif
@@ -55,7 +55,7 @@ let g:clang_format#auto_format = 1
 
 " airline  ######################################################
 let g:airline_theme = 'forest_night'
-let g:airline_powerline_fonts = 1
+let g:airline_powerline_fonts = 0
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#show_buffers = 0
 let g:airline#extensions#tabline#show_tab_nr = 0
@@ -87,4 +87,10 @@ nmap <silent> ]g <Plug>(coc-diagnostic-next)
 
 " fzf ###########################################################
 set rtp+=/usr/local/opt/fzf
-nmap <silent> <Leader>f :FZF! <CR>
+if has("nvim")
+  let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6 } }
+endif
+
+" floaterm ###########################################################
+let g:floaterm_width=0.8
+let g:floaterm_height=0.8

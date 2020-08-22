@@ -75,7 +75,7 @@ export PATH="/Library/TeX/texbin/:$PATH"
 export LDFLAGS="-L/usr/local/opt/llvm/lib"
 export CXXFLAGS="-I/usr/local/opt/llvm/include"
 
-alias vi=/usr/local/bin/vim
+alias vi=/usr/bin/vim
 alias vim=/usr/local/bin/nvim
 alias ctags=/usr/local/bin/ctags
 alias ll='ls -alF'
