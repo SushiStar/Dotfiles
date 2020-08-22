@@ -86,6 +86,7 @@ alias lc='ls -l | wc -l'
 alias g++='g++ --std=c++11'
 alias grep='grep --color=auto'
 alias textedit='open -a TextEdit'
+alias gitlog='git log --graph --decorate --oneline'
 
 function cd {
     builtin cd "$@" && ls

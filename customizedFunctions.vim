@@ -33,7 +33,7 @@ nnoremap <silent> <C-j> :winc j<Enter>
 nnoremap <silent> <leader>a :set invnumber invrelativenumber <CR>
 nnoremap <silent> <Leader>f :Files<CR>
 nnoremap <silent> <Leader>t :FloatermToggle<CR>
-tnoremap <silent> <C-Space> <C-\><C-n>:FloatermToggle<CR>
+tnoremap <silent> <C-K> <C-\><C-n>:FloatermToggle<CR>
 
 set ignorecase
 set autoread
