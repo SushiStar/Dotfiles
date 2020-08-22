@@ -5,8 +5,6 @@ Plug 'jiangmiao/auto-pairs'
 
 Plug 'tpope/vim-surround'
 
-Plug 'tpope/vim-fugitive'
-
 Plug 'junegunn/fzf.vim'
 
 Plug 'scrooloose/nerdtree'
