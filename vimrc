@@ -17,11 +17,13 @@ Plug 'sainnhe/forest-night'
 
 Plug 'vim-airline/vim-airline'
 
-Plug 'majutsushi/tagbar'
-
 Plug 'octol/vim-cpp-enhanced-highlight'
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+Plug 'voldikss/vim-floaterm'
+
+Plug 'jceb/vim-orgmode'
 
 call plug#end()
 
@@ -39,29 +41,21 @@ let g:NERDSpaceDelims=1
 map <C-n> :NERDTreeToggle<CR>
 let g:NERDTreeWinSize=41
 let g:NERDTreeMinimalUI=1
-autocmd FileType nerdtree setlocal relativenumber
+let g:NERDTreeShowLineNumbers=1
+let NERDTreeDirArrowExpandable=''
+let NERDTreeDirArrowCollapsible=''
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | exe 'cd '.argv()[0] | endif
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 " clang-format ##################################################
-let g:clang_format#code_style='google'
-let g:clang_format#style_options = {
-			\ "AccessModifierOffset" : -1,
-			\ "ConstructorInitializerIndentWidth" : 4,
-			\ "IndentWidth" : 2,
-			\ "UseTab" : "false",
-			\ "IndentCaseLabels" : "true",
-			\ "NamespaceIndentation" : "None",
-			\ "AllowShortIfStatementsOnASingleLine" : "true",
-			\ "AlwaysBreakTemplateDeclarations" : "true",
-			\ "Standard" : "C++11"
-      \ }
+let g:clang_format#detect_style_file = 1
+let g:clang_format#auto_format = 1
 
-" airline ########################################################
+" airline  ######################################################
 let g:airline_theme = 'forest_night'
-let g:airline_powerline_fonts = 1
+let g:airline_powerline_fonts = 0
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#show_buffers = 0
 let g:airline#extensions#tabline#show_tab_nr = 0
@@ -69,7 +63,6 @@ let g:airline#extensions#tabline#tabs_label = ''
 let g:airline#extensions#tabline#show_splits = 0
 let g:airline#extensions#nerdtree_status = 0
 let g:airline#extensions#coc#enabled = 0
-
 
 " color #########################################################
 set termguicolors
@@ -94,4 +87,10 @@ nmap <silent> ]g <Plug>(coc-diagnostic-next)
 
 " fzf ###########################################################
 set rtp+=/usr/local/opt/fzf
-nmap <silent> <Leader>f :FZF! <CR>
+if has("nvim")
+  let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6 } }
+endif
+
+" floaterm ###########################################################
+let g:floaterm_width=0.8
+let g:floaterm_height=0.8
