@@ -1,0 +1,6 @@
+:set arrowstyle=highlight
+:set autosourcereload
+:set ignorecase
+:set tabstop=4
+:set winsplit=even
+:set winsplitorientation=vertical
