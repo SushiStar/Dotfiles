@@ -23,8 +23,6 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 Plug 'voldikss/vim-floaterm'
 
-Plug 'jceb/vim-orgmode'
-
 call plug#end()
 
 " Customized functions ##############################################
