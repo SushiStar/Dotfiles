@@ -5,6 +5,7 @@ Plug 'jiangmiao/auto-pairs'
 
 Plug 'tpope/vim-surround'
 
+Plug 'junegunn/fzf', { 'dir': '~/.fzf' }
 Plug 'junegunn/fzf.vim'
 
 Plug 'scrooloose/nerdtree'
@@ -19,11 +20,12 @@ Plug 'vim-airline/vim-airline'
 
 Plug 'octol/vim-cpp-enhanced-highlight'
 
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'neoclide/coc.nvim', {'branch': 'release', 'for': ['json', 'cpp', 'vim', 'yaml', 'tex']}
+Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
+
+Plug 'valloric/youcompleteme'
 
 Plug 'voldikss/vim-floaterm'
-
-Plug 'jceb/vim-orgmode'
 
 call plug#end()
 
@@ -31,8 +33,8 @@ call plug#end()
 source ~/Dotfiles/customizedFunctions.vim
 
 " NerdCommenter #####################################################
-map 'ci <plug>NERDCommenterToggle
-map 'cs <plug>NERDCommenterSexy
+map <leader>ci <plug>NERDCommenterToggle
+map <leader>cs <plug>NERDCommenterSexy
 let g:NERDTrimTrailingWhitespace = 1
 let g:NERDCommentEmptyLines = 1
 let g:NERDSpaceDelims=1
@@ -51,7 +53,7 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 
 " clang-format ##################################################
 let g:clang_format#detect_style_file = 1
-let g:clang_format#auto_format = 1
+" let g:clang_format#auto_format = 1
 
 " airline  ######################################################
 let g:airline_theme = 'forest_night'
@@ -87,10 +89,24 @@ nmap <silent> ]g <Plug>(coc-diagnostic-next)
 
 " fzf ###########################################################
 set rtp+=/usr/local/opt/fzf
-if has("nvim")
-  let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6 } }
-endif
 
 " floaterm ###########################################################
 let g:floaterm_width=0.8
 let g:floaterm_height=0.8
+
+" python-mode ##################################################
+let g:pymode_virtualenv = 1
+let g:pymode_lint_ignore = ["W","E501"]
+let g:pymode_options_colorcolumn = 0
+let g:pymode_indent = 1
+let g:pymode_rope_completion = 0
+
+"youcompleteme #######################################################
+let pipenv_venv_path = system('pipenv --venv')
+if v:shell_error == 0
+  let venv_path = substitute(pipenv_venv_path, '\n', '', '')
+  let g:ycm_python_binary_path = (venv_path . '/bin/python')
+else
+  let g:ycm_python_binary_path = 'python'
+endif
+let g:ycm_confirm_extra_conf = 0

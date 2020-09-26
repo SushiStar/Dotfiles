@@ -71,8 +71,7 @@ export HISTSIZE=10000
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
          zsh-autosuggestions
-		 history-substring-search
-         vi-mode)
+         history-substring-search)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -107,12 +106,12 @@ source $ZSH/oh-my-zsh.sh
 #export DEFAULT_USER=myusername
 prompt_context() {}
 
-# from bash
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib/
-export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
-export PATH="/usr/local/opt/llvm/bin:$PATH"
-export LDFLAGS="-L/usr/local/opt/llvm/lib"
-export CPPFLAGS="-I/usr/local/opt/llvm/include"
+# export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
+# export PATH="/usr/local/opt/llvm/bin:$PATH"
+export LD_LIBRARY_PATH=/usr/lib/x86_64-linux-gnu/:$LD_LIBRARY_PATH
+export LDFLAGS=-L/usr/lib/llvm-10/lib/:$LDFLAGS
+export LDFLAGS=-L/usr/lib/x86_64-linux-gnu/:$LDFLAGS
+export CPPFLAGS="-I/usr/lib/llvm-10/include"
 
 alias ll='ls -alF'
 alias la='ls -A'
@@ -121,6 +120,9 @@ alias llt='ls -lt'
 alias lc='ls -l | wc -l'
 alias g++='g++ --std=c++11'
 alias vim='nvim'
+alias grep='grep --color=auto'
+alias gitlog='git log --graph --decorate --oneline'
+
 
 function cd {
     builtin cd "$@" && ls
@@ -132,18 +134,16 @@ function acp() {
   git push
 }
 
-#bindkey '"\e[B": history-search-forward'
-#bindkey '"\e[A": history-search-backward'
-# bindkey "^[[A" history-beginning-search-backward
-# bindkey "^[[B" history-beginning-search-forward
+
 bindkey "^P" history-beginning-search-backward
 bindkey "^N" history-beginning-search-forward
 bindkey '^ ' autosuggest-accept
-
+bindkey \^U backward-kill-line
 
 source ~/.fzf.zsh
 # export FZF_DEFAULT_OPTS='--preview "head -40 {}"'
 export FZF_DEFAULT_COMMAND='rg --files'
 export FZF_CTRL_T_COMMAND='$FZF_DEFAULT_COMMAND'
 
-# ROS
+source ~/.bash_dexterity
+source ~/.gcp.env

@@ -1,5 +1,6 @@
 "customized configuration #############################################
 filetype plugin on
+filetype indent on
 
 set backspace=2
 set tabstop=2
@@ -11,6 +12,7 @@ set splitbelow
 set incsearch
 set noshowmode
 set nohlsearch
+set autoindent
 
 "numbers
 set number

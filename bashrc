@@ -113,7 +113,10 @@ if ! shopt -oq posix; then
   fi
 fi
 
-# Customize
+############################################ Customize ###############################################################
+############################################ Customize ###############################################################
+############################################ Customize ###############################################################
+############################################ Customize ###############################################################
 alias g++='g++ --std=c++11'
 alias vim='nvim'
 
@@ -121,20 +124,17 @@ function cd {
     builtin cd "$@" && ls 
     }
 
-#customize
 bind '"\e[B": history-search-forward'
 bind '"\e[A": history-search-backward'
 
 # run from waynedu directory
-export PS1="\[\033[0;94m\]\W > \[\033[0;97m\]"
-export CLICOLOR=1
-export LSCOLORS=CxFxCxDxBxegedabagacedexport PS1="\W > "
-
-
+# export PS1="\[\033[0;94m\]\W > \[\033[0;97m\]"
+# export CLICOLOR=1
+# export LSCOLORS=CxFxCxDxBxegedabagacedexport PS1="\W > "
+#
 # When the shell exits, append to the history file 
 #  instead of overwriting it
 shopt -s histappend
 
-#source /opt/ros/indigo/setup.bash
-#source ~/ws/devel/setup.bash
-source ~/mra_ws/devel/setup.bash
+source ~/.bash_dexterity
+source ~/.gcp.env
