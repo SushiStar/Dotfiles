@@ -19,7 +19,7 @@ Plug 'vim-airline/vim-airline'
 
 Plug 'octol/vim-cpp-enhanced-highlight'
 
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'neoclide/coc.nvim', {'branch': 'release', 'for': ['json', 'cpp', 'vim', 'yaml', 'tex', 'md']}
 
 Plug 'voldikss/vim-floaterm'
 
@@ -49,7 +49,7 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 
 " clang-format ##################################################
 let g:clang_format#detect_style_file = 1
-let g:clang_format#auto_format = 1
+" let g:clang_format#auto_format = 1
 
 " airline  ######################################################
 let g:airline_theme = 'forest_night'
