@@ -45,7 +45,7 @@ export HISTSIZE=10000
 plugins=(
          zsh-autosuggestions
 		 history-substring-search
-         vi-mode)
+         )
 
 source $ZSH/oh-my-zsh.sh
 # User configuration
