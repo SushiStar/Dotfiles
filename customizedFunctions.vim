@@ -33,6 +33,7 @@ nnoremap <silent> <C-j> :winc j<Enter>
 nnoremap <silent> <leader>a :set invnumber invrelativenumber <CR>
 nnoremap <silent> <Leader>f :Files<CR>
 nnoremap <silent> <Leader>t :FloatermToggle<CR>
+inoremap <C-Space> <Esc>
 tnoremap <Esc> <C-\><C-n>
 
 set ignorecase
