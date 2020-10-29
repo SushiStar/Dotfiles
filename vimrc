@@ -21,7 +21,8 @@ Plug 'vim-airline/vim-airline'
 
 Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
 Plug 'valloric/youcompleteme', {'for': 'python'}
-Plug 'neoclide/coc.nvim', {'branch': 'release', 'for': ['json', 'cpp', 'vim', 'yaml', 'tex', 'cc', 'h']}
+Plug 'neoclide/coc.nvim', {'branch': 'release', 'for': ['json', 'cpp',
+            \'vim', 'yaml', 'tex', 'cc', 'h', 'hpp', 'cmake']}
 
 Plug 'voldikss/vim-floaterm'
 
