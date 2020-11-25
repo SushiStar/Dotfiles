@@ -2,8 +2,11 @@
 filetype plugin on
 filetype indent on
 
-set wrapmargin=1
+" set linebreak
 set textwidth=90
+set wrapmargin=2
+set formatoptions-=t
+set showbreak=+++
 set colorcolumn=90
 set backspace=2
 set tabstop=4
@@ -12,6 +15,7 @@ set expandtab
 set whichwrap+=h,l
 set splitbelow
 
+set ignorecase
 set smartcase
 set incsearch
 set noshowmode
@@ -41,7 +45,5 @@ nnoremap <silent> <Leader>f :Files<CR>
 nnoremap <silent> <Leader>t :FloatermToggle<CR>
 tnoremap <Esc> <C-\><C-n>
 
-set ignorecase
 set autoread
 set timeoutlen=1000 ttimeoutlen=10
-set linebreak
