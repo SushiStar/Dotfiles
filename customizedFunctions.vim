@@ -2,6 +2,9 @@
 filetype plugin on
 filetype indent on
 
+set wrapmargin=1
+set textwidth=90
+set colorcolumn=90
 set backspace=2
 set tabstop=4
 set shiftwidth=4
