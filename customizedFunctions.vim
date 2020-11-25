@@ -12,6 +12,7 @@ set expandtab
 set whichwrap+=h,l
 set splitbelow
 
+set smartcase
 set incsearch
 set noshowmode
 set nohlsearch
