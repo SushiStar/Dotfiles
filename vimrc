@@ -13,7 +13,8 @@ Plug 'scrooloose/nerdcommenter'
 
 Plug 'rhysd/vim-clang-format'
 
-Plug 'sainnhe/forest-night'
+" Plug 'sainnhe/forest-night'
+Plug 'sainnhe/gruvbox-material'
 
 Plug 'vim-airline/vim-airline'
 
@@ -52,8 +53,8 @@ let g:clang_format#detect_style_file = 1
 " let g:clang_format#auto_format = 1
 
 " airline  ######################################################
-let g:airline_theme = 'forest_night'
-let g:airline_powerline_fonts = 0
+" let g:airline_theme = 'gruvbox'
+let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#show_buffers = 0
 let g:airline#extensions#tabline#show_tab_nr = 0
@@ -65,9 +66,9 @@ let g:airline#extensions#coc#enabled = 0
 " color #########################################################
 set termguicolors
 set background=dark
-let g:forest_night_enable_italic = 1
-let g:NVIM_TUI_ENABLE_CURSOR_SHAPE=1
-colorscheme forest-night
+colorscheme gruvbox-material
+" let g:forest_night_enable_italic = 1
+" let g:NVIM_TUI_ENABLE_CURSOR_SHAPE=1
 
 " enhanced cpp highlight ########################################
 let g:cpp_class_scope_highlight = 1
