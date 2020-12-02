@@ -1,16 +1,26 @@
 "customized configuration #############################################
 filetype plugin on
+filetype indent on
 
+" set linebreak
+set textwidth=90
+set wrapmargin=2
+set formatoptions-=t
+set showbreak=+++
+set colorcolumn=90
 set backspace=2
-set tabstop=2
-set shiftwidth=2
+set tabstop=4
+set shiftwidth=4
 set expandtab
 set whichwrap+=h,l
 set splitbelow
 
+set ignorecase
+set smartcase
 set incsearch
 set noshowmode
 set nohlsearch
+set autoindent
 
 "numbers
 set number
@@ -33,10 +43,7 @@ nnoremap <silent> <C-j> :winc j<Enter>
 nnoremap <silent> <leader>a :set invnumber invrelativenumber <CR>
 nnoremap <silent> <Leader>f :Files<CR>
 nnoremap <silent> <Leader>t :FloatermToggle<CR>
-inoremap <C-Space> <Esc>
 tnoremap <Esc> <C-\><C-n>
 
-set ignorecase
 set autoread
 set timeoutlen=1000 ttimeoutlen=10
-set linebreak
