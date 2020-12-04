@@ -5,8 +5,8 @@ filetype indent on
 " set linebreak
 set textwidth=90
 set wrapmargin=2
-set formatoptions-=t
-set showbreak=+++
+" set formatoptions-=t
+" set showbreak=+++
 set colorcolumn=90
 set backspace=2
 set tabstop=4
