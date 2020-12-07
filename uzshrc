@@ -111,7 +111,7 @@ prompt_context() {}
 export LD_LIBRARY_PATH=/usr/lib/x86_64-linux-gnu/:$LD_LIBRARY_PATH
 export LDFLAGS=-L/usr/lib/llvm-10/lib/:$LDFLAGS
 export LDFLAGS=-L/usr/lib/x86_64-linux-gnu/:$LDFLAGS
-export CPPFLAGS="-I/usr/lib/llvm-10/include"
+export CPPFLAGS="-I/usr/lib/llvm-10/include -I/usr/include/"
 
 alias ll='ls -alF'
 alias la='ls -A'
