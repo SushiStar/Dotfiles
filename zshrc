@@ -4,13 +4,14 @@ export TERM="xterm-256color"
 
 # Path to your oh-my-zsh installation.
 export ZSH="/Users/waynedu/.oh-my-zsh/"
+ZSH_DISABLE_COMPFIX=true
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-# ZSH_THEME="gitster"
-ZSH_THEME="chill"
+ZSH_THEME="gitster"
+# ZSH_THEME="bullet-train"
 
 export HISTSIZE=10000
 
@@ -72,9 +73,9 @@ bindkey '^ ' autosuggest-accept
 # from bash
 export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
 export PATH="/usr/local/opt/llvm/bin:$PATH"
-export PATH="/Library/TeX/texbin/:$PATH"
 export LDFLAGS="-L/usr/local/opt/llvm/lib"
 export CXXFLAGS="-I/usr/local/opt/llvm/include/c++/v1"
+export PYENV_ROOT="/Users/waynedu/.pyenv"
 
 alias vi=/usr/bin/vim
 alias vim=/usr/local/bin/nvim
