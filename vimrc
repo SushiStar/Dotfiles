@@ -19,8 +19,6 @@ Plug 'sainnhe/forest-night'
 
 Plug 'vim-airline/vim-airline'
 
-Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
-Plug 'valloric/youcompleteme', {'for': 'python'}
 Plug 'neoclide/coc.nvim', {'branch': 'release', 'for': ['json', 'cpp',
             \'vim', 'yaml', 'tex', 'cc', 'h', 'hpp', 'cmake']}
 
@@ -94,28 +92,3 @@ let g:fzf_layout = {'down': '~35%'}
 let g:floaterm_width=0.8
 let g:floaterm_height=0.8
 
-" python-mode ##################################################
-let g:pymode_virtualenv = 1
-let g:pymode_lint_ignore = ["W","E501"]
-let g:pymode_options_colorcolumn = 0
-let g:pymode_indent = 1
-let g:pymode_rope_completion = 0
-let g:pymode_lint_cwindow = 0
-
-"youcompleteme #######################################################
-let g:ycm_filetype_whitelist = {'python':1, 'cpp':0, 'cc':0, 'h':0}
-let pipenv_venv_path = system('pipenv --venv')
-if v:shell_error == 0
-  let venv_path = substitute(pipenv_venv_path, '\n', '', '')
-  let g:ycm_python_binary_path = (venv_path . '/bin/python')
-else
-  let g:ycm_python_binary_path = 'python'
-endif
-let g:ycm_confirm_extra_conf = 0
-let g:ycm_complete_in_comments=1
-let g:ycm_autoclose_preview_window_after_insertion = 1
-let g:ycm_autoclose_preview_window_after_completion = 1
-let g:ycm_seed_identifiers_with_syntax=1
-let g:ycm_show_diagnostics_ui = 0
-let g:ycm_enable_diagnostic_signs = 0
-let g:ycm_enable_diagnostic_highlighting = 0
