@@ -75,17 +75,17 @@ scrolling:
 font:
   # Normal (roman) font face
   normal:
-    family: Monego
+    family: Menlo
     style: Regular
   bold:
-    family: Monego 
+    family: Menlo 
     style: Bold
   italic:
-    family: Monego
+    family: Menlo
     style: Italic
 
   bold_italic:
-    family: Monaco
+    family: Menlo
     style: Bold Italic
 
   # Point size
@@ -95,14 +95,14 @@ font:
   # as modifying the line spacing, and `offset.x` as modifying the letter spacing.
   offset:
     x: 0
-    y: 0
+    y: 2
 
   # Glyph offset determines the locations of the glyphs within their cells with
   # the default being at the bottom. Increasing `x` moves the glyph to the right,
   # increasing `y` moves the glyph upwards.
   glyph_offset:
    x: 0
-   y: 2
+   y: 0
 
 # If `true`, bold text is drawn using the bright color variants.
 #draw_bold_text_with_bright_colors: true
