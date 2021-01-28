@@ -4,8 +4,8 @@ call plug#begin('~/.vim/plugged')
 Plug 'voldikss/vim-floaterm'
 Plug 'majutsushi/tagbar'
 Plug 'scrooloose/nerdtree'
+Plug 'valloric/youcompleteme'
 Plug 'rhysd/vim-clang-format'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-surround'
@@ -41,7 +41,7 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 
 " clang-format ##################################################
 let g:clang_format#detect_style_file = 1
-" let g:clang_format#auto_format = 1
+let g:clang_format#auto_format = 1
 
 " airline  ######################################################
 let g:airline_theme = 'forest_night'
@@ -65,15 +65,6 @@ let g:NVIM_TUI_ENABLE_CURSOR_SHAPE=1
 let g:cpp_class_scope_highlight = 1
 let g:cpp_class_decl_highlight = 1
 let g:cpp_concepts_highlight = 1
-
-" coc ###########################################################
-set hidden
-set nobackup
-set updatetime=300
-inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-nmap <silent> [g <Plug>(coc-diagnostic-prev)
-nmap <silent> ]g <Plug>(coc-diagnostic-next)
 
 " floaterm ###########################################################
 let g:floaterm_width=0.8
