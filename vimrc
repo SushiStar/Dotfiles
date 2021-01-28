@@ -2,6 +2,7 @@
 call plug#begin('~/.vim/plugged')
 
 Plug 'voldikss/vim-floaterm'
+Plug 'ctrlpvim/ctrlp.vim'
 Plug 'majutsushi/tagbar'
 Plug 'scrooloose/nerdtree'
 Plug 'valloric/youcompleteme'
