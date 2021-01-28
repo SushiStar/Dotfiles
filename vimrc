@@ -5,8 +5,6 @@ Plug 'jiangmiao/auto-pairs'
 
 Plug 'tpope/vim-surround'
 
-Plug 'junegunn/fzf.vim'
-
 Plug 'scrooloose/nerdtree'
 
 Plug 'scrooloose/nerdcommenter'
@@ -82,12 +80,6 @@ inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 nmap <silent> [g <Plug>(coc-diagnostic-prev)
 nmap <silent> ]g <Plug>(coc-diagnostic-next)
-
-" fzf ###########################################################
-set rtp+=/usr/local/opt/fzf
-if has("nvim")
-  let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6 } }
-endif
 
 " floaterm ###########################################################
 let g:floaterm_width=0.8
