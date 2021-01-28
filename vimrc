@@ -5,6 +5,8 @@ Plug 'jiangmiao/auto-pairs'
 
 Plug 'tpope/vim-surround'
 
+Plug 'majutsushi/tagbar'
+
 Plug 'scrooloose/nerdtree'
 
 Plug 'scrooloose/nerdcommenter'
@@ -14,7 +16,6 @@ Plug 'rhysd/vim-clang-format'
 Plug 'sainnhe/forest-night'
 
 Plug 'vim-airline/vim-airline'
-
 Plug 'octol/vim-cpp-enhanced-highlight'
 
 Plug 'neoclide/coc.nvim', {'branch': 'release', 'for': ['json', 'cpp', 'vim', 'yaml', 'tex', 'md']}
