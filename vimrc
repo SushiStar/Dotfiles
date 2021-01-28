@@ -1,26 +1,19 @@
 "########################### plugins ################################
 call plug#begin('~/.vim/plugged')
 
-Plug 'jiangmiao/auto-pairs'
-
-Plug 'tpope/vim-surround'
-
+Plug 'voldikss/vim-floaterm'
 Plug 'majutsushi/tagbar'
-
 Plug 'scrooloose/nerdtree'
+Plug 'rhysd/vim-clang-format'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
+Plug 'jiangmiao/auto-pairs'
+Plug 'tpope/vim-surround'
 Plug 'scrooloose/nerdcommenter'
 
-Plug 'rhysd/vim-clang-format'
-
 Plug 'sainnhe/forest-night'
-
 Plug 'vim-airline/vim-airline'
 Plug 'octol/vim-cpp-enhanced-highlight'
-
-Plug 'neoclide/coc.nvim', {'branch': 'release', 'for': ['json', 'cpp', 'vim', 'yaml', 'tex', 'md']}
-
-Plug 'voldikss/vim-floaterm'
 
 call plug#end()
 
