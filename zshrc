@@ -73,6 +73,7 @@ bindkey '^ ' autosuggest-accept
 # from bash
 export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
 export PATH="/usr/local/opt/llvm/bin:$PATH"
+export PATH="/Library/TeX/texbin/:$PATH"
 export LDFLAGS="-L/usr/local/opt/llvm/lib"
 export CXXFLAGS="-I/usr/local/opt/llvm/include/c++/v1"
 export PYENV_ROOT="/Users/waynedu/.pyenv"

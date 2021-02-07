@@ -1,27 +1,20 @@
 "########################### plugins ################################
 call plug#begin('~/.vim/plugged')
 
-Plug 'jiangmiao/auto-pairs'
-
-Plug 'tpope/vim-surround'
-
-Plug 'junegunn/fzf.vim'
-
+Plug 'voldikss/vim-floaterm'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'majutsushi/tagbar'
 Plug 'scrooloose/nerdtree'
-
-Plug 'scrooloose/nerdcommenter'
-
+Plug 'valloric/youcompleteme'
 Plug 'rhysd/vim-clang-format'
 
+Plug 'jiangmiao/auto-pairs'
+Plug 'tpope/vim-surround'
+Plug 'scrooloose/nerdcommenter'
+
 Plug 'sainnhe/forest-night'
-
 Plug 'vim-airline/vim-airline'
-
 Plug 'octol/vim-cpp-enhanced-highlight'
-
-Plug 'neoclide/coc.nvim', {'branch': 'release', 'for': ['json', 'cpp', 'vim', 'yaml', 'tex', 'md']}
-
-Plug 'voldikss/vim-floaterm'
 
 call plug#end()
 
@@ -49,7 +42,7 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 
 " clang-format ##################################################
 let g:clang_format#detect_style_file = 1
-" let g:clang_format#auto_format = 1
+let g:clang_format#auto_format = 1
 
 " airline  ######################################################
 let g:airline_theme = 'forest_night'
@@ -73,21 +66,6 @@ let g:NVIM_TUI_ENABLE_CURSOR_SHAPE=1
 let g:cpp_class_scope_highlight = 1
 let g:cpp_class_decl_highlight = 1
 let g:cpp_concepts_highlight = 1
-
-" coc ###########################################################
-set hidden
-set nobackup
-set updatetime=300
-inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-nmap <silent> [g <Plug>(coc-diagnostic-prev)
-nmap <silent> ]g <Plug>(coc-diagnostic-next)
-
-" fzf ###########################################################
-set rtp+=/usr/local/opt/fzf
-if has("nvim")
-  let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6 } }
-endif
 
 " floaterm ###########################################################
 let g:floaterm_width=0.8
