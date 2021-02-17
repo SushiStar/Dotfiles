@@ -2,27 +2,21 @@
 call plug#begin('~/.vim/plugged')
 
 Plug 'jiangmiao/auto-pairs'
-
 Plug 'tpope/vim-surround'
-
-Plug 'junegunn/fzf', { 'dir': '~/.fzf' }
-Plug 'junegunn/fzf.vim'
-
 Plug 'scrooloose/nerdtree'
-
+Plug 'ctrlpvim/ctrlp.vim'
 Plug 'scrooloose/nerdcommenter'
 
 Plug 'rhysd/vim-clang-format', {'for': 'cpp'}
 Plug 'octol/vim-cpp-enhanced-highlight', {'for':'cpp'}
+Plug 'valloric/youcompleteme'
 
-Plug 'sainnhe/forest-night'
+" Plug 'sainnhe/forest-night'
+Plug 'sainnhe/gruvbox-material'
 
 Plug 'vim-airline/vim-airline'
-
-Plug 'neoclide/coc.nvim', {'branch': 'release', 'for': ['json', 'cpp',
-            \'vim', 'yaml', 'tex', 'cc', 'h', 'hpp', 'cmake']}
-
 Plug 'voldikss/vim-floaterm'
+
 
 call plug#end()
 
@@ -50,43 +44,32 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 
 " clang-format ##################################################
 let g:clang_format#detect_style_file = 1
-" let g:clang_format#auto_format = 1
+let g:clang_format#auto_format = 1
+
+
+" youcompleteme ##################################################
+let g:ycm_global_ycm_extra_conf = "~/.ycm_extra_conf.py"
 
 " airline  ######################################################
-let g:airline_theme = 'forest_night'
-let g:airline_powerline_fonts = 1
+let g:airline_theme = 'gruvbox_material'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#show_buffers = 0
 let g:airline#extensions#tabline#show_tab_nr = 0
 let g:airline#extensions#tabline#tabs_label = ''
 let g:airline#extensions#tabline#show_splits = 0
 let g:airline#extensions#nerdtree_status = 0
-let g:airline#extensions#coc#enabled = 0
 
 " color #########################################################
 set termguicolors
 set background=dark
 let g:forest_night_enable_italic = 1
 let g:NVIM_TUI_ENABLE_CURSOR_SHAPE=1
-colorscheme forest-night
+colorscheme gruvbox-material
 
 " enhanced cpp highlight ########################################
 let g:cpp_class_scope_highlight = 1
 let g:cpp_class_decl_highlight = 1
 let g:cpp_concepts_highlight = 1
-
-" coc ###########################################################
-set hidden
-set nobackup
-set updatetime=300
-inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-nmap <silent> [g <Plug>(coc-diagnostic-prev)
-nmap <silent> ]g <Plug>(coc-diagnostic-next)
-
-" fzf ###########################################################
-set rtp+=/usr/local/opt/fzf
-let g:fzf_layout = {'down': '~35%'}
 
 " floaterm ###########################################################
 let g:floaterm_width=0.8
