@@ -7,6 +7,7 @@ Plug 'scrooloose/nerdtree'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'scrooloose/nerdcommenter'
 
+Plug 'majutsushi/tagbar'
 Plug 'rhysd/vim-clang-format', {'for': 'cpp'}
 Plug 'octol/vim-cpp-enhanced-highlight', {'for':'cpp'}
 Plug 'valloric/youcompleteme'
@@ -49,6 +50,9 @@ let g:clang_format#auto_format = 1
 
 " youcompleteme ##################################################
 let g:ycm_global_ycm_extra_conf = "~/.ycm_extra_conf.py"
+let g:ycm_confirm_extra_conf = 0
+let g:airline#extensions#tagbar#enabled = 1
+let g:ycm_min_num_of_chars_for_completion = 0
 
 " airline  ######################################################
 let g:airline_theme = 'gruvbox_material'
