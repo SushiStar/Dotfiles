@@ -1,13 +1,14 @@
 "########################### plugins ################################
 call plug#begin('~/.vim/plugged')
 
+Plug 'valloric/youcompleteme'
+Plug 'rhysd/vim-clang-format'
+Plug 'lervag/vimtex'
+
 Plug 'voldikss/vim-floaterm'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'majutsushi/tagbar'
 Plug 'scrooloose/nerdtree'
-Plug 'valloric/youcompleteme'
-Plug 'rhysd/vim-clang-format'
-
 Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-surround'
 Plug 'scrooloose/nerdcommenter'
