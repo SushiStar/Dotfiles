@@ -10,7 +10,7 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'majutsushi/tagbar'
 Plug 'rhysd/vim-clang-format', {'for': 'cpp'}
 Plug 'octol/vim-cpp-enhanced-highlight', {'for':'cpp'}
-Plug 'valloric/youcompleteme'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " Plug 'sainnhe/forest-night'
 Plug 'sainnhe/gruvbox-material'

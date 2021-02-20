@@ -141,9 +141,12 @@ bindkey '^ ' autosuggest-accept
 bindkey \^U backward-kill-line
 
 source ~/.fzf.zsh
-# export FZF_DEFAULT_OPTS='--preview "head -40 {}"'
 export FZF_DEFAULT_COMMAND='rg --files'
 export FZF_CTRL_T_COMMAND='$FZF_DEFAULT_COMMAND'
 
 source ~/.bash_dexterity
 source ~/.gcp.env
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
