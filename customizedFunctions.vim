@@ -41,7 +41,6 @@ nnoremap <silent> <C-h> :winc h<Enter>
 nnoremap <silent> <C-k> :winc k<Enter>
 nnoremap <silent> <C-j> :winc j<Enter>
 nnoremap <silent> <leader>a :set invnumber invrelativenumber <CR>
-nnoremap <silent> <Leader>f :Files<CR>
 nnoremap <silent> <Leader>t :FloatermToggle<CR>
 tnoremap <Esc> <C-\><C-n>
 

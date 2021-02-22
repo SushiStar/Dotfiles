@@ -47,21 +47,16 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 let g:clang_format#detect_style_file = 1
 let g:clang_format#auto_format = 1
 
-
-" youcompleteme ##################################################
-let g:ycm_global_ycm_extra_conf = "~/.ycm_extra_conf.py"
-let g:ycm_confirm_extra_conf = 0
-let g:airline#extensions#tagbar#enabled = 1
-let g:ycm_min_num_of_chars_for_completion = 0
-
 " airline  ######################################################
 let g:airline_theme = 'gruvbox_material'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#show_buffers = 0
-let g:airline#extensions#tabline#show_tab_nr = 0
+let g:airline#extensions#tabline#show_tab_nr = 1
 let g:airline#extensions#tabline#tabs_label = ''
-let g:airline#extensions#tabline#show_splits = 0
-let g:airline#extensions#nerdtree_status = 0
+let g:airline#extensions#tabline#show_splits = 1
+let g:airline#extensions#nerdtree_status = 1
+let g:airline#extensions#tagbar#enabled = 1
+let g:airline#extensions#coc#enabled = 1
 
 " color #########################################################
 set termguicolors
@@ -74,6 +69,17 @@ colorscheme gruvbox-material
 let g:cpp_class_scope_highlight = 1
 let g:cpp_class_decl_highlight = 1
 let g:cpp_concepts_highlight = 1
+
+
+" coc ###########################################################
+set hidden
+set nobackup
+set updatetime=300
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
+nnoremap <silent> <Leader>f :call CocAction('format')<CR>
 
 " floaterm ###########################################################
 let g:floaterm_width=0.8
