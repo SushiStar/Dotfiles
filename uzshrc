@@ -113,6 +113,7 @@ export LLVM_INSTALL_DIR="/usr/lib/llvm-10/"
 export LD_LIBRARY_PATH=/usr/lib/x86_64-linux-gnu/:$LD_LIBRARY_PATH
 export LDFLAGS=-L/usr/lib/llvm-10/lib/:$LDFLAGS
 export LDFLAGS=-L/usr/lib/x86_64-linux-gnu/:$LDFLAGS
+export LDFLAGS=-L/opt/dex/lib/:$LDFLAGS
 export CPPFLAGS="-I/usr/lib/llvm-10/include -I/usr/include/"
 
 alias ll='ls -alF'
@@ -143,8 +144,8 @@ bindkey '^ ' autosuggest-accept
 bindkey \^U backward-kill-line
 
 source ~/.fzf.zsh
-export FZF_DEFAULT_COMMAND='rg --files'
-export FZF_CTRL_T_COMMAND='$FZF_DEFAULT_COMMAND'
+export FZF_DEFAULT_COMMAND='rg --files --hidden  -g "!{node_modules/*,.git/*}"'
+export FZF_CTRL_T_COMMAND='rg --files --hidden  -g "!{node_modules/*,.git/*}"'
 
 source ~/.bash_dexterity
 source ~/.gcp.env
