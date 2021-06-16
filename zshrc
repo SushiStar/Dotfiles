@@ -3,7 +3,7 @@
 export TERM="xterm-256color"
 
 # Path to your oh-my-zsh installation.
-export ZSH="/Users/waynedu/.oh-my-zsh/"
+export ZSH="/home/$(whoami)/.oh-my-zsh/"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -42,10 +42,9 @@ export HISTSIZE=10000
 # under VCS as dirty. This makes repository status check for large repositories
 # much, much faster.
 # DISABLE_UNTRACKED_FILES_DIRTY="true"
-plugins=(
-         zsh-autosuggestions
-		 history-substring-search
-         vi-mode)
+plugins=(zsh-autosuggestions
+	 history-substring-search
+         )
 
 source $ZSH/oh-my-zsh.sh
 # User configuration
@@ -77,7 +76,7 @@ export LDFLAGS="-L/usr/local/opt/llvm/lib"
 export CXXFLAGS="-I/usr/local/opt/llvm/include"
 
 alias vi=/usr/bin/vim
-alias vim=/usr/local/bin/nvim
+alias vim=/usr/bin/nvim
 alias ctags=/usr/local/bin/ctags
 alias ll='ls -alF'
 alias la='ls -A'
@@ -104,4 +103,6 @@ bindkey '^ ' autosuggest-accept
 # for fzf
 export FZF_DEFAULT_COMMAND='rg --files'
 export FZF_CTRL_T_COMMAND='$FZF_DEFAULT_COMMAND'
-source ~/.fzf.zsh
+#source ~/.fzf.zsh
+
+export PATH="$HOME/.poetry/bin:$PATH"
