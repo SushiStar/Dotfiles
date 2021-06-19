@@ -5,6 +5,7 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-surround'
 Plug 'airblade/vim-gitgutter'
 Plug 'scrooloose/nerdtree'
+Plug 'junegunn/fzf.vim'
 Plug 'scrooloose/nerdcommenter'
 
 Plug 'majutsushi/tagbar'
@@ -31,6 +32,12 @@ let g:NERDTrimTrailingWhitespace = 1
 let g:NERDCommentEmptyLines = 1
 let g:NERDSpaceDelims=1
 
+" GitGutter #####################################################
+nmap ]p <Plug>(GitGutterPreviewHunk)
+
+" FZF ###########################################################
+set rtp+=~/.fzf
+
 " NerdTree config ###############################################
 map <C-n> :NERDTreeToggle<CR>
 let g:NERDTreeWinSize=41
@@ -42,6 +49,10 @@ autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | exe 'cd '.argv()[0] | endif
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+" close vim automatically when nerdtree is the last window
+autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
+" have the same nerdtree on every tab automatically
+autocmd BufWinEnter * silent NERDTreeMirror
 
 " clang-format ##################################################
 let g:clang_format#detect_style_file = 1
