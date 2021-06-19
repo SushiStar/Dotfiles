@@ -64,6 +64,7 @@ fi
 # remove user@hostname
 # export DEFAULT_USER=$USER
 
+bindkey "^U" backward-kill-line
 bindkey "^P" history-beginning-search-backward
 bindkey "^N" history-beginning-search-forward
 bindkey '^ ' autosuggest-accept
@@ -103,6 +104,6 @@ bindkey '^ ' autosuggest-accept
 # for fzf
 export FZF_DEFAULT_COMMAND='rg --files'
 export FZF_CTRL_T_COMMAND='$FZF_DEFAULT_COMMAND'
-#source ~/.fzf.zsh
+source ~/.fzf.zsh
 
 export PATH="$HOME/.poetry/bin:$PATH"
