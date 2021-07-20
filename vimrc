@@ -5,14 +5,15 @@ Plug 'voldikss/vim-floaterm'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'majutsushi/tagbar'
 Plug 'scrooloose/nerdtree'
-Plug 'valloric/youcompleteme'
 Plug 'rhysd/vim-clang-format'
 
 Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-surround'
 Plug 'scrooloose/nerdcommenter'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
-Plug 'sainnhe/forest-night'
+" Plug 'sainnhe/forest-night'
+Plug 'sainnhe/gruvbox-material'
 Plug 'vim-airline/vim-airline'
 Plug 'octol/vim-cpp-enhanced-highlight'
 
@@ -45,7 +46,7 @@ let g:clang_format#detect_style_file = 1
 let g:clang_format#auto_format = 1
 
 " airline  ######################################################
-let g:airline_theme = 'forest_night'
+let g:airline_theme = 'gruvbox_material'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#show_buffers = 0
@@ -53,12 +54,12 @@ let g:airline#extensions#tabline#show_tab_nr = 0
 let g:airline#extensions#tabline#tabs_label = ''
 let g:airline#extensions#tabline#show_splits = 0
 let g:airline#extensions#nerdtree_status = 0
-let g:airline#extensions#coc#enabled = 0
+let g:airline#extensions#coc#enabled = 1
 
 " color #########################################################
 set termguicolors
 set background=dark
-colorscheme forest-night
+colorscheme gruvbox-material
 let g:forest_night_enable_italic = 1
 let g:NVIM_TUI_ENABLE_CURSOR_SHAPE=1
 
