@@ -109,7 +109,7 @@ prompt_context() {}
 
 # from bash
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib/
-export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
+export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/go/bin"
 export PATH="/usr/local/opt/llvm/bin:$PATH"
 export LDFLAGS="-L/usr/local/opt/llvm/lib"
 export CPPFLAGS="-I/usr/local/opt/llvm/include"
@@ -147,3 +147,5 @@ export FZF_DEFAULT_COMMAND='rg --files'
 export FZF_CTRL_T_COMMAND='$FZF_DEFAULT_COMMAND'
 
 # ROS
+
+export PATH="$HOME/.poetry/bin:$PATH"
