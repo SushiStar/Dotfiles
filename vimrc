@@ -13,11 +13,10 @@ Plug 'rhysd/vim-clang-format', {'for': 'cpp'}
 Plug 'octol/vim-cpp-enhanced-highlight', {'for':'cpp'}
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
-" Plug 'sainnhe/forest-night'
+" Plug 'sainnhe/vim-color-forest-night'
 Plug 'sainnhe/gruvbox-material'
 
 Plug 'vim-airline/vim-airline'
-Plug 'voldikss/vim-floaterm'
 
 
 call plug#end()
@@ -72,7 +71,6 @@ let g:airline#extensions#coc#enabled = 1
 " color #########################################################
 set termguicolors
 set background=dark
-let g:forest_night_enable_italic = 1
 let g:NVIM_TUI_ENABLE_CURSOR_SHAPE=1
 colorscheme gruvbox-material
 
@@ -91,8 +89,4 @@ inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 nmap <silent> [g <Plug>(coc-diagnostic-prev)
 nmap <silent> ]g <Plug>(coc-diagnostic-next)
 nnoremap <silent> <Leader>f :call CocAction('format')<CR>
-
-" floaterm ###########################################################
-let g:floaterm_width=0.8
-let g:floaterm_height=0.8
 
