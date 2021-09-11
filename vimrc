@@ -17,7 +17,7 @@ Plug 'sainnhe/vim-color-forest-night'
 " Plug 'sainnhe/gruvbox-material'
 
 Plug 'vim-airline/vim-airline'
-Plug 'voldikss/vim-floaterm'
+" Plug 'voldikss/vim-floaterm'
 
 
 call plug#end()
@@ -78,6 +78,7 @@ let g:NVIM_TUI_ENABLE_CURSOR_SHAPE=1
 colorscheme everforest
 let g:everforest_background = 'hard'
 let g:everforest_enable_italic = 1
+let g:everforest_cursor = 'auto'
 let g:everforest_diagnostic_text_highlight = 1
 let g:everforest_diagnostic_line_highlight = 1
 
@@ -99,6 +100,6 @@ nmap <silent> ]g <Plug>(coc-diagnostic-next)
 nnoremap <silent> <Leader>f :call CocAction('format')<CR>
 
 " floaterm ###########################################################
-let g:floaterm_width=0.8
-let g:floaterm_height=0.8
+" let g:floaterm_width=0.8
+" let g:floaterm_height=0.8
 
