@@ -11,13 +11,17 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'majutsushi/tagbar'
 Plug 'rhysd/vim-clang-format', {'for': 'cpp'}
 Plug 'octol/vim-cpp-enhanced-highlight', {'for':'cpp'}
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'vim-python/python-syntax', {'for':'python'}
+" pyright installed for coc
+
+Plug 'yggdroot/indentline'
 Plug 'sainnhe/vim-color-forest-night'
 " Plug 'sainnhe/gruvbox-material'
 
 Plug 'vim-airline/vim-airline'
-" Plug 'voldikss/vim-floaterm'
+Plug 'voldikss/vim-floaterm'
 
 
 call plug#end()
@@ -99,7 +103,14 @@ nmap <silent> [g <Plug>(coc-diagnostic-prev)
 nmap <silent> ]g <Plug>(coc-diagnostic-next)
 nnoremap <silent> <Leader>f :call CocAction('format')<CR>
 
-" floaterm ###########################################################
-" let g:floaterm_width=0.8
-" let g:floaterm_height=0.8
+" floaterm ######################################################
+let g:floaterm_width=0.8
+let g:floaterm_height=0.8
 
+"indentline #####################################################
+let g:indentLine_enabled = 1
+let g:indentLine_setConceal=0
+let g:indentLine_char_list = ['|', '¦', '┆', '┊']
+
+"python-syntax ####################################################
+let g:python_highlight_all=1
