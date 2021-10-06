@@ -1,0 +1,4 @@
+neovim ppa: sudo add-apt-repository ppa:neovim-ppa/stable
+nodejs ppa: https://github.com/nodesource/distributions/blob/master/README.md
+		in case of <sudo apt update> fail:  sudo apt install ca-certificates
+install firacode: sudo apt install fonts-firacode
