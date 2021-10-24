@@ -42,7 +42,6 @@ nnoremap <silent> <C-k> :winc k<Enter>
 nnoremap <silent> <C-j> :winc j<Enter>
 nnoremap <silent> <leader>a :set invnumber invrelativenumber <CR>
 nnoremap <silent> <Leader>t :FloatermToggle<CR>
-" tnoremap <leader>q <C-\><C-n>
 tnoremap <Esc> <C-\><C-n>
 
 set autoread
