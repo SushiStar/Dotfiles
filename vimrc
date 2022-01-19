@@ -103,6 +103,12 @@ nmap <silent> [g <Plug>(coc-diagnostic-prev)
 nmap <silent> ]g <Plug>(coc-diagnostic-next)
 nnoremap <silent> <Leader>f :call CocAction('format')<CR>
 
+" GoTo code navigation.
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
 " floaterm ######################################################
 let g:floaterm_width=0.8
 let g:floaterm_height=0.8
