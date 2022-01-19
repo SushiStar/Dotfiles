@@ -1,4 +1,5 @@
 {
+    "coc.preferences.colorSupport": true,
     "coc.preferences.formatOnSaveFiletypes": [
         "h",
         "c",
