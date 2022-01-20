@@ -8,15 +8,13 @@ Plug 'ctrlpvim/ctrlp.vim'
 Plug 'scrooloose/nerdcommenter'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
-" Plug 'sainnhe/forest-night'
-Plug 'sainnhe/gruvbox-material'
 Plug 'majutsushi/tagbar'
 Plug 'rhysd/vim-clang-format', {'for': 'cpp'}
 Plug 'octol/vim-cpp-enhanced-highlight', {'for':'cpp'}
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
-" Plug 'sainnhe/forest-night'
-Plug 'sainnhe/gruvbox-material'
+" Plug 'sainnhe/gruvbox-material'
+Plug 'sainnhe/everforest'
 
 Plug 'vim-airline/vim-airline'
 Plug 'voldikss/vim-floaterm'
@@ -50,7 +48,7 @@ let g:clang_format#detect_style_file = 1
 let g:clang_format#auto_format = 1
 
 " airline  ######################################################
-let g:airline_theme = 'gruvbox_material'
+let g:airline_theme = 'everforest'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#show_buffers = 0
@@ -66,9 +64,11 @@ let g:airline#extensions#coc#enabled = 1
 " color #########################################################
 set termguicolors
 set background=dark
-let g:forest_night_enable_italic = 1
+let g:everforest_background = 'hard'
+let g:everforest_enable_italic = 1
+let g:everforest_disable_italic_comment = 1
 let g:NVIM_TUI_ENABLE_CURSOR_SHAPE=1
-colorscheme gruvbox-material
+colorscheme everforest
 
 " enhanced cpp highlight ########################################
 let g:cpp_class_scope_highlight = 1
