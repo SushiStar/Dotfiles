@@ -7,6 +7,7 @@ Plug 'airblade/vim-gitgutter'
 Plug 'scrooloose/nerdtree'
 Plug 'junegunn/fzf.vim'
 Plug 'scrooloose/nerdcommenter'
+Plug 'vim-scripts/DoxygenToolkit.vim'
 
 Plug 'majutsushi/tagbar'
 Plug 'rhysd/vim-clang-format', {'for': 'cpp'}
