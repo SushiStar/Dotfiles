@@ -18,7 +18,7 @@ Plug 'vim-python/python-syntax', {'for':'python'}
 " pyright installed for coc
 
 Plug 'yggdroot/indentline'
-Plug 'sainnhe/forestnight'
+Plug 'sainnhe/everforest'
 " Plug 'sainnhe/gruvbox-material'
 
 Plug 'vim-airline/vim-airline'
