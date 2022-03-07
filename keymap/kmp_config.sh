@@ -1,4 +1,4 @@
-#!/bin/bash/
+#!/bin/sh
 cd /usr/share/X11/xkb/symbols/
 sudo cp ~/Dotfiles/keymap/pc pc
 sudo cp ~/Dotfiles/keymap/us us
