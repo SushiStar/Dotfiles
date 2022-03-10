@@ -125,3 +125,4 @@ let g:python_highlight_all=1
 
 "python docstring ###############################################
 let g:pydocstring_formatter = 'google'
+let g:pydocstring_enable_mapping = 0
