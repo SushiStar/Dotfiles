@@ -123,6 +123,10 @@ let g:indentLine_char_list = ['|', '¦', '┆', '┊']
 "python-syntax ##################################################
 let g:python_highlight_all=1
 
+"cpp doxygen keymapping #########################################
+autocmd FileType c,cpp,cc,h,hpp nnoremap <silent> <Leader>d :Dox<CR>
+
 "python docstring ###############################################
+" let g:pydocstring_enable_mapping = 0
 let g:pydocstring_formatter = 'google'
-let g:pydocstring_enable_mapping = 0
+autocmd FileType python nnoremap <silent> <Leader>d :Pydocstring<CR>
