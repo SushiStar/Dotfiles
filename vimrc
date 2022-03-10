@@ -7,7 +7,7 @@ Plug 'airblade/vim-gitgutter'
 Plug 'scrooloose/nerdtree'
 Plug 'junegunn/fzf.vim'
 Plug 'scrooloose/nerdcommenter'
-Plug 'vim-scripts/DoxygenToolkit.vim'
+Plug 'vim-scripts/DoxygenToolkit.vim', {'for': 'cpp'}
 
 Plug 'majutsushi/tagbar'
 Plug 'rhysd/vim-clang-format', {'for': 'cpp'}
@@ -15,6 +15,7 @@ Plug 'octol/vim-cpp-enhanced-highlight', {'for':'cpp'}
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'vim-python/python-syntax', {'for':'python'}
+Plug 'heavenshell/vim-pydocstring', { 'do': 'make install', 'for': 'python' }
 " pyright installed for coc
 
 Plug 'yggdroot/indentline'
@@ -119,5 +120,8 @@ let g:indentLine_enabled = 1
 let g:indentLine_setConceal=0
 let g:indentLine_char_list = ['|', '¦', '┆', '┊']
 
-"python-syntax ####################################################
+"python-syntax ##################################################
 let g:python_highlight_all=1
+
+"python docstring ###############################################
+let g:pydocstring_formatter = 'google'
