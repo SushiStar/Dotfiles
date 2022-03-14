@@ -46,3 +46,5 @@ tnoremap <Esc> <C-\><C-n>
 
 set autoread
 set timeoutlen=1000 ttimeoutlen=10
+
+set spell spelllang=en_us
