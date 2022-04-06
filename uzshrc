@@ -124,7 +124,7 @@ alias lc='ls -l | wc -l'
 alias g++='g++ --std=c++17'
 alias vim='nvim'
 alias grep='grep --color=auto'
-alias gitlog='git log --graph --decorate --oneline'
+alias gitlog='git log --graph --decorate --oneline --date=local'
 
 
 function cd {
