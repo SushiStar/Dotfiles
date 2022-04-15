@@ -125,6 +125,8 @@ alias g++='g++ --std=c++17'
 alias vim='nvim'
 alias grep='grep --color=auto'
 alias gitlog='git log --graph --decorate --oneline --date=local'
+alias gpl='git pull'
+alias gph='git push'
 
 
 function cd {
