@@ -8,10 +8,11 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'vim-airline/vim-airline'
 Plug 'voldikss/vim-floaterm'
 Plug 'sainnhe/gruvbox-material'
+Plug 'nvim-treesitter/nvim-treesitter'
+Plug 'tpope/vim-fugitive'
 
 Plug 'valloric/youcompleteme'
-Plug 'nvim-treesitter/nvim-treesitter'
-
+Plug 'scrooloose/syntastic'
 
 call plug#end()
 
@@ -66,7 +67,19 @@ colorscheme gruvbox-material
 " coc ###########################################################
 
 
-" floaterm ###########################################################
+" floaterm ######################################################
 let g:floaterm_width=0.8
 let g:floaterm_height=0.8
 
+
+" syntastic  ####################################################
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+"force use of compilation flags
+let g:syntastic_cpp_clang_tidy_post_args = ""
