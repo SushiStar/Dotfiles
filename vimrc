@@ -8,7 +8,7 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'vim-airline/vim-airline'
 Plug 'voldikss/vim-floaterm'
 Plug 'sainnhe/gruvbox-material'
-Plug 'nvim-treesitter/nvim-treesitter'
+Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-fugitive'
 
 Plug 'valloric/youcompleteme'
