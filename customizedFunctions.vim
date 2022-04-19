@@ -2,6 +2,8 @@
 filetype plugin on
 filetype indent on
 
+set nocompatible
+
 " set linebreak
 set textwidth=90
 set wrapmargin=2
