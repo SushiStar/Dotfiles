@@ -67,4 +67,12 @@ let g:floaterm_height=0.8
 
 
 " ale ###########################################################
+let g:airline#extensions#ale#enabled = 1
+" Only run linters named in ale_linters settings.
+let g:ale_linters_explicit = 1
+let g:ale_completion_autoimport = 1
+let g:ale_linters = {
+\   'javascript': ['eslint'],
+\   'cpp': ['clangd'],   
+\}
 
