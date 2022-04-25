@@ -3,14 +3,11 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-surround'
-" Plug 'airblade/vim-gitgutter'
+Plug 'tpope/vim-fugitive'
 Plug 'scrooloose/nerdtree'
-" Plug 'junegunn/fzf.vim'
 Plug 'scrooloose/nerdcommenter'
-Plug 'vim-scripts/DoxygenToolkit.vim', {'for': 'cpp'}
 
-" Plug 'majutsushi/tagbar'
-" Plug 'rhysd/vim-clang-format', {'for': 'cpp'}
+Plug 'vim-scripts/DoxygenToolkit.vim', {'for': 'cpp'}
 Plug 'octol/vim-cpp-enhanced-highlight', {'for':'cpp'}
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -37,11 +34,6 @@ let g:NERDTrimTrailingWhitespace = 1
 let g:NERDCommentEmptyLines = 1
 let g:NERDSpaceDelims=1
 
-" GitGutter #####################################################
-nmap ]p <Plug>(GitGutterPreviewHunk)
-
-" FZF ###########################################################
-set rtp+=~/.fzf
 
 " NerdTree config ###############################################
 map <C-n> :NERDTreeToggle<CR>
