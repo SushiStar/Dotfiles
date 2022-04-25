@@ -3,20 +3,19 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-surround'
-Plug 'airblade/vim-gitgutter'
+" Plug 'airblade/vim-gitgutter'
 Plug 'scrooloose/nerdtree'
-Plug 'junegunn/fzf.vim'
+" Plug 'junegunn/fzf.vim'
 Plug 'scrooloose/nerdcommenter'
 Plug 'vim-scripts/DoxygenToolkit.vim', {'for': 'cpp'}
 
-Plug 'majutsushi/tagbar'
-Plug 'rhysd/vim-clang-format', {'for': 'cpp'}
+" Plug 'majutsushi/tagbar'
+" Plug 'rhysd/vim-clang-format', {'for': 'cpp'}
 Plug 'octol/vim-cpp-enhanced-highlight', {'for':'cpp'}
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'vim-python/python-syntax', {'for':'python'}
 Plug 'heavenshell/vim-pydocstring', { 'do': 'make install', 'for': 'python' }
-" pyright installed for coc
 
 Plug 'yggdroot/indentline'
 " Plug 'sainnhe/everforest'
@@ -67,6 +66,7 @@ let g:clang_format#auto_format = 1
 " airline  ######################################################
 let g:airline_theme = 'gruvbox_material'
 " let g:airline_theme = 'everforest'
+let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#show_buffers = 0
 let g:airline#extensions#tabline#show_tab_nr = 1
@@ -82,11 +82,11 @@ set background=dark
 let g:NVIM_TUI_ENABLE_CURSOR_SHAPE=1
 colorscheme gruvbox-material
 " colorscheme everforest
-let g:everforest_background = 'hard'
-let g:everforest_enable_italic = 1
-let g:everforest_cursor = 'auto'
-let g:everforest_diagnostic_text_highlight = 1
-let g:everforest_diagnostic_line_highlight = 1
+" let g:everforest_background = 'hard'
+" let g:everforest_enable_italic = 1
+" let g:everforest_cursor = 'auto'
+" let g:everforest_diagnostic_text_highlight = 1
+" let g:everforest_diagnostic_line_highlight = 1
 
 
 " enhanced cpp highlight ########################################
