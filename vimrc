@@ -3,15 +3,12 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-surround'
-" Plug 'airblade/vim-gitgutter'
+Plug 'tpope/vim-fugitive'
 Plug 'scrooloose/nerdtree'
-" Plug 'junegunn/fzf.vim'
 Plug 'scrooloose/nerdcommenter'
-Plug 'vim-scripts/DoxygenToolkit.vim', {'for': 'cpp'}
 
-" Plug 'majutsushi/tagbar'
-" Plug 'rhysd/vim-clang-format', {'for': 'cpp'}
-Plug 'octol/vim-cpp-enhanced-highlight', {'for':'cpp'}
+Plug 'vim-scripts/DoxygenToolkit.vim', {'for': 'cpp'}
+Plug 'jackguo380/vim-lsp-cxx-highlight'
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'vim-python/python-syntax', {'for':'python'}
@@ -37,11 +34,6 @@ let g:NERDTrimTrailingWhitespace = 1
 let g:NERDCommentEmptyLines = 1
 let g:NERDSpaceDelims=1
 
-" GitGutter #####################################################
-nmap ]p <Plug>(GitGutterPreviewHunk)
-
-" FZF ###########################################################
-set rtp+=~/.fzf
 
 " NerdTree config ###############################################
 map <C-n> :NERDTreeToggle<CR>
@@ -87,13 +79,6 @@ colorscheme gruvbox-material
 " let g:everforest_cursor = 'auto'
 " let g:everforest_diagnostic_text_highlight = 1
 " let g:everforest_diagnostic_line_highlight = 1
-
-
-" enhanced cpp highlight ########################################
-let g:cpp_class_scope_highlight = 1
-let g:cpp_class_decl_highlight = 1
-let g:cpp_concepts_highlight = 1
-
 
 " coc ###########################################################
 set hidden
