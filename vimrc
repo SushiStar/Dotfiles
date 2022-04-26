@@ -50,10 +50,6 @@ autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTr
 " have the same nerdtree on every tab automatically
 autocmd BufWinEnter * silent NERDTreeMirror
 
-" clang-format ##################################################
-let g:clang_format#detect_style_file = 1
-let g:clang_format#auto_format = 1
-
 " airline  ######################################################
 let g:airline_theme = 'gruvbox_material'
 " let g:airline_theme = 'everforest'
