@@ -8,7 +8,7 @@ Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/nerdcommenter'
 
 Plug 'vim-scripts/DoxygenToolkit.vim', {'for': 'cpp'}
-Plug 'octol/vim-cpp-enhanced-highlight', {'for':'cpp'}
+Plug 'jackguo380/vim-lsp-cxx-highlight'
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'vim-python/python-syntax', {'for':'python'}
@@ -79,13 +79,6 @@ colorscheme gruvbox-material
 " let g:everforest_cursor = 'auto'
 " let g:everforest_diagnostic_text_highlight = 1
 " let g:everforest_diagnostic_line_highlight = 1
-
-
-" enhanced cpp highlight ########################################
-let g:cpp_class_scope_highlight = 1
-let g:cpp_class_decl_highlight = 1
-let g:cpp_concepts_highlight = 1
-
 
 " coc ###########################################################
 set hidden
