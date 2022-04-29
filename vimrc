@@ -14,7 +14,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'vim-python/python-syntax', {'for':'python'}
 Plug 'heavenshell/vim-pydocstring', { 'do': 'make install', 'for': 'python' }
 
-Plug 'yggdroot/indentline'
+Plug 'yggdroot/indentline', {'for':'python, cpp'}
 " Plug 'sainnhe/everforest'
 Plug 'sainnhe/gruvbox-material'
 
