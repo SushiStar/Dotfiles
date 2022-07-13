@@ -16,9 +16,11 @@ Plug 'heavenshell/vim-pydocstring', { 'do': 'make install', 'for': 'python' }
 
 Plug 'yggdroot/indentline', {'for':'python, cpp'}
 " Plug 'sainnhe/everforest'
-Plug 'sainnhe/gruvbox-material'
+" Plug 'sainnhe/gruvbox-material'
+Plug 'NLKNguyen/papercolor-theme'
 
 Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 Plug 'voldikss/vim-floaterm'
 
 call plug#end()
@@ -51,7 +53,8 @@ autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTr
 autocmd BufWinEnter * silent NERDTreeMirror
 
 " airline  ######################################################
-let g:airline_theme = 'gruvbox_material'
+let g:airline_theme = 'papercolor'
+" let g:airline_theme = 'gruvbox_material'
 " let g:airline_theme = 'everforest'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
@@ -64,10 +67,25 @@ let g:airline#extensions#tagbar#enabled = 1
 let g:airline#extensions#coc#enabled = 1
 
 " color #########################################################
-set termguicolors
-set background=dark
-let g:NVIM_TUI_ENABLE_CURSOR_SHAPE=1
-colorscheme gruvbox-material
+" set termguicolors
+set background=light
+" let g:NVIM_TUI_ENABLE_CURSOR_SHAPE=1
+colorscheme papercolor 
+let g:PaperColor_Theme_Options = {
+  \   'language': {
+  \     'python': {
+  \       'highlight_builtins' : 1
+  \     },
+  \     'cpp': {
+  \       'highlight_standard_library': 1
+  \     },
+  \     'c': {
+  \       'highlight_builtins' : 1
+  \     }
+  \   }
+  \ }
+
+" colorscheme gruvbox-material
 " colorscheme everforest
 " let g:everforest_background = 'hard'
 " let g:everforest_enable_italic = 1
