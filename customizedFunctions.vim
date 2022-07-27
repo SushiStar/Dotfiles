@@ -47,4 +47,4 @@ tnoremap <Esc> <C-\><C-n>
 set autoread
 set timeoutlen=1000 ttimeoutlen=10
 
-autocmd FileType md, tex set spell spelllang=en_us
+autocmd FileType markdown,tex set spell spelllang=en_us
