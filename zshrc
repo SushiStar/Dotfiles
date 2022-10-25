@@ -10,7 +10,8 @@ ZSH_DISABLE_COMPFIX=true
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="gitster"
+# ZSH_THEME="gitster"
+ZSH_THEME="chill"
 # ZSH_THEME="bullet-train"
 
 export HISTSIZE=10000
