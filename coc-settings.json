@@ -1,0 +1,17 @@
+{
+    "coc.preferences.colorSupport": true,
+    "coc.preferences.formatOnSaveFiletypes": [
+        "h",
+        "c",
+        "cc",
+        "c++",
+        "hpp",
+        "cpp",
+        "json"
+    ],
+    "coc.preferences.messageLevel": "error",
+    "diagnostic.errorSign": "x",
+    "diagnostic.warningSign": "!",
+    "diagnostic.infoSign": ">",
+    "diagnostic.hintSign": "-"
+}
