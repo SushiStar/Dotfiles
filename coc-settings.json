@@ -13,5 +13,7 @@
     "diagnostic.errorSign": "x",
     "diagnostic.warningSign": "!",
     "diagnostic.infoSign": ">",
-    "diagnostic.hintSign": "-"
+    "diagnostic.hintSign": "-",
+    "suggest.enablePreselect": false,
+    "suggest.noselect": true
 }
