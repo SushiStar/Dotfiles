@@ -55,7 +55,7 @@ autocmd BufWinEnter * silent NERDTreeMirror
 " airline  ######################################################
 " let g:airline_theme = 'gruvbox_material'
 " let g:airline_theme = 'everforest'
-let g:airline_theme = 'github_dark'
+" let g:airline_theme = 'github_dark'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#show_buffers = 0
@@ -78,6 +78,7 @@ set background=dark
 " let g:everforest_diagnostic_line_highlight = 1
 
 let g:github_function_style = "italic"
+let g:github_sidebars = ["qf", "vista_kind", "terminal", "packer"]
 colorscheme github_dark
 
 " coc ###########################################################
