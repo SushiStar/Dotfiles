@@ -14,8 +14,9 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'vim-python/python-syntax', {'for':'python'}
 Plug 'heavenshell/vim-pydocstring', { 'do': 'make install', 'for': 'python' }
 
-Plug 'sainnhe/everforest'
-Plug 'sainnhe/gruvbox-material'
+Plug 'projekt0n/github-nvim-theme', { 'tag': 'v0.0.7' }
+" Plug 'sainnhe/everforest'
+" Plug 'sainnhe/gruvbox-material'
 
 Plug 'yggdroot/indentline', {'for':['python', 'cpp']}
 Plug 'vim-airline/vim-airline'
@@ -53,7 +54,8 @@ autocmd BufWinEnter * silent NERDTreeMirror
 
 " airline  ######################################################
 " let g:airline_theme = 'gruvbox_material'
-let g:airline_theme = 'everforest'
+" let g:airline_theme = 'everforest'
+let g:airline_theme = 'github_dark'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#show_buffers = 0
@@ -67,15 +69,16 @@ let g:airline#extensions#coc#enabled = 1
 " color #########################################################
 set termguicolors
 set background=dark
-let g:NVIM_TUI_ENABLE_CURSOR_SHAPE=1
 " colorscheme gruvbox-material
+" colorscheme everforest
+" let g:everforest_background = 'hard'
+" let g:everforest_enable_italic = 1
+" let g:everforest_cursor = 'auto'
+" let g:everforest_diagnostic_text_highlight = 1
+" let g:everforest_diagnostic_line_highlight = 1
 
-colorscheme everforest
-let g:everforest_background = 'hard'
-let g:everforest_enable_italic = 1
-let g:everforest_cursor = 'auto'
-let g:everforest_diagnostic_text_highlight = 1
-let g:everforest_diagnostic_line_highlight = 1
+let g:github_function_style = "italic"
+colorscheme github_dark
 
 " coc ###########################################################
 set hidden
