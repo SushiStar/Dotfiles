@@ -4,8 +4,10 @@ call plug#begin('~/.vim/plugged')
 Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'
+Plug 'majutsushi/tagbar'
 Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/nerdcommenter'
+Plug 'ntpeters/vim-better-whitespace'
 
 Plug 'vim-scripts/DoxygenToolkit.vim', {'for': 'cpp'}
 Plug 'jackguo380/vim-lsp-cxx-highlight'
@@ -15,8 +17,8 @@ Plug 'vim-python/python-syntax', {'for':'python'}
 Plug 'heavenshell/vim-pydocstring', { 'do': 'make install', 'for': 'python' }
 
 Plug 'yggdroot/indentline'
-" Plug 'sainnhe/everforest'
-Plug 'sainnhe/gruvbox-material'
+Plug 'sainnhe/everforest'
+" Plug 'sainnhe/gruvbox-material'
 
 Plug 'vim-airline/vim-airline'
 Plug 'voldikss/vim-floaterm'
@@ -51,13 +53,16 @@ autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTr
 " have the same nerdtree on every tab automatically
 autocmd BufWinEnter * silent NERDTreeMirror
 
+" tagbar #########################################################
+nnoremap <silent> <Leader>b :TagbarToggle<CR>
+
 " clang-format ##################################################
 let g:clang_format#detect_style_file = 1
 let g:clang_format#auto_format = 1
 
 " airline  ######################################################
-let g:airline_theme = 'gruvbox_material'
-" let g:airline_theme = 'everforest'
+" let g:airline_theme = 'gruvbox_material'
+let g:airline_theme = 'everforest'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#show_buffers = 0
@@ -72,20 +77,21 @@ let g:airline#extensions#coc#enabled = 1
 set termguicolors
 set background=dark
 let g:NVIM_TUI_ENABLE_CURSOR_SHAPE=1
-colorscheme gruvbox-material
-" colorscheme everforest
-" let g:everforest_background = 'hard'
-" let g:everforest_enable_italic = 1
-" let g:everforest_cursor = 'auto'
-" let g:everforest_diagnostic_text_highlight = 1
-" let g:everforest_diagnostic_line_highlight = 1
+" colorscheme gruvbox-material
+"
+colorscheme everforest
+let g:everforest_background = 'hard'
+let g:everforest_enable_italic = 1
+let g:everforest_cursor = 'auto'
+let g:everforest_diagnostic_text_highlight = 1
+let g:everforest_diagnostic_line_highlight = 1
 
 " coc ###########################################################
 set hidden
 set nobackup
 set updatetime=300
-inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+inoremap <expr> <Tab> coc#pum#visible() ? coc#pum#next(1) : "\<Tab>"
+inoremap <expr> <S-Tab> coc#pum#visible() ? coc#pum#prev(1) : "\<S-Tab>"
 nmap <silent> [g <Plug>(coc-diagnostic-prev)
 nmap <silent> ]g <Plug>(coc-diagnostic-next)
 nnoremap <silent> <Leader>f :call CocAction('format')<CR>

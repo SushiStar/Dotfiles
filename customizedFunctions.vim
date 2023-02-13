@@ -47,5 +47,7 @@ tnoremap <Esc> <C-\><C-n>
 set autoread
 set timeoutlen=1000 ttimeoutlen=10
 
+" autocmd BufWritePre * :%s/\s\+$//e
+
 " vim syntax
 let g:load_doxygen_syntax=1
