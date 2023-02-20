@@ -31,7 +31,9 @@ autocmd ColorScheme * highlight CursorLineNr cterm=bold term=bold guibg=None gui
 autocmd ColorScheme * highlight MatchParen ctermbg=LightGray ctermfg=Black guibg=black guifg=red
 autocmd ColorScheme * highlight TabLine guifg=#595756 guibg=None
 autocmd ColorScheme * highlight TabLineSel  gui=bold guifg=#eb8f34 guibg=None
+
 autocmd FileType c,cpp setlocal comments-=:// comments+=f://
+autocmd FileType python let b:coc_root_patterns = ['.git', '.env', '.venv']
 
 let mapleader = " "
 nnoremap <silent> <Tab> gt
