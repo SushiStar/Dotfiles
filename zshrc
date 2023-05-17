@@ -76,6 +76,7 @@ bindkey '^ ' autosuggest-accept
 export PATH="/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/sbin:/usr/sbin"
 export PATH="/usr/local/opt/llvm/bin:$PATH"
 export PATH="/Library/TeX/texbin/:$PATH"
+export PATH="/usr/local/go/bin:$PATH"
 # export LDFLAGS="-L/usr/local/opt/llvm/lib"
 # export CXXFLAGS="-I/usr/local/opt/llvm/include/c++/v1"
 

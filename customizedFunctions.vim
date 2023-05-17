@@ -1,6 +1,9 @@
 "customized configuration #############################################
 filetype plugin indent on
+syntax on
 set nocompatible
+set omnifunc=syntaxcomplete#Complete
+set completeopt+=preview
 
 " set linebreak
 set textwidth=90

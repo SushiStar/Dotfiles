@@ -23,6 +23,9 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'voldikss/vim-floaterm'
 
+" Plug 'junegunn/goyo.vim'
+Plug 'fatih/vim-go', {'for':'go'}
+
 call plug#end()
 
 " Customized functions ##############################################
@@ -116,3 +119,12 @@ autocmd FileType c,cpp,cc,h,hpp nnoremap <silent> <Leader>d :Dox<CR>
 let g:pydocstring_enable_mapping = 0
 let g:pydocstring_formatter = 'google'
 autocmd FileType python nnoremap <silent> <Leader>d :Pydocstring<CR>
+
+" GOLang  #######################################################
+let g:go_highlight_types = 1
+let g:go_highlight_fields = 1
+let g:go_highlight_functions = 1
+let g:go_highlight_function_calls = 1
+let g:go_highlight_extra_types = 1
+let g:go_highlight_operators = 1
+let g:go_code_completion_enabled = 0

@@ -16,5 +16,6 @@
     "diagnostic.infoSign": ">",
     "diagnostic.hintSign": "-",
     "suggest.enablePreselect": false,
-    "suggest.noselect": true
+    "suggest.noselect": true,
+    "inlayHint.enable": false
 }
