@@ -4,26 +4,27 @@ call plug#begin('~/.vim/plugged')
 Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'
-Plug 'nvim-tree/nvim-tree.lua'
 
 Plug 'scrooloose/nerdcommenter'
 Plug 'junegunn/fzf'
 Plug 'rking/ag.vim'
 
 Plug 'neovim/nvim-lspconfig'
-Plug 'hrsh7th/cmp-nvim-lsp'
-Plug 'hrsh7th/cmp-buffer'
-Plug 'hrsh7th/nvim-cmp'
-" Plug 'ms-jpq/coq_nvim', {'branch': 'coq'}
+" Plug 'hrsh7th/cmp-nvim-qsp'
+" Plug 'hrsh7th/cmp-buffer'
+" Plug 'hrsh7th/nvim-cmp'
+Plug 'ms-jpq/coq_nvim', {'branch': 'coq'}
 Plug 'vim-python/python-syntax', {'for':'python'}
 
 " Plug 'projekt0n/github-nvim-theme', { 'tag': 'v0.0.7' }
 " Plug 'sainnhe/gruvbox-material'
 Plug 'sainnhe/everforest'
 
-Plug 'nvim-lualine/lualine.nvim'
+Plug 'sushistar/sfm.nvim',
 Plug 'nvim-tree/nvim-web-devicons'
 
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 Plug 'junegunn/goyo.vim'
 Plug 'voldikss/vim-floaterm'
 
@@ -31,6 +32,15 @@ call plug#end()
 
 " Customized functions ##############################################
 source ~/Dotfiles/customizedFunctions.vim
+
+" airline  ######################################################
+let g:airline_theme = 'everforest'
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 0
+let g:airline#extensions#tabline#show_buffers = 1
+let g:airline#extensions#tabline#show_tab_nr = 1
+let g:airline#extensions#tabline#tabs_label = ''
+let g:airline#extensions#tabline#show_splits = 1
 
 " NerdCommenter #####################################################
 map 'ci <plug>NERDCommenterToggle
@@ -51,10 +61,6 @@ let g:everforest_diagnostic_text_highlight = 1
 let g:everforest_diagnostic_line_highlight = 1
 let g:everforest_better_performance = 1
 
-" let g:github_function_style = "italic"
-" let g:github_sidebars = ["qf", "vista_kind", "terminal", "packer"]
-" colorscheme github_dark
-
 " floaterm ######################################################
 let g:floaterm_width=0.8
 let g:floaterm_height=0.8
@@ -69,91 +75,71 @@ nnoremap <silent> <Leader>f :FZF<CR>
 " AG  Config ####################################################
 let g:ag_working_path_mode="r"
 
-" LUA for nvim-tree #############################################
-nnoremap <silent> <leader>e :NvimTreeToggle<CR>
-
 lua << EOF
--- disable netrw at the very start of your init.lua
-vim.g.loaded_netrw = 1
-vim.g.loaded_netrwPlugin = 1
-
--- OR setup with some options
-require("nvim-tree").setup({
-  sort_by = "case_sensitive",
-  disable_netrw = true,
-  renderer = {
-    group_empty = true,
-    icons = {
-        show = {
-            folder = true,
-            file = true,
-            folder_arrow = true,
-        },
-    },
-  },
-  actions = {
-      change_dir = {
-          global = false,
-          enable = false,
-      },
-  },
-  filters = {
-    dotfiles = false,
-  },
+require("sfm").setup({
   view = {
+    side = "left",
     width = 40,
-    number = true,
-    relativenumber = true,
     float = {
-        enable = false,
-        quit_on_focus_loss = true,
-        open_win_config = {
-            relative = "editor",
-            border = "rounded",
-            row = 20,
-            col = 40,
-            width = 100,
-            height = 40,
-        },
+      enable = false,
+    },
+    selection_render_method = "icon", -- render method of selected entries, can be `icon`, `sign`, `highlight`.
+  },
+  mappings = {
+    custom_only = true,
+    list = {
+      {
+         key = "<CR>",
+         action = "edit",
+      },
+      {
+        key = "<C-v>",
+        action = "vsplit",
+      },
+      {
+        key = "R",
+        action = "reload",
+      },
+      {
+        key = "t",
+        action = "tabdrop",
+      },
+      {
+        key = "P",
+        action = "parent_entry",
+      },
     },
   },
+  file_nesting = {
+    enabled = false,
+    expand = false,
+    patterns = {},
+  },
+  misc = {
+    trash_cmd = nil,
+    system_open_cmd = nil,
+  }
 })
--- auto close
-local function is_modified_buffer_open(buffers)
-    for _, v in pairs(buffers) do
-        if v.name:match("NvimTree_") == nil then
-            return true
-        end
-    end
-    return false
-end
+vim.api.nvim_set_keymap('n', '<leader>e', ':SFMToggle<CR>', { noremap = true, silent = true })
 
-
-vim.api.nvim_create_autocmd("BufEnter", {
-    nested = true,
-    callback = function()
-        if
-            #vim.api.nvim_list_wins() == 1
-            and vim.api.nvim_buf_get_name(0):match("NvimTree_") ~= nil
-            and is_modified_buffer_open(vim.fn.getbufinfo({ bufmodified = 1 })) == false
-        then
-            vim.cmd("quit")
-        end
-    end,
-})
 
 -- clangd configuration ##########################################
 
 -- Setup language servers.
 local lspconfig = require('lspconfig')
-local cmp = require'cmp'
+
+--local cmp = require'cmp'
 
 -- config completion
---[[
+
+-- config completion
 vim.g.coq_settings = {
   auto_start = 'shut-up',
   completion = { always = true },
-  keymap = {jump_to_mark = "",},
+  keymap = {
+      jump_to_mark = "",
+      pre_select = true,
+  },
   clients = {
     snippets = {
         warn = {},
@@ -161,9 +147,8 @@ vim.g.coq_settings = {
     },
   },
 };
---]]
 
-
+--[[
 cmp.setup({
   snippet = {
     expand = function(args)
@@ -186,6 +171,7 @@ cmp.setup({
     { name = 'buffer' },
   })
 })
+--]]
 
 -- Set configuration for specific filetype.
 
@@ -195,8 +181,16 @@ cmp.setup({
 --   capabilities = capabilities
 -- }
 
+-- lspconfig.clangd.setup({
+--    capabilities = {require('cmp_nvim_lsp').default_capabilities()},
+
 lspconfig.clangd.setup({
-    capabilities = {require('cmp_nvim_lsp').default_capabilities()},
+    capabilities = {require('coq').lsp_ensure_capabilities({
+        on_attach = on_attach,
+        cmd = { "clangd",
+                "--completion-style=detailed",
+                "--background-index",
+                "--enable-config",},}),},
     filetypes = { "h", "hh", "hpp", "c",  "cc", "cpp"},
     init_options = {
         semanticHighlighting = true,
@@ -238,55 +232,9 @@ vim.api.nvim_create_autocmd('LspAttach', {
   end,
 })
 
--- auto close quick fix after selection
-vim.api.nvim_create_autocmd(
-  "FileType", {
-  pattern={"qf"},
-  command=[[nnoremap <buffer> <CR> <CR>:cclose<CR>]]})
 
 -- call format on save
-vim.cmd([[autocmd BufWritePre * lua vim.lsp.buf.format()]])
-
-
---lualine #######################################################
-require('lualine').setup {
-  options = {
-    icons_enabled = true,
-    theme = 'everforest',
-    component_separators = { left = '', right = ''},
-    section_separators = { left = '', right = ''},
-    disabled_filetypes = {
-      statusline = {},
-      winbar = {},
-    },
-    ignore_focus = {},
-    always_divide_middle = true,
-    globalstatus = false,
-  },
-  sections = {
-    lualine_a = {'mode'},
-    lualine_b = {'branch', 'diff', 'diagnostics'},
-    lualine_c = {'filename'},
-    lualine_x = {'encoding', 'fileformat', 'filetype'},
-    lualine_y = {'progress'},
-    lualine_z = {'location'}
-  },
-  inactive_sections = {
-    lualine_a = {},
-    lualine_b = {},
-    lualine_c = {'filename'},
-    lualine_x = {'location'},
-    lualine_y = {},
-    lualine_z = {}
-  },
-  tabline = {},
-  winbar = {},
-  inactive_winbar = {},
-  extensions = {},
-}
-
-
-
+vim.cmd([[autocmd BufWritePre *.c, *.cc, *.cpp, *h, *.hh, *.hpp lua vim.lsp.buf.format()]])
 
 EOF
 
