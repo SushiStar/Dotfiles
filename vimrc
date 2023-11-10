@@ -3,44 +3,30 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-surround'
-Plug 'tpope/vim-fugitive'
 
 Plug 'scrooloose/nerdcommenter'
 Plug 'junegunn/fzf'
 Plug 'rking/ag.vim'
 
 Plug 'neovim/nvim-lspconfig'
-" Plug 'hrsh7th/cmp-nvim-qsp'
-" Plug 'hrsh7th/cmp-buffer'
-" Plug 'hrsh7th/nvim-cmp'
-Plug 'ms-jpq/coq_nvim', {'branch': 'coq'}
-Plug 'vim-python/python-syntax', {'for':'python'}
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/nvim-cmp'
 
 " Plug 'projekt0n/github-nvim-theme', { 'tag': 'v0.0.7' }
 " Plug 'sainnhe/gruvbox-material'
 Plug 'sainnhe/everforest'
-
-Plug 'sushistar/sfm.nvim',
 Plug 'nvim-tree/nvim-web-devicons'
 
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-Plug 'junegunn/goyo.vim'
-Plug 'voldikss/vim-floaterm'
+Plug 'sushistar/sfm.nvim',
+Plug 'lewis6991/gitsigns.nvim'
+
+Plug 'numToStr/FTerm.nvim'
 
 call plug#end()
 
 " Customized functions ##############################################
 source ~/Dotfiles/customizedFunctions.vim
-
-" airline  ######################################################
-let g:airline_theme = 'everforest'
-let g:airline_powerline_fonts = 1
-let g:airline#extensions#tabline#enabled = 0
-let g:airline#extensions#tabline#show_buffers = 1
-let g:airline#extensions#tabline#show_tab_nr = 1
-let g:airline#extensions#tabline#tabs_label = ''
-let g:airline#extensions#tabline#show_splits = 1
 
 " NerdCommenter #####################################################
 map 'ci <plug>NERDCommenterToggle
@@ -52,34 +38,40 @@ let g:NERDSpaceDelims=1
 " color #########################################################
 set termguicolors
 set background=dark
+
+" let g:gruvbox_material_background = 'hard'
+" let g:gruvbox_material_enable_italic = 1
+" let g:gruvbox_material_cursor = 'auto'
+" let g:gruvbox_material_diagnostic_text_highlight = 1
+" let g:gruvbox_material_diagnostic_line_highlight = 1
 " colorscheme gruvbox-material
-colorscheme everforest
-let g:everforest_background = 'medium'
+
+let g:everforest_background = 'hard'
 let g:everforest_enable_italic = 1
 let g:everforest_cursor = 'auto'
 let g:everforest_diagnostic_text_highlight = 1
 let g:everforest_diagnostic_line_highlight = 1
-let g:everforest_better_performance = 1
+let g:everforest_better_performance = 0
+colorscheme everforest
 
-" floaterm ######################################################
-let g:floaterm_width=0.8
-let g:floaterm_height=0.8
-
-"python-syntax ##################################################
-" let g:python_highlight_all=1
 
 " FZF Config ####################################################
-let g:fzf_action = { 'enter': 'tabnew' }
-nnoremap <silent> <Leader>f :FZF<CR>
+nnoremap <silent> <Leader>z :FZF<CR>
+let g:fzf_action = {
+            \ 'enter': 'tabnew',
+            \ 'ctrl-v': 'vsplit'}
 
 " AG  Config ####################################################
 let g:ag_working_path_mode="r"
 
 lua << EOF
+-- GitSigns #######################################################
+require('gitsigns').setup()
+
 require("sfm").setup({
   view = {
     side = "left",
-    width = 40,
+    width = 45,
     float = {
       enable = false,
     },
@@ -127,28 +119,9 @@ vim.api.nvim_set_keymap('n', '<leader>e', ':SFMToggle<CR>', { noremap = true, si
 
 -- Setup language servers.
 local lspconfig = require('lspconfig')
+local cmp = require('cmp')
 
---local cmp = require'cmp'
 
--- config completion
-
--- config completion
-vim.g.coq_settings = {
-  auto_start = 'shut-up',
-  completion = { always = true },
-  keymap = {
-      jump_to_mark = "",
-      pre_select = true,
-  },
-  clients = {
-    snippets = {
-        warn = {},
-        enabled = false,
-    },
-  },
-};
-
---[[
 cmp.setup({
   snippet = {
     expand = function(args)
@@ -171,31 +144,18 @@ cmp.setup({
     { name = 'buffer' },
   })
 })
---]]
 
 -- Set configuration for specific filetype.
 
--- Set up lspconfig.
--- local capabilities = require('cmp_nvim_lsp').default_capabilities()
--- require('lspconfig')['clangd'].setup {
---   capabilities = capabilities
--- }
-
--- lspconfig.clangd.setup({
---    capabilities = {require('cmp_nvim_lsp').default_capabilities()},
-
 lspconfig.clangd.setup({
-    capabilities = {require('coq').lsp_ensure_capabilities({
-        on_attach = on_attach,
-        cmd = { "clangd",
-                "--completion-style=detailed",
-                "--background-index",
-                "--enable-config",},}),},
-    filetypes = { "h", "hh", "hpp", "c",  "cc", "cpp"},
-    init_options = {
-        semanticHighlighting = true,
-    },
+   capabilities = {require('cmp_nvim_lsp').default_capabilities()},
+   filetypes = { "h", "hh", "hpp", "c",  "cc", "cpp"},
+   root_dir = lspconfig.util.root_pattern('.git', 'compile_commands.json'),
+   init_options = {
+    semanticHighlighting = true,
+   },
 })
+
 
 -- Global mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
@@ -216,8 +176,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
     -- See `:help vim.lsp.*` for documentation on any of the below functions
     local opts = { buffer = ev.buf, silent=true, noremap=true}
     vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
-    --vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
-    vim.keymap.set('n', 'gd', "<cmd>tab split | lua vim.lsp.buf.definition()<CR>", opts)
+    vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
     vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
     vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
     vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, opts)
@@ -227,14 +186,33 @@ vim.api.nvim_create_autocmd('LspAttach', {
     -- vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, opts)
     -- vim.keymap.set('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, opts)
     -- vim.keymap.set({ 'n', 'v' }, '<space>ca', vim.lsp.buf.code_action, opts)
-    -- vim.keymap.set('n', '<space>f', function() vim.lsp.buf.format { async = true } end, opts)
+    vim.keymap.set('n', '<space>f', function() vim.lsp.buf.format { async = true } end, opts)
     -- vim.keymap.set('n', '<space>wl', function() print(vim.inspect(vim.lsp.buf.list_workspace_folders())) end, opts)
   end,
 })
 
 
 -- call format on save
-vim.cmd([[autocmd BufWritePre *.c, *.cc, *.cpp, *h, *.hh, *.hpp lua vim.lsp.buf.format()]])
+-- vim.api.nvim_exec([[autocmd BufWritePre *.c, *.cc, *.cpp, *h, *.hh, *.hpp :lua vim.lsp.buf.format()]], false)
+vim.api.nvim_create_autocmd("BufWritePre", {
+    buffer = buffer,
+    callback = function()
+        vim.lsp.buf.format { async = false }
+    end
+})
+
+-- FTerm ##########################################################
+require'FTerm'.setup({
+    border = 'double',
+    dimensions  = {
+        height = 0.9,
+        width = 0.9,
+    },
+})
+
+-- Example keybindings
+vim.keymap.set('n', '<space>t', '<CMD>lua require("FTerm").toggle()<CR>')
+vim.keymap.set('t', '<space>t', '<C-\\><C-n><CMD>lua require("FTerm").toggle()<CR>')
 
 EOF
 
