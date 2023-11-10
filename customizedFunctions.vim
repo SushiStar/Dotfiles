@@ -24,6 +24,7 @@ set incsearch
 set noshowmode
 set nohlsearch
 set autoindent
+set laststatus=0
 
 "numbers
 set number
