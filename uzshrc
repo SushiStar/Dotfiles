@@ -2,20 +2,10 @@
 export TERM="xterm-256color"
 
 # Path to your oh-my-zsh installation.
-export ZSH="/home/$(whoami)/.oh-my-zsh"
+# export ZSH="/home/$(whoami)/.oh-my-zsh"
+export ZSH="/home/$(whoami)/.zsh"
 
-# Set name of the theme to load --- if set to "random", it will
-# load a random theme each time oh-my-zsh is loaded, in which case,
-# to know which specific one was loaded, run: echo $RANDOM_THEME
-# See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="chill"
-
-export HISTSIZE=10000
-# Set list of themes to pick from when loading at random
-# Setting this variable when ZSH_THEME=random will cause zsh to load
-# a theme from this variable instead of looking in ~/.oh-my-zsh/themes/
-# If set to an empty array, this variable will have no effect.
-# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
+# export HISTSIZE=10000
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -69,12 +59,8 @@ export HISTSIZE=10000
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(
-         zsh-autosuggestions
-		 history-substring-search
-         )
 
-source $ZSH/oh-my-zsh.sh
+source $ZSH/zshrc
 
 # User configuration
 
@@ -87,33 +73,25 @@ source $ZSH/oh-my-zsh.sh
 # if [[ -n $SSH_CONNECTION ]]; then
 #   export EDITOR='vim'
 # else
-#   export EDITOR='mvim'
+#   export EDITOR='nvim'
 # fi
-
+export EDITOR='nvim'
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-#
 
-# remove user@hostname
-#export DEFAULT_USER=myusername
-prompt_context() {}
+# prompt_context() {}
 
-# from bash
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib/
-export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/go/bin"
-export PATH="/usr/local/opt/llvm/bin:$PATH"
-export LDFLAGS="-L/usr/local/opt/llvm/lib"
-export CPPFLAGS="-I/usr/local/opt/llvm/include"
+export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin"
 
+# TOOLS
+# export PATH="$HOME/tools/bin:$PATH"
+
+# Aurora
+export PATH="/opt/aurora/bin:$PATH"
+
+alias ls='ls --color=auto'
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
@@ -121,6 +99,10 @@ alias llt='ls -lt'
 alias lc='ls -l | wc -l'
 alias g++='g++ --std=c++11'
 alias vim='nvim'
+alias gitlog='git log --graph --decorate --oneline'
+
+alias cc_refresh='./tools/bin/gen_compile_commands //simulation/... //atlas/... //common/... //experimental/wdu/...'
+alias curator='/home/wdu/av/bazel-bin/simulation/cloud/curator/cmd/curator'
 
 function cd {
     builtin cd "$@" && ls
@@ -132,20 +114,17 @@ function acp() {
   git push
 }
 
-#bindkey '"\e[B": history-search-forward'
-#bindkey '"\e[A": history-search-backward'
-# bindkey "^[[A" history-beginning-search-backward
-# bindkey "^[[B" history-beginning-search-forward
 bindkey "^P" history-beginning-search-backward
 bindkey "^N" history-beginning-search-forward
 bindkey '^ ' autosuggest-accept
 
 
 source ~/.fzf.zsh
-# export FZF_DEFAULT_OPTS='--preview "head -40 {}"'
+export FZF_DEFAULT_OPTS='--preview "head -40 {}"'
 export FZF_DEFAULT_COMMAND='rg --files'
 export FZF_CTRL_T_COMMAND='$FZF_DEFAULT_COMMAND'
 
-# ROS
+# NVM configuration, required by nvim
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 
-export PATH="$HOME/.poetry/bin:$PATH"

@@ -3,7 +3,7 @@
 export TERM="xterm-256color"
 
 # Path to your oh-my-zsh installation.
-export ZSH="/Users/waynedu/.oh-my-zsh/"
+export ZSH="/Users/wdu/.oh-my-zsh/"
 ZSH_DISABLE_COMPFIX=true
 
 # Set name of the theme to load --- if set to "random", it will
@@ -57,13 +57,7 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=5'
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
-
-# Preferred editor for local and remote sessions
-if [[ -n $SSH_CONNECTION ]]; then
-  export EDITOR='vim'
-else
-  export EDITOR='nvim'
-fi
+export EDITOR='nvim'
 
 # remove user@hostname
 # export DEFAULT_USER=$USER
@@ -74,14 +68,12 @@ bindkey '^ ' autosuggest-accept
 
 # from bash
 export PATH="/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/sbin:/usr/sbin"
-export PATH="/usr/local/opt/llvm/bin:$PATH"
-export PATH="/Library/TeX/texbin/:$PATH"
-export PATH="/usr/local/go/bin:$PATH"
+export PATH=/opt/homebrew/bin:$PATH
+export PATH=/opt/homebrew/sbin:$PATH
+# export PATH="/usr/local/opt/llvm/bin:$PATH"
 # export LDFLAGS="-L/usr/local/opt/llvm/lib"
 # export CXXFLAGS="-I/usr/local/opt/llvm/include/c++/v1"
 
-alias vi=/usr/bin/vim
-alias vim=/usr/local/bin/nvim
 alias ctags=/usr/local/bin/ctags
 alias ll='ls -alF'
 alias la='ls -A'
@@ -92,6 +84,7 @@ alias g++='g++ --std=c++17'
 alias grep='grep --color=auto'
 alias textedit='open -a TextEdit'
 alias gitlog='git log --graph --decorate --oneline'
+alias vim='nvim'
 
 function cd {
     builtin cd "$@" && ls
