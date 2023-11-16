@@ -3,7 +3,7 @@
 export TERM="xterm-256color"
 
 # Path to your oh-my-zsh installation.
-export ZSH="/Users/wdu/.oh-my-zsh/"
+export ZSH="/Users/$(whoami)/.oh-my-zsh/"
 ZSH_DISABLE_COMPFIX=true
 
 # Set name of the theme to load --- if set to "random", it will
