@@ -15,7 +15,7 @@ export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin"
 export PATH="/opt/aurora/bin:$PATH"
 
 alias ls='ls --color=auto'
-alias ll='ls -alF'
+alias ll='ls -ahlF'
 alias la='ls -A'
 alias l='ls -CF'
 alias llt='ls -lt'
