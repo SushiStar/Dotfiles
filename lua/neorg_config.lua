@@ -33,7 +33,7 @@ require('neorg').setup {
         ["core.dirman"] = { -- Manages Neorg workspaces
             config = {
                 workspaces = {
-                    notes = "~/daily",
+                    notes = "~/playground/daily",
                 },
             },
         },
@@ -57,6 +57,11 @@ require('neorg').setup {
             config = {
                 timezone = "implicit-local",
                 template = meta_gen_template,
+            },
+        },
+        ["core.concealer"] = {
+            config = {
+                icon_preset = "diamond",
             },
         },
     },
