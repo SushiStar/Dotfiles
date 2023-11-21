@@ -57,4 +57,3 @@ autocmd BufWritePre * :%s/\s\+$//e
 
 " for orgmode
 set conceallevel=2
-set concealcursor=nc

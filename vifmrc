@@ -502,3 +502,4 @@ set number
 set relativenumber
 fileviewer *.txt,*.md less %c
 colorscheme paper
+nnoremap <ESC> :q<CR>
