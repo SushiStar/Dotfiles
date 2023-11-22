@@ -1,11 +1,13 @@
 "########################### plugins ################################
 call plug#begin('~/.vim/plugged')
 
-Plug 'jiangmiao/auto-pairs'
+Plug 'windwp/nvim-autopairs'
 Plug 'tpope/vim-surround'
-
 Plug 'scrooloose/nerdcommenter'
+
+Plug 'vifm/vifm.vim'
 Plug 'rking/ag.vim'
+Plug 'junegunn/fzf'
 
 Plug 'neovim/nvim-lspconfig'
 Plug 'hrsh7th/cmp-nvim-lsp'
@@ -17,7 +19,6 @@ Plug 'hrsh7th/nvim-cmp'
 Plug 'sainnhe/everforest'
 Plug 'nvim-tree/nvim-web-devicons'
 
-Plug 'is0n/fm-nvim'
 Plug 'lewis6991/gitsigns.nvim'
 Plug 'numToStr/FTerm.nvim'
 
@@ -36,7 +37,10 @@ let g:NERDTrimTrailingWhitespace = 1
 let g:NERDCommentEmptyLines = 1
 let g:NERDSpaceDelims=1
 
-" color #########################################################
+" FZF ##############################################################
+let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.9, 'relative': v:true } }
+
+" color ############################################################
 set termguicolors
 set background=dark
 
@@ -55,7 +59,7 @@ let g:everforest_diagnostic_line_highlight = 1
 let g:everforest_better_performance = 0
 colorscheme everforest
 
-" AG  Config ####################################################
+" AG  Config #######################################################
 let g:ag_working_path_mode="r"
 
 lua << EOF
@@ -65,10 +69,11 @@ require('lsp_config')
 require('neorg_config')
 require('fterm_config')
 require('treesitter_config')
-require('fm_config')
+require("nvim-autopairs").setup {}
 
-vim.keymap.set('n', '<Leader>z', ':Fzf<CR>', {silent = true})
-vim.keymap.set('n', '<Leader>e', ':Vifm<CR>', {silent = true})
+vim.keymap.set('n', '<Leader>z', ':FZF<CR>', {silent = true})
+vim.keymap.set('n', '<Leader>e', ':TabVifm<CR>', {silent = true})
+vim.keymap.set('n', '<Leader>v', ':VsplitVifm<CR>', {silent = true})
 
 vim.keymap.set('n', '<space>d', vim.diagnostic.open_float)
 vim.keymap.set('n', '[g', vim.diagnostic.goto_prev)

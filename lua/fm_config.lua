@@ -33,7 +33,6 @@ require('fm-nvim').setup({
 
 	-- Terminal commands used w/ file manager (have to be in your $PATH)
 	cmds = {
-		vifm_cmd = "vifm",
         fzf_cmd = "fzf",
 	},
 
