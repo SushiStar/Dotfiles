@@ -33,13 +33,13 @@ set cursorline
 set fillchars=vert:│
 set laststatus=0
 set t_Co=256
+set showtabline=2
 autocmd ColorScheme * highlight CursorLineNr cterm=bold term=bold guibg=None guifg=#eb8f34
 autocmd ColorScheme * highlight MatchParen ctermbg=LightGray ctermfg=Black guibg=black guifg=red
 autocmd ColorScheme * highlight TabLine guifg=#595756 guibg=None
 autocmd ColorScheme * highlight TabLineSel  gui=bold guifg=#eb8f34 guibg=None
 
 autocmd FileType c,cc,cpp,h,hh,hpp setlocal comments-=:// comments+=f://
-autocmd FileType python let b:coc_root_patterns = ['.git', '.env', '.venv']
 
 let mapleader = " "
 nnoremap <silent> <Tab> gt
@@ -57,3 +57,11 @@ autocmd BufWritePre * :%s/\s\+$//e
 
 " for orgmode
 set conceallevel=2
+
+" quickfix window size
+autocmd FileType qf resize 20
+
+" port the result into the quickfix window
+set grepprg=rg\ --vimgrep\ --no-heading\ --smart-case
+set grepformat=%f:%l:%c:%m
+command! -nargs=+ RG silent! grep <args> | cwindow

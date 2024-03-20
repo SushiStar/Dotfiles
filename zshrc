@@ -20,6 +20,7 @@ export HISTSIZE=10000
  DISABLE_AUTO_UPDATE="true"
 
 plugins=(
+         zsh-vi-mode
          zsh-autosuggestions
 		 history-substring-search
          )

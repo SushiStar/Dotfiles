@@ -14,6 +14,17 @@ export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin"
 # Aurora
 export PATH="/opt/aurora/bin:$PATH"
 
+# pyright
+export PATH="/home/wdu/.local/bin:$PATH"
+
+# av
+export PATH="/home/wdu/av/tools/bin:$PATH"
+
+# tmux alias
+alias tls='tmux ls'
+alias tns='tmux new -s'
+alias tat='tmux attach -t'
+
 alias ls='ls --color=auto'
 alias ll='ls -ahlF'
 alias la='ls -A'
@@ -43,9 +54,12 @@ bindkey '^ ' autosuggest-accept
 
 
 source ~/.fzf.zsh
-export FZF_DEFAULT_OPTS='--preview "head -40 {}"'
+# export FZF_DEFAULT_OPTS='--preview "head -40 {}"'
+export FZF_DEFAULT_OPTS=''
 export FZF_DEFAULT_COMMAND='rg --files'
 export FZF_CTRL_T_COMMAND='$FZF_DEFAULT_COMMAND'
+export FZF_CTRL_R_OPTS=''
+
 
 # NVM configuration, required by nvim
 export NVM_DIR="$HOME/.nvm"

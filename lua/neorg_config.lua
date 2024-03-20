@@ -33,7 +33,7 @@ require('neorg').setup {
         ["core.dirman"] = { -- Manages Neorg workspaces
             config = {
                 workspaces = {
-                    notes = "~/playground/daily",
+                    notes = "~/daily",
                 },
             },
         },
