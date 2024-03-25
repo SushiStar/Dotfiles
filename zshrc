@@ -71,11 +71,13 @@ function acp() {
   git push
 }
 
-bindkey '^ ' autosuggest-accept
+# bindkey '^ ' autosuggest-accept
 
 # for fzf
+source ~/.fzf.zsh
+export FZF_DEFAULT_OPTS=''
 export FZF_DEFAULT_COMMAND='rg --files'
 export FZF_CTRL_T_COMMAND='$FZF_DEFAULT_COMMAND'
-source ~/.fzf.zsh
+export FZF_CTRL_R_OPTS=''
 
 export DAILY_DIR="$HOME/playground/daily"
