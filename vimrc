@@ -79,4 +79,12 @@ vim.keymap.set('n', '[g', vim.diagnostic.goto_prev)
 vim.keymap.set('n', ']g', vim.diagnostic.goto_next)
 vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist)
 
+-- Restore cursor position
+vim.api.nvim_create_autocmd({ "BufReadPost" }, {
+    pattern = { "*" },
+    callback = function()
+        vim.api.nvim_exec('silent! normal! g`"zv', false)
+    end,
+})
+
 EOF

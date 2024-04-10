@@ -50,6 +50,7 @@ nnoremap <silent> <C-k> :winc k<Enter>
 nnoremap <silent> <C-j> :winc j<Enter>
 nnoremap <silent> <leader>a :set invnumber invrelativenumber <CR>
 tnoremap <Leader>q <C-\><C-n>
+nnoremap ; :
 
 set autoread
 set timeoutlen=1000 ttimeoutlen=10
