@@ -25,6 +25,11 @@ alias tls='tmux ls'
 alias tns='tmux new -s'
 alias tat='tmux attach -t'
 
+# git alias
+alias gs='git status'
+alias gd='git diff'
+alias gc='git checkout'
+
 alias ls='ls --color=auto'
 alias ll='ls -ahlF'
 alias la='ls -A'

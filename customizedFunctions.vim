@@ -17,7 +17,7 @@ set expandtab
 set whichwrap+=h,l
 set splitbelow
 set splitright
-set switchbuf+=useopen,usetab,newtab
+set switchbuf+=usetab,newtab,useopen
 
 set ignorecase
 set smartcase
@@ -66,3 +66,58 @@ autocmd FileType qf resize 20
 set grepprg=rg\ --vimgrep\ --no-heading\ --smart-case
 set grepformat=%f:%l:%c:%m
 command! -nargs=+ RG silent! grep <args> | cwindow
+
+" set netrw cursor cache
+let g:netrw_browse_split = 0
+let g:netrw_liststyle = 0
+let g:netrw_keepdir = 1
+
+" autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | Explore | endif
+
+
+lua << EOF
+
+-- Restore cursor position
+vim.api.nvim_create_autocmd({ "BufReadPost" }, {
+    pattern = { "*" },
+    callback = function()
+        vim.api.nvim_exec('silent! normal! g`"zv', false)
+    end,
+})
+
+local netrw_group = vim.api.nvim_create_augroup("NetrwLineNumbers", { clear = true })
+vim.api.nvim_create_autocmd("FileType", {
+    group = netrw_group,
+    pattern = "netrw",
+    callback = function()
+        vim.wo.number = true
+        vim.wo.relativenumber = true
+    end
+})
+
+-- Open Netrw if Neovim is started without a file
+local function is_file_or_directory(path)
+    local stat = vim.loop.fs_stat(path)
+    return stat and (stat.type == "file" or stat.type == "directory")
+end
+
+local function check_arguments_for_files_or_directories()
+    for i = 1, #vim.v.argv do
+        local arg = vim.v.argv[i]
+        if is_file_or_directory(arg) then
+            return true
+        end
+    end
+    return false
+end
+
+vim.api.nvim_create_autocmd("VimEnter", {
+    pattern = "*",
+    callback = function()
+        if not check_arguments_for_files_or_directories() then
+            vim.cmd('Explore')
+        end
+    end
+})
+
+EOF

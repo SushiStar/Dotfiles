@@ -5,9 +5,9 @@ Plug 'windwp/nvim-autopairs'
 Plug 'tpope/vim-surround'
 Plug 'scrooloose/nerdcommenter'
 
-Plug 'vifm/vifm.vim'
 Plug 'burntsushi/ripgrep'
 Plug 'junegunn/fzf'
+Plug 'majutsushi/tagbar'    "Use tagbar in cases where a function is too long or file is too large
 
 Plug 'neovim/nvim-lspconfig'
 Plug 'hrsh7th/cmp-nvim-lsp'
@@ -20,8 +20,8 @@ Plug 'projekt0n/github-nvim-theme'
 
 Plug 'lewis6991/gitsigns.nvim'
 
-Plug 'nvim-treesitter/nvim-treesitter'
-Plug 'nvim-neorg/neorg' | Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-treesitter/nvim-treesitter', {'tag': 'v0.9.2'}
+Plug 'nvim-neorg/neorg', {'tag': 'v7.0.0'} | Plug 'nvim-lua/plenary.nvim'
 
 call plug#end()
 
@@ -40,7 +40,7 @@ let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.9, 'relative': v:true
 
 " color ############################################################
 set termguicolors
-" set background=dark
+set background=dark
 " colorscheme github_dark
 
 " let g:gruvbox_material_background = 'hard'
@@ -61,30 +61,11 @@ set termguicolors
 lua << EOF
 -- GitSigns #######################################################
 require('gitsigns').setup{}
+require('nvim-autopairs').setup {}
 require('lsp_config')
 require('neorg_config')
 require('treesitter_config')
-require('nvim-autopairs').setup {}
 require('github_theme')
-
-vim.keymap.set('n', '<Leader>z', ':FZF<CR>', {silent = true})
-vim.keymap.set('n', '<Leader>e', ':TabVifm<CR>', {silent = true})
-vim.keymap.set('n', '<Leader>v', ':VsplitVifm<CR>', {silent = true})
-vim.keymap.set('n', '<Leader>s', ':Gitsigns preview_hunk<CR>', {silent = true})
-vim.keymap.set('n', '<Leader>j', ':Gitsigns next_hunk<CR>', {silent = true})
-vim.keymap.set('n', '<Leader>k', ':Gitsigns prev_hunk<CR>', {silent = true})
-
-vim.keymap.set('n', '<space>d', vim.diagnostic.open_float)
-vim.keymap.set('n', '[g', vim.diagnostic.goto_prev)
-vim.keymap.set('n', ']g', vim.diagnostic.goto_next)
-vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist)
-
--- Restore cursor position
-vim.api.nvim_create_autocmd({ "BufReadPost" }, {
-    pattern = { "*" },
-    callback = function()
-        vim.api.nvim_exec('silent! normal! g`"zv', false)
-    end,
-})
+require('keymap_config')
 
 EOF

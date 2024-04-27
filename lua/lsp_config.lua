@@ -38,7 +38,7 @@ lspconfig.clangd.setup({
 
 lspconfig.pyright.setup{
     use_lsp_config = true,
-    root_dir = lspconfig.util.root_pattern('poetry.lock', 'requirements.txt'), -- only work on poetry project
+    root_dir = lspconfig.util.root_pattern('poetry.lock'), -- only work on poetry project
     settingsPath = root_dir,
     cmd = {'pyright-langserver', '--stdio'},
     filetypes = { 'python', "py" },

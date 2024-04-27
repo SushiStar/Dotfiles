@@ -46,9 +46,9 @@ bindkey '^ ' autosuggest-accept
 export PATH="/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/sbin:/usr/sbin"
 export PATH=/opt/homebrew/bin:$PATH
 export PATH=/opt/homebrew/sbin:$PATH
-# export PATH="/usr/local/opt/llvm/bin:$PATH"
-# export LDFLAGS="-L/usr/local/opt/llvm/lib"
-# export CXXFLAGS="-I/usr/local/opt/llvm/include/c++/v1"
+export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
+export LDFLAGS="-L/opt/homebrew/opt/llvm/lib"
+export CPPFLAGS="-I/opt/homebrew/opt/llvm/include"
 
 alias ctags=/usr/local/bin/ctags
 alias ll='ls -alhF'
@@ -61,6 +61,10 @@ alias textedit='open -a TextEdit'
 alias gitlog='git log --graph --decorate --oneline'
 alias vim='nvim'
 
+# git alias
+alias gs='git status'
+alias gd='git diff'
+alias gc='git checkout'
 function cd {
     builtin cd "$@" && ls
 }
