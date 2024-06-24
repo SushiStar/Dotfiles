@@ -11,8 +11,8 @@ require('github-theme').setup({
     module_default = true,     -- Default enable value for modules
     styles = {                 -- Style to be applied to different syntax groups
       comments = 'italic',       -- Value is any valid attr-list value `:help attr-list`
-      functions = 'NONE',
-      keywords = 'NONE',
+      functions = 'italic',
+      keywords = 'bold',
       variables = 'NONE',
       conditionals = 'NONE',
       constants = 'bold',
@@ -34,7 +34,14 @@ require('github-theme').setup({
       },
     },
     modules = {                -- List of various plugins and additional options
-      -- ...
+        treesitter = {
+            enable = true,
+            background = true,
+        },
+        gitsigns = {
+            enable = true,
+            background = true,
+        }
     },
   },
   palettes = {},

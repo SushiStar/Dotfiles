@@ -38,6 +38,7 @@ alias llt='ls -lt'
 alias lc='ls -l | wc -l'
 alias g++='g++ --std=c++11'
 alias vim='nvim'
+alias rg='rg -C 3'
 
 alias vimf='nvim $(fzf --height 40% --reverse)'
 alias gitlog='git log --graph --decorate --oneline'
@@ -70,3 +71,4 @@ export FZF_CTRL_R_OPTS=''
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 
+export AURORA_OKTA_USER=wdu

@@ -23,8 +23,9 @@ set ignorecase
 set smartcase
 set incsearch
 set noshowmode
-set nohlsearch
+" set nohlsearch
 set autoindent
+set spelllang=en_us
 
 "numbers
 set number
@@ -72,9 +73,6 @@ let g:netrw_browse_split = 0
 let g:netrw_liststyle = 0
 let g:netrw_keepdir = 1
 
-" autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | Explore | endif
-
-
 lua << EOF
 
 -- Restore cursor position
@@ -96,6 +94,7 @@ vim.api.nvim_create_autocmd("FileType", {
 })
 
 -- Open Netrw if Neovim is started without a file
+-- check cmdline arguments
 local function is_file_or_directory(path)
     local stat = vim.loop.fs_stat(path)
     return stat and (stat.type == "file" or stat.type == "directory")
@@ -119,5 +118,28 @@ vim.api.nvim_create_autocmd("VimEnter", {
         end
     end
 })
+
+-- Delete non active buffers if not loaded
+local function delete_non_active_buffers()
+  for _, buf in ipairs(vim.api.nvim_list_bufs()) do
+    if not (vim.api.nvim_buf_is_loaded(buf) or vim.b[buf].active) then
+      vim.api.nvim_buf_delete(buf, { force = true })
+    end
+  end
+end
+
+-- Create a custom command to run the function
+vim.api.nvim_create_user_command('DeleteNonActiveBuffers', function()
+  delete_non_active_buffers()
+end, {})
+
+-- Create an augroup for managing search highlighting
+vim.api.nvim_exec([[
+augroup AutoHighlighting
+    autocmd!
+    autocmd CmdlineEnter /,\? set hlsearch
+    autocmd CmdlineLeave /,\? set nohlsearch
+augroup END
+]], false)
 
 EOF
