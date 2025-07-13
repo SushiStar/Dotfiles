@@ -8,9 +8,6 @@ export EDITOR='nvim'
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib/
 export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin"
 
-# TOOLS
-# export PATH="$HOME/tools/bin:$PATH"
-
 # Aurora
 export PATH="/opt/aurora/bin:$PATH"
 
@@ -20,15 +17,39 @@ export PATH="/home/wdu/.local/bin:$PATH"
 # av
 export PATH="/home/wdu/av/tools/bin:$PATH"
 
+# custom tools, lowest priority
+export PATH="$HOME/tools/bin:$PATH"
+
 # tmux alias
 alias tls='tmux ls'
 alias tns='tmux new -s'
 alias tat='tmux attach -t'
 
+# Custom function to create tmux sessions wvim and ticket if they don't already exist
+tmux_create_sessions() {
+    # Check and create the ticket session
+    if ! tmux has-session -t ticket 2>/dev/null; then
+        tmux new-session -d -s ticket -n vim
+        # tmux send-keys -t ticket:0 'echo "Welcome to the ticket session"' C-m
+        echo "Created ticket session"
+
+        tmux new-window -n cmd
+        tmux split-window -h -t cmd
+    fi
+}
+
+# Automatically create tmux sessions
+if command -v tmux &>/dev/null; then
+    tmux_create_sessions
+fi
+
+
 # git alias
 alias gs='git status'
 alias gd='git diff'
 alias gc='git checkout'
+alias gcm='git commit -m'
+alias glf='git log -p --'
 
 alias ls='ls --color=auto'
 alias ll='ls -ahlF'
@@ -38,21 +59,29 @@ alias llt='ls -lt'
 alias lc='ls -l | wc -l'
 alias g++='g++ --std=c++11'
 alias vim='nvim'
+alias vimdiff='nvim -d'
 alias rg='rg -C 3'
 
-alias vimf='nvim $(fzf --height 40% --reverse)'
-alias gitlog='git log --graph --decorate --oneline'
-alias curator='/home/wdu/av/bazel-bin/simulation/cloud/curator/cmd/curator'
+# custom commands
+alias bsb='bonsai branch'
+alias bsc='bonsai cascade'
+alias bsp='bonsai pull'
+alias bsph='bonsai push'
+alias bsu='bonsai up'
+alias bsd='bonsai down'
+alias bss='bonsai show'
+
+alias lf='lint_files'
+alias ljj='bazel run //simulation:launch_jenkins_job --'
+alias sim="bazel run //simulation/infra/local:mpsim -- -v"
+alias resim="bazel run //simulation/infra/local:traj_match_pmpv -- --skip_step perception -v"
+alias auth="infra auth refresh"
+
+alias gitlog='git log --graph --decorate --oneline --pretty=format:"%h - %ad -- %s" --date=format:"%m/%d/%Y %H:%M"'
 
 function cd {
     builtin cd "$@" && ls
     }
-
-function acp() {
-  git add -A
-  git commit -m "$1"
-  git push
-}
 
 bindkey "^P" history-beginning-search-backward
 bindkey "^N" history-beginning-search-forward
@@ -70,5 +99,6 @@ export FZF_CTRL_R_OPTS=''
 # NVM configuration, required by nvim
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+
 
 export AURORA_OKTA_USER=wdu

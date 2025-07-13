@@ -60,6 +60,7 @@ alias grep='grep --color=auto'
 alias textedit='open -a TextEdit'
 alias gitlog='git log --graph --decorate --oneline'
 alias vim='nvim'
+alias vimdiff='nvim -d'
 
 # git alias
 alias gs='git status'

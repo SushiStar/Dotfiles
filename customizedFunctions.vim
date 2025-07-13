@@ -32,7 +32,8 @@ set number
 set relativenumber
 set cursorline
 set fillchars=vert:│
-set laststatus=0
+set laststatus=3
+" set noruler
 set t_Co=256
 set showtabline=2
 autocmd ColorScheme * highlight CursorLineNr cterm=bold term=bold guibg=None guifg=#eb8f34
@@ -133,6 +134,14 @@ vim.api.nvim_create_user_command('DeleteNonActiveBuffers', function()
   delete_non_active_buffers()
 end, {})
 
+vim.api.nvim_create_user_command(
+  'GS',  -- Command name
+  function()
+    require('gitsigns').toggle_current_line_blame()
+  end,
+  {}  -- Optional command options
+)
+
 -- Create an augroup for managing search highlighting
 vim.api.nvim_exec([[
 augroup AutoHighlighting
@@ -141,5 +150,8 @@ augroup AutoHighlighting
     autocmd CmdlineLeave /,\? set nohlsearch
 augroup END
 ]], false)
+
+
+
 
 EOF

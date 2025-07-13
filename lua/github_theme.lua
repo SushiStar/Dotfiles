@@ -12,14 +12,14 @@ require('github-theme').setup({
     styles = {                 -- Style to be applied to different syntax groups
       comments = 'italic',       -- Value is any valid attr-list value `:help attr-list`
       functions = 'italic',
-      keywords = 'bold',
+      keywords = 'NONE',
       variables = 'NONE',
       conditionals = 'NONE',
-      constants = 'bold',
-      numbers = 'NONE',
+      constants = 'NONE',
+      numbers = 'italic',
       operators = 'NONE',
       strings = 'NONE',
-      types = 'bold',
+      types = 'NONE',
     },
     inverse = {                -- Inverse highlight for different types
       match_paren = false,
@@ -29,7 +29,7 @@ require('github-theme').setup({
     darken = {                 -- Darken floating windows and sidebar-like windows
       floats = false,
       sidebars = {
-        enabled = true,
+        enabl = true,
         list = {},             -- Apply dark background to specific windows
       },
     },

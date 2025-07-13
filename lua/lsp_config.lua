@@ -25,20 +25,38 @@ cmp.setup({
   })
 })
 
+-- Enable nvim-cmp completion in copilot-chat filetype
+require('cmp').setup.filetype('copilot-chat', {
+  mapping = require('cmp').mapping.preset.insert({
+    ['<Tab>'] = require('cmp').mapping.select_next_item(),
+    ['<S-Tab>'] = require('cmp').mapping.select_prev_item(),
+    ['<CR>'] = require('cmp').mapping.confirm({ select = true }),
+  }),
+  sources = require('cmp').config.sources({
+    { name = 'buffer' },
+  }),
+})
+
 -- Set configuration for specific filetype.
 
 lspconfig.clangd.setup({
    capabilities = {require('cmp_nvim_lsp').default_capabilities()},
+   cmd  = {
+    "clangd",
+    "--background-index",
+    "--compile-commands-dir=/home/wdu/av",
+   },
    filetypes = { "h", "hh", "hpp", "c",  "cc", "cpp"},
    root_dir = lspconfig.util.root_pattern('.git', 'compile_commands.json'),
    init_options = {
     semanticHighlighting = true,
+    compilationDatabasePath = vim.fn.getcwd(),
    },
 })
 
 lspconfig.pyright.setup{
     use_lsp_config = true,
-    root_dir = lspconfig.util.root_pattern('poetry.lock'), -- only work on poetry project
+    root_dir = lspconfig.util.root_pattern('pyproject.toml'),
     settingsPath = root_dir,
     cmd = {'pyright-langserver', '--stdio'},
     filetypes = { 'python', "py" },
