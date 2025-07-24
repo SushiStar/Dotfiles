@@ -1,4 +1,34 @@
+-- General and plugin-specific key mappings (converted from vimrc and customizedFunctions.vim)
 
+local map = vim.api.nvim_set_keymap
+local opts = { noremap = true, silent = true }
+
+-- Tab navigation
+map('n', '<Tab>', 'gt', opts)
+map('n', '<S-Tab>', 'gT', opts)
+
+-- Window navigation
+map('n', '<C-l>', ':winc l<CR>', opts)
+map('n', '<C-h>', ':winc h<CR>', opts)
+map('n', '<C-k>', ':winc k<CR>', opts)
+map('n', '<C-j>', ':winc j<CR>', opts)
+
+-- Toggle line numbers and relative numbers
+map('n', '<leader>a', ':set invnumber invrelativenumber<CR>', opts)
+
+-- Terminal mode: exit to normal mode
+map('t', '<Leader>q', [[<C-\><C-n>]], opts)
+
+-- Command mode shortcut
+vim.keymap.set("n", ";", ":", { noremap = true })
+
+-- NerdCommenter mappings (if plugin is still used)
+map('n', "'ci", "<plug>NERDCommenterToggle", {})
+map('n', "'cs", "<plug>NERDCommenterSexy", {})
+
+-- FZF (if you want to add more mappings, do so here)
+
+-- Add more plugin-specific mappings below as needed
 vim.keymap.set('n', '<Leader>z', ':FZF<CR>', {silent = true})
 vim.keymap.set('n', '<Leader>e', ':Texplore<CR>', {silent = true})
 vim.keymap.set('n', '<Leader>v', ':Vexplore<CR>', {silent = true})
