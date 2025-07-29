@@ -1,15 +1,16 @@
 return {
-    "ruifm/gitlinker.nvim",
-    config = function()
-        require"gitlinker".setup({
-          opts = {
-            remote = "origin", -- force the use of a specific remote
-            -- adds current line nr in the url for normal mode
-            add_current_line_on_normal_mode = true,
-            -- print the url after performing the action
-            print_url = true,
-          },
-        })
-    end,
+  "ruifm/gitlinker.nvim",
+  config = function()
+    require("gitlinker").setup({
+      opts = {
+        remote = "origin",
+        add_current_line_on_normal_mode = true,
+        print_url = false,
+        action_callback = function(url)
+          vim.notify("🔗 Git link:\n" .. url)
+        end,
+      },
+    })
+  end,
 }
 

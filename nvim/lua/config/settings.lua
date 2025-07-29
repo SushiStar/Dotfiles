@@ -92,12 +92,6 @@ vim.api.nvim_create_autocmd("FileType", {
     end,
 })
 
--- Open Netrw if Neovim is started without a file
--- local function is_file_or_directory(path)
-    -- local stat = vim.loop.fs_stat(path)
-    -- return stat and (stat.type == "file" or stat.type == "directory")
--- end
-
 local function check_arguments_for_files_or_directories()
     for _, arg in ipairs(vim.v.argv) do
         if is_file_or_directory(arg) then
@@ -107,25 +101,24 @@ local function check_arguments_for_files_or_directories()
     return false
 end
 
--- vim.api.nvim_create_autocmd("VimEnter", {
-    -- pattern = "*",
-    -- callback = function()
-        -- if not check_arguments_for_files_or_directories() then
-            -- vim.cmd('Explore')
-        -- end
-    -- end,
--- })
+vim.api.nvim_create_user_command("DeleteNonActiveBuffers", function()
+  local visible_bufs = {}
+  for _, win in ipairs(vim.api.nvim_list_wins()) do
+    local buf = vim.api.nvim_win_get_buf(win)
+    visible_bufs[buf] = true
+  end
 
--- Delete non-active buffers if not loaded
-local function delete_non_active_buffers()
-    for _, buf in ipairs(vim.api.nvim_list_bufs()) do
-        if not (vim.api.nvim_buf_is_loaded(buf) or vim.b[buf].active) then
-            vim.api.nvim_buf_delete(buf, { force = true })
-        end
+  for _, buf in ipairs(vim.api.nvim_list_bufs()) do
+    if
+      vim.api.nvim_buf_is_loaded(buf)
+      and vim.api.nvim_buf_get_option(buf, "buflisted")
+      and not visible_bufs[buf]
+    then
+      vim.cmd("bdelete " .. buf)
     end
-end
+  end
+end, { desc = "Delete all non-active buffers (not shown in any window)" })
 
-vim.api.nvim_create_user_command('DeleteNonActiveBuffers', delete_non_active_buffers, {})
 
 -- Toggle gitsigns blame
 vim.api.nvim_create_user_command('GS', function()
@@ -140,3 +133,18 @@ augroup AutoHighlighting
     autocmd CmdlineLeave /,\? set nohlsearch
 augroup END
 ]], false)
+
+vim.api.nvim_create_user_command("RgDir", function()
+  vim.ui.input({ prompt = "Enter subdirectory to search in: " }, function(dir)
+    if dir and dir ~= "" then
+      local rg_cmd = string.format(
+        "rg --column --line-number --no-heading --color=always --smart-case . %s",
+        vim.fn.shellescape(dir)
+      )
+
+      -- Correct way to pass empty Vim dict from Lua
+      vim.fn["fzf#vim#grep"](rg_cmd, 1, vim.empty_dict(), 0)
+    end
+  end)
+end, { desc = "FZF ripgrep in user-specified subdirectory (no preview)" })
+

@@ -30,9 +30,8 @@ return {
                       -- "help",            -- optional––no TS in help buffers
                     -- },
           disable = function(lang)
-            return not vim.tbl_contains({ 'c', 'cc', 'h', 'hpp', 'hh', 'cpp',
-            'swift', 'go',
-            'python', 'lua', 'norg',}, lang)
+            return not vim.tbl_contains({ 'c', 'cc', 'h', 'hpp', 'hh', 'cpp', 'python', 'lua',
+                                            'norg', 'vim', 'markdown'}, lang)
           end,
 
           -- Setting this to true will run `:h syntax` and tree-sitter at the same time.

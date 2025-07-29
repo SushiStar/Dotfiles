@@ -1,0 +1,32 @@
+# Migration Summary
+
+## 1. Converted `vimrc`
+- General settings moved to `lua/settings.lua`.
+- Key mappings split into:
+  - `lua/keymaps.lua` (general mappings).
+  - `lua/keymap_config.lua` (plugin-specific mappings).
+- Plugin definitions migrated to `lua/plugins/init.lua` using `lazy.nvim`.
+
+## 2. Converted `customizedFunctions.vim`
+- Custom functions rewritten in Lua and merged into `lua/settings.lua`.
+
+## 3. Updated `init.lua`
+- Created `init.lua` to load all configuration files:
+  - `settings.lua`
+  - `keymaps.lua`
+  - `plugins/init.lua`
+
+## 4. Simplified File Structure
+- Combined settings and custom functions into `lua/settings.lua`.
+
+## Final File Structure
+```
+./nvim/
+├── init.lua                # Main entry point
+├── lua/
+│   ├── settings.lua        # General settings and custom functions
+│   ├── keymaps.lua         # General and plugin-specific key mappings
+│   └── plugins/
+│       ├── init.lua        # lazy.nvim setup and plugin list
+│       └── ...             # Plugin-specific configurations
+```

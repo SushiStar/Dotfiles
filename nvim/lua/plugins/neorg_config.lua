@@ -1,12 +1,6 @@
 return {
     "nvim-neorg/neorg",
-    -- ft = "norg",            -- load only for Neorg files
-    -- event = "BufReadPre *.norg",
-    -- event = "VeryLazy",
     lazy = false,
-    build = ":Neorg sync-parsers",
-    dependencies = { "nvim-lua/plenary.nvim" },
-
     config = function()
         local meta_gen_template= {
             -- The title field generates a title for the file based on the filename.
