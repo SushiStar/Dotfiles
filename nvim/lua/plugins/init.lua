@@ -17,6 +17,7 @@ return {
   -- UI and colors
     require("plugins.github_theme_config"),
     require("plugins.lualine_config"),
+    require("plugins.terminal_config"),
 
   -- Git and session
     require("plugins.gitsigns_config"),

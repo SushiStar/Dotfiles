@@ -1,5 +1,6 @@
 return {
   "neovim/nvim-lspconfig",
+  version = "v2.1.0",  -- stable and fully compatible with Neovim ≤0.12 configs
   lazy = false,
   config = function()
     local lspconfig = require("lspconfig")
