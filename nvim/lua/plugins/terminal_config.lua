@@ -5,7 +5,6 @@ return {
     config = function()
       require("toggleterm").setup({
         -- 📦 Basic settings
-        size = 15,
         open_mapping = [[<C-\>]], -- Ctrl+\ toggles terminal
         shade_terminals = true,
         direction = "float", -- or "horizontal" / "vertical" / "tab"
@@ -16,6 +15,8 @@ return {
         float_opts = {
           border = "curved",
           winblend = 0,
+          width = function() return math.floor(vim.o.columns * 0.8) end,
+          height = function() return math.floor(vim.api.nvim_win_get_height(0) * 0.8) end,
         },
       })
 
