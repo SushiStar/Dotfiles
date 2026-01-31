@@ -1,0 +1,35 @@
+# Load plugins manually
+ZSH_AUTOSUGGEST_CASE_SENSITIVE=false
+ZSH_AUTOSUGGEST_USE_ASYNC=true        # async suggestions
+ZSH_AUTOSUGGEST_STRATEGY=(history completion)  # control sources
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=0'
+
+# Make filename completion ignore case
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
+
+source ~/.zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+source ~/.zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source ~/.zsh/gitster.zsh-theme
+# has to be the last one
+source ~/.zsh/plugins/zsh-vi-mode/zsh-vi-mode.plugin.zsh
+# Append a command directly
+zvm_after_init_commands+=('[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh')
+# --- Proper post-init hook ---
+
+# ---- History configuration ----
+# Path to the history file
+export HISTFILE=~/.zsh_history
+
+# How many commands to keep in memory and on disk
+export HISTSIZE=100000
+export SAVEHIST=100000
+
+# Recommended history options
+setopt APPEND_HISTORY             # append instead of overwrite
+setopt SHARE_HISTORY              # share history across tabs
+setopt HIST_IGNORE_DUPS           # ignore duplicate commands
+setopt HIST_IGNORE_SPACE          # ignore commands starting with space
+setopt HIST_VERIFY                # don’t immediately execute recalled commands
+setopt HIST_REDUCE_BLANKS         # remove extra spaces in commands
+setopt EXTENDED_HISTORY            # adds timestamps
+setopt INC_APPEND_HISTORY

@@ -17,7 +17,6 @@ map('n', '<C-j>', ':winc j<CR>', opts)
 map('n', '<leader>a', ':set invnumber invrelativenumber<CR>', opts)
 
 -- Terminal mode: exit to normal mode
-map('t', '<Leader>q', [[<C-\><C-n>]], opts)
 
 -- Command mode shortcut
 vim.keymap.set("n", ";", ":", { noremap = true })

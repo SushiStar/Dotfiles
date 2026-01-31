@@ -4,7 +4,6 @@
 # ln -fs $(pwd)/vimrc $HOME/.config/nvim/init.vim
 #
 # ln -sf $(pwd)/vifmrc $HOME/.config/vifm/vifmrc
-# ln -sf $(pwd)/paper.vifm $HOME/.config/vifm/colors/paper.vifm
 
 OS=$(uname)
 if [ "$OS" = "Linux" ]; then

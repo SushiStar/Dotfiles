@@ -1,33 +1,49 @@
-local ret_status="%(?:%{$fg_bold[green]%}➜ :%{$fg_bold[red]%}➜ %s)"
+# --- essentials ---
+autoload -Uz colors && colors
+setopt prompt_subst  # allow $(...) in PROMPT
 
-#function git_prompt_info() {
-#  ref=$(git symbolic-ref HEAD 2> /dev/null) || return
-#  echo "$ZSH_THEME_GIT_PROMPT_PREFIX$(current_branch)$ZSH_THEME_GIT_PROMPT_SUFFIX$(parse_git_dirty)"
-#}
+# --- status arrow (green if last cmd OK, red otherwise) ---
+# ret_status="%(?:%{$fg_bold[green]%}➜ :%{$fg_bold[red]%}➜ )"
 
-function get_pwd(){
-  git_root=$PWD
-  while [[ $git_root != / && ! -e $git_root/.git ]]; do
-    git_root=$git_root:h
+# --- repo-relative path helper ---
+get_pwd() {
+  local git_root=$PWD
+  while [[ $git_root != / && ! -e "$git_root/.git" ]]; do
+    git_root=${git_root:h}
   done
+  local prompt_short_dir
   if [[ $git_root = / ]]; then
-    unset git_root
     prompt_short_dir=%~
   else
-    parent=${git_root%\/*}
+    local parent=${git_root%/*}
     prompt_short_dir=${PWD#$parent/}
   fi
-  echo $prompt_short_dir
+  print -r -- "$prompt_short_dir"
 }
 
-PROMPT='$ret_status %{$fg[white]%}$(get_pwd) $(git_prompt_info)%{$reset_color%}%{$reset_color%} '
+# --- git branch color helper ---
+git_info() {
+  # Return if not in a Git repo
+  git rev-parse --is-inside-work-tree &>/dev/null || return
 
-ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg[cyan]%}"
-ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%}"
-ZSH_THEME_GIT_PROMPT_DIRTY=" %{$fg[yellow]%}✗%{$reset_color%}"
-ZSH_THEME_GIT_PROMPT_CLEAN=" %{$fg[green]%}✓%{$reset_color%}"
+  # Get current branch name or short hash
+  local branch=$(git symbolic-ref --quiet --short HEAD 2>/dev/null \
+                || git rev-parse --short HEAD 2>/dev/null)
 
-#ZSH_THEME_GIT_PROMPT_PREFIX="%{$reset_color%}[git:"
-#ZSH_THEME_GIT_PROMPT_SUFFIX="]%{$reset_color%}"
-#ZSH_THEME_GIT_PROMPT_DIRTY="%{$fg[red]%}+%{$reset_color%}"
-#ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg[green]%}"
+  local color
+  # Detect status for color
+  if ! git diff --quiet --ignore-submodules --exit-code 2>/dev/null; then
+    color=$fg[red]          # unstaged changes
+  elif ! git diff --cached --quiet --ignore-submodules --exit-code 2>/dev/null; then
+    color=$fg[yellow]       # staged changes
+  else
+    color=$fg[green]        # clean
+  fi
+
+  print -n "%{$color%}[$branch] %{$reset_color%}"
+}
+
+# --- final prompt ---
+# clean, simple, color-coded git branch
+PROMPT='%{$fg[white]%}$(get_pwd)%{$reset_color%} $(git_info)>> '
+

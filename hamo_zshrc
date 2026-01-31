@@ -1,0 +1,70 @@
+# If you come from bash you might have to change your $PATH.
+export TERM="xterm-256color"
+
+# it has to be before soruce .zsh/zshrc
+# [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib/
+export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin"
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+bindkey -v
+export KEYTIMEOUT=1
+
+
+export ZSH="/home/$(whoami)/.zsh"
+source "/home/$(whoami)/.zsh/zshrc"
+export EDITOR='nvim'
+
+
+# pyright
+export PATH="/home/hamo/.local/bin:$PATH"
+export PATH="$HOME/tools/bin:$PATH"
+
+# tmux alias
+alias tls='tmux ls'
+alias tns='tmux new -s'
+alias tat='tmux attach -t'
+
+# git alias
+alias gs='git status'
+alias gd='git diff'
+alias gc='git checkout'
+alias gcm='git commit -m'
+alias glf='git log -p --'
+
+alias ls='ls --color=auto'
+alias ll='ls -ahlF'
+alias la='ls -A'
+alias l='ls -CF'
+alias llt='ls -lt'
+alias lc='ls -l | wc -l'
+alias g++='g++ --std=c++11'
+alias vim='nvim'
+alias vimdiff='nvim -d'
+alias rg3='rg -C 3'
+alias ag3='ag -C 3'
+
+alias gitlog='git log --graph --decorate --oneline --pretty=format:"%h - %ad -- %s" --date=format:"%m/%d/%Y %H:%M"'
+
+function cd {
+    builtin cd "$@" && ls
+    }
+
+bindkey "^P" history-beginning-search-backward
+bindkey "^N" history-beginning-search-forward
+bindkey '^[[Z' autosuggest-accept
+
+# export FZF_DEFAULT_OPTS='--preview "head -40 {}"'
+export FZF_DEFAULT_OPTS=''
+export FZF_DEFAULT_COMMAND='ag -g "" --hidden --ignore .git'
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_CTRL_R_OPTS=''
+
+# NVM configuration, required by nvim
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# Automatically create tmux sessions
+if command -v tmux &>/dev/null; then
+    source ~/Dotfiles/tmux_hello_session.zsh
+fi
