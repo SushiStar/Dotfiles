@@ -24,10 +24,10 @@ Plug 'olimorris/persisted.nvim'
 
 Plug 'nvim-treesitter/nvim-treesitter'
 " Plug 'nvim-neorg/neorg', { 'do': 'Neorg sync-parsers' } |
-Plug 'github/copilot.vim'
+" Plug 'github/copilot.vim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'ruifm/gitlinker.nvim'
-Plug 'CopilotC-Nvim/CopilotChat.nvim'
+" Plug 'CopilotC-Nvim/CopilotChat.nvim'
 
 call plug#end()
 
@@ -63,7 +63,7 @@ require('nvim-autopairs').setup{}
 -- require('neorg_config')
 require('treesitter_config')
 require('lsp_config')
-require('copilot_chat_config')
+-- require('copilot_chat_config')
 require('github_theme')
 require('keymap_config')
 require('persisted_config')

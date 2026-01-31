@@ -66,3 +66,19 @@ vim.opt.guicursor = {
     "a:blinkwait700-blinkoff400-blinkon250-Cursor"  -- Blinking cursor settings (optional)
 }
 
+if vim.env.SSH_TTY then
+  vim.g.clipboard = {
+    name = "osc52",
+    copy = {
+      ["+"] = require("vim.ui.clipboard.osc52").copy("+"),
+      ["*"] = require("vim.ui.clipboard.osc52").copy("*"),
+    },
+    paste = {
+      ["+"] = require("vim.ui.clipboard.osc52").paste("+"),
+      ["*"] = require("vim.ui.clipboard.osc52").paste("*"),
+    },
+  }
+else
+  vim.opt.clipboard = "unnamedplus"
+end
+

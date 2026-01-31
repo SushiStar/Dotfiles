@@ -26,7 +26,7 @@ return {
     lspconfig.pyright.setup({
       cmd = { "pyright-langserver", "--stdio" },
       filetypes = { "python", "py" },
-      root_dir = lspconfig.util.root_pattern("pyproject.toml", ".git"),
+      root_dir = lspconfig.util.root_pattern("requirements.txt","pyproject.toml", ".git"),
       capabilities = capabilities,
       settings = {
         python = {
@@ -36,6 +36,14 @@ return {
           },
         },
       },
+    })
+
+    -- swift
+    lspconfig.sourcekit.setup({
+      cmd = {"xcrun", "sourcekit-lsp" },
+      filetypes = { "swift", "objective-c", "objective-cpp" },
+      root_dir = lspconfig.util.root_pattern(".git", "Package.swift", "*.xcodeproj"),
+      capabilities = capabilities,
     })
 
     -- LSP keybindings

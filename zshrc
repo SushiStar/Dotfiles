@@ -3,8 +3,14 @@
 export TERM="xterm-256color"
 
 # Path to your oh-my-zsh installation.
-export ZSH="/Users/$(whoami)/.oh-my-zsh/"
 ZSH_DISABLE_COMPFIX=true
+# Append a command directly
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+bindkey -v
+export KEYTIMEOUT=1
+
+export ZSH="/Users/$(whoami)/.zsh"
+source "/Users/$(whoami)/.zsh/zshrc"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -19,14 +25,17 @@ export HISTSIZE=10000
 # Uncomment the following line to disable bi-weekly auto-update checks.
  DISABLE_AUTO_UPDATE="true"
 
-plugins=(
-         zsh-vi-mode
-         zsh-autosuggestions
-		 history-substring-search
-         )
+# plugins=(
+         # zsh-autosuggestions
+		 # history-substring-search
+         # zsh-vi-mode
+         # )
+export CLICOLOR=1
+export LSCOLORS=ExFxBxDxCxegedabagacad
 
-source $ZSH/oh-my-zsh.sh
+# source ~/.oh-my-zsh/oh-my-zsh.sh
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=5'
+# zvm_after_init_commands+=('[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh')
 # User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"
@@ -38,15 +47,15 @@ export EDITOR='nvim'
 # remove user@hostname
 # export DEFAULT_USER=$USER
 
-bindkey "^P" history-beginning-search-backward
-bindkey "^N" history-beginning-search-forward
-bindkey '^ ' autosuggest-accept
+bindkey '^P' up-line-or-history
+bindkey '^N' down-line-or-history
 
 # from bash
 export PATH="/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/sbin:/usr/sbin"
 export PATH=/opt/homebrew/bin:$PATH
 export PATH=/opt/homebrew/sbin:$PATH
 export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
+export PATH="/opt/X11/bin:$PATH"
 export LDFLAGS="-L/opt/homebrew/opt/llvm/lib"
 export CPPFLAGS="-I/opt/homebrew/opt/llvm/include"
 
@@ -76,13 +85,33 @@ function acp() {
   git push
 }
 
-# bindkey '^ ' autosuggest-accept
+# Enable XQuartz display for iTerm
+# if [ -z "$DISPLAY" ] && [ -e /tmp/.X11-unix/X0 ]; then
+    # export DISPLAY=:0
+    # /opt/X11/bin/xhost +localhost >/dev/null 2>&1
+# fi
 
 # for fzf
-source ~/.fzf.zsh
 export FZF_DEFAULT_OPTS=''
 export FZF_DEFAULT_COMMAND='rg --files'
 export FZF_CTRL_T_COMMAND='$FZF_DEFAULT_COMMAND'
 export FZF_CTRL_R_OPTS=''
 
 export DAILY_DIR="$HOME/playground/daily"
+
+# Ensure the edit-command-line widget exists
+autoload -Uz edit-command-line
+zle -N edit-command-line
+
+# Force v in command mode to open Neovim
+bindkey -M vicmd v edit-command-line
+
+# Make sure Zsh knows which editor to use
+export FCEDIT="nvim"
+export EDITOR="nvim"
+export VISUAL="nvim"
+
+autoload -Uz compinit && compinit
+zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|=*' 'l:|=* r:|=*'
+export PATH="/Library/TeX/texbin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
