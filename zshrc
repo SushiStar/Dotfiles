@@ -71,6 +71,11 @@ alias gitlog='git log --graph --decorate --oneline'
 alias vim='nvim'
 alias vimdiff='nvim -d'
 
+# tmux alias
+alias tls='tmux ls'
+alias tns='tmux new -s'
+alias tat='tmux attach -t'
+
 # git alias
 alias gs='git status'
 alias gd='git diff'
