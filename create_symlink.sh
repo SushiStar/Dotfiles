@@ -14,3 +14,7 @@ else
     echo "This system is neither Linux nor macOS."
 fi
 
+# Ghostty
+mkdir -p $HOME/.config/ghostty
+ln -sf $(pwd)/ghostty_config $HOME/.config/ghostty/config
+

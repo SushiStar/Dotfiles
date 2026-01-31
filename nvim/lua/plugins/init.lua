@@ -17,7 +17,6 @@ return {
   -- UI and colors
     require("plugins.github_theme_config"),
     require("plugins.lualine_config"),
-    require("plugins.terminal_config"),
 
   -- Git and session
     require("plugins.gitsigns_config"),
@@ -27,8 +26,6 @@ return {
   -- Treesitter and extras
     require("plugins.treesitter_config"),
 
-    "github/copilot.vim",
     "nvim-lua/plenary.nvim",
     require("plugins.gitlinker_config"),
-    require("plugins.copilot_chat_config"), -- CopilotChat configuration
 }
