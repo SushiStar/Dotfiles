@@ -7,6 +7,27 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=0'
 # Make filename completion ignore case
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 
+# Completion colors - darker/more vivid for better visibility
+zstyle ':completion:*:default' list-colors \
+  'di=1;34' \
+  'ln=1;36' \
+  'so=1;35' \
+  'pi=1;33' \
+  'ex=1;32' \
+  'bd=1;33;46' \
+  'cd=1;33;43' \
+  'su=37;41' \
+  'sg=30;43' \
+  'tw=30;42' \
+  'ow=34;42'
+
+# Apply colors to completion menu
+zstyle ':completion:*' menu select
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+
+# Export LS_COLORS for ls command and completion consistency
+export LS_COLORS='di=1;34:ln=1;36:so=1;35:pi=1;33:ex=1;32:bd=1;33;46:cd=1;33;43:su=37;41:sg=30;43:tw=30;42:ow=34;42'
+
 source ~/.zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 source ~/.zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source ~/.zsh/gitster.zsh-theme

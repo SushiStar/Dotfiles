@@ -12,6 +12,7 @@ export KEYTIMEOUT=1
 
 export ZSH="/home/$(whoami)/.zsh"
 source "/home/$(whoami)/.zsh/zshrc"
+source "$HOME/Dotfiles/zshrc_env"
 export EDITOR='nvim'
 
 
